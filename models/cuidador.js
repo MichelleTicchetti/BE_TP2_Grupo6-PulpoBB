@@ -1,5 +1,5 @@
 import { Tarea } from "./tarea.js";
-
+// comment
 export class Cuidador {
   constructor(id, nombreApellido, email, vinculo) {
     if (!id || !nombreApellido || !email || !vinculo) {
