@@ -6,6 +6,8 @@ import { Tarea } from "../models/tarea.js";
 
 var expect = chai.expect;
 
+console.log("test git")
+
 describe("Cuidador", () => {
   describe("atributos", () => {
     it("debe tener un atributo ID", () => {
