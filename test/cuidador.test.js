@@ -7,6 +7,10 @@ import { Tarea } from "../models/tarea.js";
 var expect = chai.expect;
 
 console.log("test git")
+console.log("test git")
+console.log("test git")
+console.log("test git")
+console.log("test git")
 
 describe("Cuidador", () => {
   describe("atributos", () => {
