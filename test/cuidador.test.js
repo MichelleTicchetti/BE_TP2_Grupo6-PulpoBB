@@ -122,7 +122,6 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      cuidador.tareas = [];
       cuidador.crearTarea(new Tarea("Sacar turno con pediatra", "Alta"));
       expect(cuidador.tareas.length).to.equal(1);
     });
@@ -137,7 +136,7 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      const tarea = cuidador.crearTarea("Sacar turno con pediatra");
+      const tarea = cuidador.crearTarea("Sacar turno con pediatra", "Alta");
 
       // Act
       cuidador.cerrarTarea(tarea);
