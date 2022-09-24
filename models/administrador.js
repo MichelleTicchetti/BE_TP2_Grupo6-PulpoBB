@@ -1,13 +1,12 @@
 import { Tarea } from "./tarea.js";
-export class Cuidador {
-  constructor(id, nombreApellido, email, vinculo) {
-    if (!id || !nombreApellido || !email || !vinculo) {
+export class Administrador {
+  constructor(id, nombreApellido, email) {
+    if (!id || !nombreApellido || !email) {
       throw new Error();
     }
     this.id = id;
     this.nombreApellido = nombreApellido;
     this.email = email;
-    this.vinculo = vinculo;
     this.tareas = [];
   }
 
@@ -15,19 +14,24 @@ export class Cuidador {
     return this.tareas;
   }
 
-  crearTarea(detalle, prioridad) {
-    const tareaCreada = new Tarea(detalle, prioridad);
+  crearTarea(descripcion) {
+    const tareaCreada = new Tarea(descripcion);
     this.tareas.push(tareaCreada);
     return tareaCreada;
   }
 
   cerrarTarea(tareaACerrar) {
-    const index = this.tareas.indexOf(tareaACerrar, 0);
-
-    if (index >= 0) {
-      this.tareas[index].cerrarTarea();
+    const index = this.tareas.indexOf(tareaACerrar);
+    if (index > -1) {
+      tareaACerrar.cerrarTarea();
     } else {
       console.log("No existe esa tarea");
     }
   }
+
+  crearCuidador() {}
+
+  crearAdmin() {}
+
+  cierreDeGastos() {}
 }
