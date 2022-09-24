@@ -122,7 +122,9 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      cuidador.crearTarea(new Tarea("Sacar turno con pediatra", "Alta"));
+      nuevaTarea = cuidador.crearTarea(
+        new Tarea("Sacar turno con pediatra", "Alta")
+      );
       expect(cuidador.tareas.length).to.equal(1);
     });
   });
