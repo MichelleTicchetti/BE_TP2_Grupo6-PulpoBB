@@ -6,8 +6,6 @@ import { Tarea } from "../models/tarea.js";
 
 var expect = chai.expect;
 
-console.log("test git")
-
 describe("Cuidador", () => {
   describe("atributos", () => {
     it("debe tener un atributo ID", () => {
@@ -124,7 +122,7 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      cuidador.crearTarea(new Tarea("Sacar turno con pediatra"));
+      cuidador.crearTarea("Sacar turno con pediatra", "Alta");
       expect(cuidador.tareas.length).to.equal(1);
     });
   });
@@ -138,7 +136,7 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      const tarea = cuidador.crearTarea("Sacar turno con pediatra");
+      const tarea = cuidador.crearTarea("Sacar turno con pediatra", "Alta");
 
       // Act
       cuidador.cerrarTarea(tarea);
