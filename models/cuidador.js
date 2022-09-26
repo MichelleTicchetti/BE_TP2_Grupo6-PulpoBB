@@ -15,8 +15,8 @@ export class Cuidador {
     return this.tareas;
   }
 
-  crearTarea(detalle, prioridad) {
-    const tareaCreada = new Tarea(detalle, prioridad);
+  crearTarea(detalle, prioridad, fechaCaducidad) {
+    const tareaCreada = new Tarea(detalle, prioridad, fechaCaducidad);
     this.tareas.push(tareaCreada);
     return tareaCreada;
   }
