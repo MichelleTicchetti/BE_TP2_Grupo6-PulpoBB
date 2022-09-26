@@ -9,7 +9,11 @@ describe("Tarea", () => {
   describe("atributos", () => {
     it("debe tener un atributo id", () => {
       // Arrange
-      const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
       const atributosDeLaTarea = Object.keys(tarea);
 
       // Act
@@ -21,7 +25,11 @@ describe("Tarea", () => {
 
     it("debe tener un atributo detalle", () => {
       // Arrange
-      const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
       const atributosDeLaTarea = Object.keys(tarea);
 
       // Act
@@ -33,7 +41,11 @@ describe("Tarea", () => {
 
     it("debe tener un atributo prioridad", () => {
       // Arrange
-      const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
       const atributosDeLaTarea = Object.keys(tarea);
 
       // Act
@@ -45,7 +57,11 @@ describe("Tarea", () => {
 
     it("debe tener un atributo fecha de creación", () => {
       // Arrange
-      const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
       const atributosDeLaTarea = Object.keys(tarea);
 
       // Act
@@ -54,12 +70,32 @@ describe("Tarea", () => {
       // Assert
       assert.equal(atributosDeLaTarea[3], "fechaCreacion");
     });
+
+    it("debe tener un atributo fecha de caducidad", () => {
+      // Arrange
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
+      const atributosDeLaTarea = Object.keys(tarea);
+
+      // Act
+      // --
+
+      // Assert
+      assert.equal(atributosDeLaTarea[5], "fechaCaducidad");
+    });
   });
 
   describe("#constructor()", () => {
     describe("con datos válidos", () => {
       it("crea tarea", () => {
-        const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+        const tarea = new Tarea(
+          "Llevar al pediatra",
+          "Prioridad Alta",
+          "26 de septiembre de 2022"
+        );
 
         expect(tarea)
           .to.have.property("detalle")
@@ -83,7 +119,11 @@ describe("Tarea", () => {
 
   describe("#cerrarTarea()", () => {
     it("cierra una tarea", () => {
-      const tarea = new Tarea("Llevar al pediatra", "Prioridad Alta");
+      const tarea = new Tarea(
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022"
+      );
       tarea.cerrarTarea();
       expect(tarea.realizada).to.equal(true);
     });

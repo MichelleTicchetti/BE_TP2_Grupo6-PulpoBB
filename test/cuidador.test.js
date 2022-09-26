@@ -122,7 +122,11 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      cuidador.crearTarea("Sacar turno con pediatra", "Alta");
+      cuidador.crearTarea(
+        "Sacar turno con pediatra",
+        "Alta",
+        "26 de septiembre de 2022"
+      );
       expect(cuidador.tareas.length).to.equal(1);
     });
   });
@@ -136,7 +140,11 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
-      const tarea = cuidador.crearTarea("Sacar turno con pediatra", "Alta");
+      const tarea = cuidador.crearTarea(
+        "Sacar turno con pediatra",
+        "Alta",
+        "26 de septiembre de 2022"
+      );
 
       // Act
       cuidador.cerrarTarea(tarea);
