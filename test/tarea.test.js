@@ -10,9 +10,11 @@ describe("Tarea", () => {
     it("debe tener un atributo id", () => {
       // Arrange
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -92,9 +94,11 @@ describe("Tarea", () => {
     describe("con datos válidos", () => {
       it("crea tarea", () => {
         const tarea = new Tarea(
+          "1",
           "Llevar al pediatra",
           "Prioridad Alta",
-          "26 de septiembre de 2022"
+          "26 de septiembre de 2022",
+          "1"
         );
 
         expect(tarea)
@@ -120,11 +124,13 @@ describe("Tarea", () => {
   describe("#cerrarTarea()", () => {
     it("cierra una tarea", () => {
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1"
       );
-      tarea.cerrarTarea();
+      tarea.cerrarTarea(tarea.id);
       expect(tarea.realizada).to.equal(true);
     });
   });

@@ -2,6 +2,7 @@ import assert, { AssertionError } from "assert";
 import chai from "chai";
 
 import { Cuidador } from "../models/cuidador.js";
+import { PulpoBb } from "../models/pulpobb.js";
 import { Tarea } from "../models/tarea.js";
 
 var expect = chai.expect;
@@ -122,11 +123,15 @@ describe("Cuidador", () => {
         "mticchetti@gmail.com",
         "Amiga"
       );
+
       cuidador.crearTarea(
+        "1",
         "Sacar turno con pediatra",
         "Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "123"
       );
+
       expect(cuidador.tareas.length).to.equal(1);
     });
   });
@@ -141,13 +146,15 @@ describe("Cuidador", () => {
         "Amiga"
       );
       const tarea = cuidador.crearTarea(
+        "1",
         "Sacar turno con pediatra",
         "Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1"
       );
 
       // Act
-      cuidador.cerrarTarea(tarea);
+      cuidador.cerrarTarea(tarea.id);
 
       // Assert
       assert.equal(tarea.realizada, true);

@@ -1,15 +1,17 @@
 export class Tarea {
-  constructor(detalle, prioridad, fechaCaducidad) {
-    if (!detalle || !prioridad) {
+  constructor(id, detalle, prioridad, fechaCaducidad) {
+    if (!id || !detalle || !prioridad) {
       throw new Error();
     }
-    this.id = Date.now();
+    this.id = id;
     this.detalle = detalle;
     this.prioridad = prioridad;
     this.fechaCreacion = Date();
     this.fechaCierre = null;
     this.fechaCaducidad = new Date(fechaCaducidad);
     this.realizada = false;
+    this.responsable = null;
+    this.responsableEsAdmin = false;
   }
 
   cerrarTarea() {
