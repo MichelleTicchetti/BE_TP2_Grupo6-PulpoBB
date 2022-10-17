@@ -1,6 +1,7 @@
 import { Administrador } from "./administrador.js";
 import { Gasto } from "./gasto.js";
 export class PulpoBb {
+  //un cambio
   constructor(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
     if (
       !id ||
