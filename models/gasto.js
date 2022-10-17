@@ -1,4 +1,5 @@
 export class Gasto {
+  /*blablalbabla*/
   constructor(monto, detalle) {
     this.monto = monto;
     this.detalle = detalle;
