@@ -8,5 +8,6 @@ export class Gasto {
 
   saldarGasto() {
     this.gastoSaldado = true;
+    this.monto = 0;
   }
 }

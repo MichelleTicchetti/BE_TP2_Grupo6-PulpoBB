@@ -1,7 +1,15 @@
+import { Administrador } from "./administrador.js";
 import { Gasto } from "./gasto.js";
 export class PulpoBb {
   constructor(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
-    if (!fechaNac || !nombre || !peso || !carnetObraSocial || !estatura) {
+    if (
+      !id ||
+      !fechaNac ||
+      !nombre ||
+      !peso ||
+      !carnetObraSocial ||
+      !estatura
+    ) {
       throw new Error();
     }
     this.id = id;
@@ -10,7 +18,46 @@ export class PulpoBb {
     this.peso = peso;
     this.carnetObraSocial = carnetObraSocial;
     this.estatura = estatura;
+    this.cuidadores = [];
     this.gastos = [];
+    this.tareas = [];
+  }
+
+  dameTareasFinalizadas() {
+    const tareasFinalizadas = this.tareas.filter(
+      (tarea) => tarea.realizada == true
+    );
+    return tareasFinalizadas;
+  }
+
+  dameTareasSinFinalizar() {
+    const tareasPendientes = this.tareas.filter(
+      (tarea) => tarea.realizada == false
+    );
+    return tareasPendientes;
+  }
+
+  dameTareasPorIdCuidador(idCuidador) {
+    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    return cuidador.dameTareas();
+  }
+
+  dameTareasPorIdCuidadorPendientes(idCuidador) {
+    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    return cuidador.dameTareasSinFinalizar();
+  }
+
+  dameTareasPorIdCuidadorFinalizadas(idCuidador) {
+    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    return cuidador.dameTareasFinalizadas();
+  }
+
+  dameCuidadores() {
+    return this.cuidadores;
+  }
+
+  buscarCuidadorPorId(idCuidador) {
+    return this.cuidadores.find((cuidador) => cuidador.id === idCuidador);
   }
 
   crearGasto(monto, detalle) {
@@ -23,5 +70,13 @@ export class PulpoBb {
     let acum = 0;
     this.gastos.forEach((gasto) => (acum += gasto.monto));
     return acum;
+  }
+
+  listarGastos() {
+    this.gastos;
+  }
+
+  cierreDeGastos() {
+    this.gastos.forEach((gasto) => gasto.saldarGasto());
   }
 }

@@ -1,3 +1,5 @@
+import { Cuidador } from "./cuidador.js";
+import { PulpoBb } from "./pulpobb.js";
 import { Tarea } from "./tarea.js";
 export class Administrador {
   constructor(id, nombreApellido, email) {
@@ -8,20 +10,62 @@ export class Administrador {
     this.nombreApellido = nombreApellido;
     this.email = email;
     this.tareas = [];
+    this.pulpitos = [];
   }
 
-  mostrarTareas() {
-    return this.tareas;
+  crearPulpoBb(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
+    const pulpoBb = new PulpoBb(
+      id,
+      fechaNac,
+      nombre,
+      peso,
+      carnetObraSocial,
+      estatura
+    );
+    this.pulpitos.push(pulpoBb);
+    return pulpoBb;
   }
 
-  crearTarea(detalle, prioridad, fechaCaducidad) {
-    const tareaCreada = new Tarea(detalle, prioridad, fechaCaducidad);
+  crearCuidador(id, nombreApellido, email, vinculo, pulpitoId) {
+    const nuevoCuidador = new Cuidador(id, nombreApellido, email, vinculo);
+    const pulpito = this.buscarPulpito(pulpitoId);
+    nuevoCuidador.pulpitos.push(pulpito);
+    pulpito.cuidadores.push(nuevoCuidador);
+    return nuevoCuidador;
+  }
+
+  dameCuidadoresPulpito(pulpitoId) {
+    const pulpito = this.buscarPulpito(pulpitoId);
+    return pulpito.dameCuidadores();
+  }
+
+  crearTarea(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId) {
+    const tareaCreada = new Tarea(idTarea, detalle, prioridad, fechaCaducidad);
+    tareaCreada.responsable = this.nombreApellido;
+    tareaCreada.responsableEsAdmin = true;
     this.tareas.push(tareaCreada);
+    const pulpito = this.buscarPulpito(pulpitoId);
+    pulpito.tareas.push(tareaCreada);
     return tareaCreada;
   }
 
-  cerrarTarea(tareaACerrar) {
-    const index = this.tareas.indexOf(tareaACerrar, 0);
+  reasignarTarea(idTarea, idNuevoResponsable, pulpitoId) {
+    const miTarea = this.buscarTarea(idTarea);
+    const miPulpito = this.buscarPulpito(pulpitoId);
+    const miCuidador = miPulpito.buscarCuidadorPorId(idNuevoResponsable);
+
+    miCuidador.agregarTareaAsignada(miTarea);
+
+    const indexTarea = this.tareas.indexOf(miTarea);
+
+    if (indexTarea > -1) {
+      this.tareas.splice(indexTarea, 1);
+    }
+  }
+
+  cerrarTarea(idTareaCerrar) {
+    const tareaACerrar = this.buscarTarea(idTareaCerrar);
+    const index = this.tareas.indexOf(tareaACerrar);
 
     if (index >= 0) {
       this.tareas[index].cerrarTarea();
@@ -30,11 +74,41 @@ export class Administrador {
     }
   }
 
-  //crearCuidador() {}
+  dameTareas() {
+    return this.tareas;
+  }
 
-  //crearAdmin() {}
+  dameTareasFinalizadas() {
+    const tareasFinalizadas = this.tareas.filter(
+      (tarea) => tarea.realizada == true
+    );
+    return tareasFinalizadas;
+  }
 
-  //asignarTarea() {}
+  dameTareasSinFinalizar() {
+    const tareasPendientes = this.tareas.filter(
+      (tarea) => tarea.realizada == false
+    );
+    return tareasPendientes;
+  }
 
-  //cierreDeGastos() {}
+  dameTareasPulpo(pulpito) {
+    pulpito.mostrarTareas();
+  }
+
+  cierreDeGastos() {
+    this.bb.cierreDeGastos;
+  }
+
+  buscarPulpito(pulpitoId) {
+    const pulpitoBuscado = this.pulpitos.find(
+      (pulpito) => pulpito.id === pulpitoId
+    );
+    return pulpitoBuscado;
+  }
+
+  buscarTarea(tareaId) {
+    const tareaBuscada = this.tareas.find((tarea) => tarea.id === tareaId);
+    return tareaBuscada;
+  }
 }
