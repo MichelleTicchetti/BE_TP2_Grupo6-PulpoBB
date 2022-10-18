@@ -24,6 +24,10 @@ export class PulpoBb {
     this.tareas = [];
   }
 
+  dameTareas() {
+    return this.tareas;
+  }
+
   dameTareasFinalizadas() {
     const tareasFinalizadas = this.tareas.filter(
       (tarea) => tarea.realizada == true
@@ -67,6 +71,10 @@ export class PulpoBb {
     return gastoCreado;
   }
 
+  guardarTarea(tarea) {
+    this.tareas.push(tarea);
+  }
+
   mostrarGastototal() {
     let acum = 0;
     this.gastos.forEach((gasto) => (acum += gasto.monto));
@@ -79,5 +87,20 @@ export class PulpoBb {
 
   cierreDeGastos() {
     this.gastos.forEach((gasto) => gasto.saldarGasto());
+  }
+
+  cerrarTarea(idTarea) {
+    const miTarea = this.buscarTarea(idTarea);
+
+    if (miTarea != null) {
+      miTarea.cerrarTarea();
+    } else {
+      console.log("No existe esa tarea");
+    }
+  }
+
+  buscarTarea(tareaId) {
+    const tareaBuscada = this.tareas.find((tarea) => tarea.id === tareaId);
+    return tareaBuscada;
   }
 }
