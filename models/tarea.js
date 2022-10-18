@@ -14,6 +14,21 @@ export class Tarea {
     this.responsableEsAdmin = false;
   }
 
+  constructor(id, detalle, prioridad, fechaCaducidad, responsable) {
+    if (!id || !detalle || !prioridad) {
+      throw new Error();
+    }
+    this.id = id;
+    this.detalle = detalle;
+    this.prioridad = prioridad;
+    this.fechaCreacion = Date();
+    this.fechaCierre = null;
+    this.fechaCaducidad = new Date(fechaCaducidad);
+    this.realizada = false;
+    this.responsable = responsable;
+    this.responsableEsAdmin = false;
+  }
+
   cerrarTarea() {
     this.realizada = true;
     this.fechaCierre = Date();

@@ -41,12 +41,27 @@ export class Administrador {
 
   crearTarea(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId) {
     const tareaCreada = new Tarea(idTarea, detalle, prioridad, fechaCaducidad);
-    tareaCreada.responsable = this.nombreApellido;
-    tareaCreada.responsableEsAdmin = true;
-    this.tareas.push(tareaCreada);
     const pulpito = this.buscarPulpito(pulpitoId);
-    pulpito.tareas.push(tareaCreada);
-    return tareaCreada;
+    pulpito.guardarTarea(tareaCreada);
+  }
+
+  crearTarea(
+    idTarea,
+    detalle,
+    prioridad,
+    fechaCaducidad,
+    pulpitoId,
+    responsable
+  ) {
+    const tareaCreada = new Tarea(
+      idTarea,
+      detalle,
+      prioridad,
+      fechaCaducidad,
+      responsable
+    );
+    const pulpito = this.buscarPulpito(pulpitoId);
+    pulpito.guardarTarea(tareaCreada);
   }
 
   reasignarTarea(idTarea, idNuevoResponsable, pulpitoId) {
@@ -72,24 +87,6 @@ export class Administrador {
     } else {
       console.log("No existe esa tarea");
     }
-  }
-
-  dameTareas() {
-    return this.tareas;
-  }
-
-  dameTareasFinalizadas() {
-    const tareasFinalizadas = this.tareas.filter(
-      (tarea) => tarea.realizada == true
-    );
-    return tareasFinalizadas;
-  }
-
-  dameTareasSinFinalizar() {
-    const tareasPendientes = this.tareas.filter(
-      (tarea) => tarea.realizada == false
-    );
-    return tareasPendientes;
   }
 
   dameTareasPulpo(pulpito) {
