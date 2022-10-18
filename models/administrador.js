@@ -43,50 +43,37 @@ export class Administrador {
     const tareaCreada = new Tarea(idTarea, detalle, prioridad, fechaCaducidad);
     const pulpito = this.buscarPulpito(pulpitoId);
     pulpito.guardarTarea(tareaCreada);
+    return tareaCreada;
   }
 
-  crearTarea(
-    idTarea,
-    detalle,
-    prioridad,
-    fechaCaducidad,
-    pulpitoId,
-    responsable
-  ) {
-    const tareaCreada = new Tarea(
-      idTarea,
-      detalle,
-      prioridad,
-      fechaCaducidad,
-      responsable
-    );
-    const pulpito = this.buscarPulpito(pulpitoId);
-    pulpito.guardarTarea(tareaCreada);
-  }
+  // //el admin puede definir un responsable al crear una tarea
+  // crearTarea(
+  //   idTarea,
+  //   detalle,
+  //   prioridad,
+  //   fechaCaducidad,
+  //   pulpitoId,
+  //   responsable
+  // ) {
+  //   const tareaCreada = new Tarea(
+  //     idTarea,
+  //     detalle,
+  //     prioridad,
+  //     fechaCaducidad,
+  //     responsable
+  //   );
+  //   const pulpito = this.buscarPulpito(pulpitoId);
+  //   pulpito.guardarTarea(tareaCreada);
+  // }
 
-  reasignarTarea(idTarea, idNuevoResponsable, pulpitoId) {
-    const miTarea = this.buscarTarea(idTarea);
+  reasignarTarea(pulpitoId, idTarea, idNuevoResponsable) {
     const miPulpito = this.buscarPulpito(pulpitoId);
-    const miCuidador = miPulpito.buscarCuidadorPorId(idNuevoResponsable);
-
-    miCuidador.agregarTareaAsignada(miTarea);
-
-    const indexTarea = this.tareas.indexOf(miTarea);
-
-    if (indexTarea > -1) {
-      this.tareas.splice(indexTarea, 1);
-    }
+    miPulpito.asignarTarea(idTarea, idNuevoResponsable);
   }
 
-  cerrarTarea(idTareaCerrar) {
-    const tareaACerrar = this.buscarTarea(idTareaCerrar);
-    const index = this.tareas.indexOf(tareaACerrar);
-
-    if (index >= 0) {
-      this.tareas[index].cerrarTarea();
-    } else {
-      console.log("No existe esa tarea");
-    }
+  cerrarTarea(pulpitoId, idTareaCerrar) {
+    const miPulpito = this.buscarPulpito(pulpitoId);
+    miPulpito.cerrarTarea(idTareaCerrar);
   }
 
   dameTareasPulpo(pulpito) {
@@ -103,10 +90,4 @@ export class Administrador {
     );
     return pulpitoBuscado;
   }
-
-  buscarTarea(tareaId) {
-    const tareaBuscada = this.tareas.find((tarea) => tarea.id === tareaId);
-    return tareaBuscada;
-  }
 }
-/*una mas*/

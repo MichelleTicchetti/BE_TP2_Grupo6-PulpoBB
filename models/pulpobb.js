@@ -1,7 +1,5 @@
-import { Administrador } from "./administrador.js";
 import { Gasto } from "./gasto.js";
 export class PulpoBb {
-  //un cambio
   constructor(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
     if (
       !id ||
@@ -102,5 +100,10 @@ export class PulpoBb {
   buscarTarea(tareaId) {
     const tareaBuscada = this.tareas.find((tarea) => tarea.id === tareaId);
     return tareaBuscada;
+  }
+
+  asignarTarea(idTarea, idResponsable) {
+    const tarea = this.buscarTarea(idTarea);
+    tarea.responsable = idResponsable;
   }
 }

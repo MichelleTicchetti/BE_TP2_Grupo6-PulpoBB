@@ -9,7 +9,6 @@ export class Cuidador {
     this.nombreApellido = nombreApellido;
     this.email = email;
     this.vinculo = vinculo;
-    //las tareas las tiene el pulpo
     this.tareas = [];
     this.pulpitos = [];
   }
@@ -18,23 +17,13 @@ export class Cuidador {
     const tareaCreada = new Tarea(idTarea, detalle, prioridad, fechaCaducidad);
     const pulpito = this.buscarPulpito(pulpitoId);
     pulpito.guardarTarea(tareaCreada);
+    return tareaCreada;
   }
 
-  crearTarea(
-    idTarea,
-    detalle,
-    prioridad,
-    fechaCaducidad,
-    pulpitoId,
-    responsable
-  ) {
-    const tareaCreada = new Tarea(
-      idTarea,
-      detalle,
-      prioridad,
-      fechaCaducidad,
-      responsable
-    );
+  //tiene sentido que un cuidador defina el responsable de una tarea o deberia ser por default el mismo?
+  crearTarea(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId) {
+    const tareaCreada = new Tarea(idTarea, detalle, prioridad, fechaCaducidad);
+    tareaCreada.responsable = this.id;
     const pulpito = this.buscarPulpito(pulpitoId);
     pulpito.guardarTarea(tareaCreada);
   }
