@@ -112,3 +112,4 @@ export class Administrador {
     return tareaBuscada;
   }
 }
+/*una mas*/
