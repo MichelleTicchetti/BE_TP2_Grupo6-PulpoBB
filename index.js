@@ -58,3 +58,7 @@ const tarea = administrador.crearTarea(
 );
 
 console.log(tarea);
+
+administrador.cerrarTarea("1", "1");
+
+console.log(tarea);

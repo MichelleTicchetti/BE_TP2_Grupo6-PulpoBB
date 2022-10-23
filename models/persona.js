@@ -3,6 +3,7 @@ import { USUARIOS } from "./usuario.js";
 import { TareaFactory } from "../factories/tarea_factory.js";
 import { AsociarTarea } from "../commands/AsociarTarea.js";
 import { AsociarPersonaPulpo } from "../commands/AsociarPersonaPulpo.js";
+import { CerrarTarea } from "../commands/cerrarTarea.js";
 
 export class Persona {
   constructor(id, nombreApellido, email, vinculo, rol) {
@@ -75,12 +76,21 @@ export class Persona {
 
   reasignarTarea(pulpitoId, idTarea, idNuevoResponsable) {
     const miPulpito = this.buscarPulpito(pulpitoId);
-    miPulpito.asignarTarea(idTarea, idNuevoResponsable);
+    const tarea = miPulpito.buscarTarea(idTarea);
+    const nuevoResponsable = miPulpito.buscarCuidador(idNuevoResponsable);
+    const asignacionTarea = new AsociarTarea(
+      tarea,
+      miPulpito,
+      nuevoResponsable
+    );
+    asignacionTarea.run();
   }
 
   cerrarTarea(pulpitoId, idTareaCerrar) {
     const miPulpito = this.buscarPulpito(pulpitoId);
-    miPulpito.cerrarTarea(idTareaCerrar);
+    const miTarea = miPulpito.buscarTarea(idTareaCerrar);
+    const finalizacionTarea = new CerrarTarea(miTarea);
+    finalizacionTarea.run();
   }
 
   dameTareasPulpo(pulpito) {

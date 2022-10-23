@@ -23,6 +23,14 @@ export class PulpoBb {
     this.tareas = [];
   }
 
+  dameCuidadores() {
+    return this.cuidadores;
+  }
+
+  dameAdministradores() {
+    return this.administradores;
+  }
+
   dameTareas() {
     return this.tareas;
   }
@@ -42,26 +50,28 @@ export class PulpoBb {
   }
 
   dameTareasPorIdCuidador(idCuidador) {
-    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    const cuidador = this.buscarCuidador(idCuidador);
     return cuidador.dameTareas();
   }
 
   dameTareasPorIdCuidadorPendientes(idCuidador) {
-    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    const cuidador = this.buscarCuidador(idCuidador);
     return cuidador.dameTareasSinFinalizar();
   }
 
   dameTareasPorIdCuidadorFinalizadas(idCuidador) {
-    const cuidador = this.buscarCuidadorPorId(idCuidador);
+    const cuidador = this.buscarCuidador(idCuidador);
     return cuidador.dameTareasFinalizadas();
   }
 
-  dameCuidadores() {
-    return this.cuidadores;
+  guardarTarea(tarea) {
+    this.tareas.push(tarea);
   }
 
-  buscarCuidadorPorId(idCuidador) {
-    return this.cuidadores.find((cuidador) => cuidador.id === idCuidador);
+  //MÉTODOS DE GASTOS
+
+  dameGastos() {
+    this.gastos;
   }
 
   crearGasto(monto, detalle) {
@@ -70,32 +80,14 @@ export class PulpoBb {
     return gastoCreado;
   }
 
-  guardarTarea(tarea) {
-    this.tareas.push(tarea);
-  }
-
   mostrarGastototal() {
     let acum = 0;
     this.gastos.forEach((gasto) => (acum += gasto.monto));
     return acum;
   }
 
-  listarGastos() {
-    this.gastos;
-  }
-
   cierreDeGastos() {
     this.gastos.forEach((gasto) => gasto.saldarGasto());
-  }
-
-  cerrarTarea(idTarea) {
-    const miTarea = this.buscarTarea(idTarea);
-
-    if (miTarea != null) {
-      miTarea.cerrarTarea();
-    } else {
-      console.log("No existe esa tarea");
-    }
   }
 
   buscarTarea(tareaId) {
@@ -103,8 +95,10 @@ export class PulpoBb {
     return tareaBuscada;
   }
 
-  asignarTarea(idTarea, idResponsable) {
-    const tarea = this.buscarTarea(idTarea);
-    tarea.responsable = idResponsable;
+  buscarCuidador(cuidadorId) {
+    const cuidadorBuscado = this.cuidadores.find(
+      (cuidador) => cuidador.id === cuidadorId
+    );
+    return cuidadorBuscado;
   }
 }

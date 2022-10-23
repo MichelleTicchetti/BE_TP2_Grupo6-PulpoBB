@@ -1,3 +1,5 @@
+import { CerrarTarea } from "../commands/cerrarTarea.js";
+
 export class Tarea {
   constructor(id, detalle, prioridad, fechaCaducidad) {
     if (!id || !detalle || !prioridad) {
@@ -11,10 +13,5 @@ export class Tarea {
     this.fechaCaducidad = new Date(fechaCaducidad);
     this.realizada = false;
     this.responsable = null;
-  }
-
-  cerrarTarea() {
-    this.realizada = true;
-    this.fechaCierre = Date();
   }
 }
