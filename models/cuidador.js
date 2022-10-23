@@ -9,7 +9,6 @@ export class Cuidador {
     this.nombreApellido = nombreApellido;
     this.email = email;
     this.vinculo = vinculo;
-    this.tareas = [];
     this.pulpitos = [];
   }
 

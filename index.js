@@ -1,29 +1,55 @@
-import { Administrador } from "./models/administrador.js";
+// import { Administrador } from "./models/administrador.js";
 
-//creo un administrador
-const admin = new Administrador("1", "Juan Lopez", "jlopez@gmail.com");
+import { Persona } from "./models/persona.js";
+import { USUARIOS } from "./models/usuario.js";
+import { PersonaFactory } from "./factories/persona_factory.js";
+import { TareaFactory } from "./factories/tarea_factory.js";
+
+console.log("Creo un administrador");
+const administrador = new PersonaFactory().crear(
+  "1",
+  "Juan Perez",
+  "jperez@gmail.com",
+  "Padre",
+  USUARIOS.ADMINISTRADOR
+);
+
+console.log(administrador);
+
+console.log("Creo un cuidador");
+const cuidador = new PersonaFactory().crear(
+  "1",
+  "Jose Perez",
+  "jperez@gmail.com",
+  "Tio",
+  USUARIOS.CUIDADOR
+);
+
+console.log(cuidador);
 
 //creo un pulpo bb
-const bb = admin.crearPulpoBb(
+const bb = administrador.crearPulpoBb(
   "1",
   "12 de febrero de 2022",
   "Joaquin",
   "3kg",
   "123456789",
-  "50cm",
-  admin
+  "50cm"
 );
 
-//creo cuidador
-const unCuidador = admin.crearCuidador(
-  "1",
-  "Susana Lopez",
-  "susy@gmail.com",
-  "tia",
-  "1"
-);
+console.log(bb);
 
-const tareaCreada = admin.crearTarea(
+console.log("Antes de asociar Pulpo con Administrador");
+console.log(administrador);
+console.log(bb);
+
+administrador.asociarConPulpoBb(bb, administrador);
+
+console.log("Después de asociar Pulpo con Administrador");
+console.log(administrador);
+console.log(bb);
+
+const tarea = administrador.crearTarea(
   "1",
   "comprar pañales",
   "alta",
@@ -31,26 +57,4 @@ const tareaCreada = admin.crearTarea(
   "1"
 );
 
-console.log(tareaCreada);
-
-const otroCuidador = admin.crearCuidador(
-  "2",
-  "Juan Lopez",
-  "juan@gmail.com",
-  "tio",
-  "1"
-);
-
-//pulpitoId, idTarea, idNuevoResponsable
-admin.reasignarTarea("1", "1", "1");
-
-console.log(tareaCreada);
-
-admin.reasignarTarea("1", "1", "2");
-
-console.log(tareaCreada);
-
-//pulpitoId, idTareaCerrar
-admin.cerrarTarea("1", "1");
-
-console.log(tareaCreada);
+console.log(tarea);

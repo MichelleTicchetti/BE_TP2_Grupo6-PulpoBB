@@ -9,7 +9,6 @@ export class Administrador {
     this.id = id;
     this.nombreApellido = nombreApellido;
     this.email = email;
-    this.tareas = [];
     this.pulpitos = [];
   }
 

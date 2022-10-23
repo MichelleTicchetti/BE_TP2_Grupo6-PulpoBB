@@ -18,6 +18,7 @@ export class PulpoBb {
     this.carnetObraSocial = carnetObraSocial;
     this.estatura = estatura;
     this.cuidadores = [];
+    this.administradores = [];
     this.gastos = [];
     this.tareas = [];
   }
