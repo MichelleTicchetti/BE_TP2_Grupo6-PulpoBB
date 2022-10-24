@@ -1,113 +1,120 @@
 import assert, { AssertionError } from "assert";
 import chai from "chai";
 
-import { Cuidador } from "../models/cuidador.js";
+import { Persona } from "../models/persona.js";
+import Usuarios, { USUARIOS } from "../models/usuario.js";
 import { PulpoBb } from "../models/pulpobb.js";
 import { Tarea } from "../models/tarea.js";
 
 var expect = chai.expect;
 
-describe("Cuidador", () => {
+describe("Persona", () => {
   describe("atributos", () => {
     it("debe tener un atributo ID", () => {
       // Arrange
-      const cuidador = new Cuidador(
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
-      const atributosDelCuidador = Object.keys(cuidador);
+      const atributosDeLaPersona = Object.keys(persona);
 
       // Act
       // --
 
       // Assert
-      assert.equal(atributosDelCuidador[0], "id");
+      assert.equal(atributosDeLaPersona[0], "id");
     });
 
     it("debe tener un atributo nombreApellido", () => {
       // Arrange
-      const cuidador = new Cuidador(
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
-      const atributosDelCuidador = Object.keys(cuidador);
+      const atributosDeLaPersona = Object.keys(persona);
 
       // Act
       // --
 
       // Assert
-      assert.equal(atributosDelCuidador[1], "nombreApellido");
+      assert.equal(atributosDeLaPersona[1], "nombreApellido");
     });
 
     it("debe tener un atributo email", () => {
       // Arrange
-      const cuidador = new Cuidador(
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
-      const atributosDelCuidador = Object.keys(cuidador);
+      const atributosDeLaPersona = Object.keys(persona);
 
       // Act
       // --
 
       // Assert
-      assert.equal(atributosDelCuidador[2], "email");
+      assert.equal(atributosDeLaPersona[2], "email");
     });
 
     it("debe tener un atributo vinculo", () => {
       // Arrange
-      const cuidador = new Cuidador(
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
-      const atributosDelCuidador = Object.keys(cuidador);
+      const atributosDeLaPersona = Object.keys(persona);
 
       // Act
       // --
 
       // Assert
-      assert.equal(atributosDelCuidador[3], "vinculo");
+      assert.equal(atributosDeLaPersona[3], "vinculo");
     });
 
-    it("tiene un listado de tareas", () => {
-      const cuidador = new Cuidador(
+    it("tiene un listado de pulpitos", () => {
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
-      expect(cuidador.tareas).to.be.an("array");
+      expect(persona.pulpitos).to.be.an("array");
     });
   });
 
   describe("#constructor()", () => {
     describe("con datos válidos", () => {
-      it("crea Cuidador", () => {
-        const cuidador = new Cuidador(
+      it("crea Persona", () => {
+        const persona = new Persona(
           "2039",
           "Michelle Ticchetti",
           "mticchetti@gmail.com",
-          "Amiga"
+          "Amiga",
+          USUARIOS.ADMINISTRADOR
         );
 
-        expect(cuidador).to.have.property("id").with.equal("2039");
-        expect(cuidador)
+        expect(persona).to.have.property("id").with.equal("2039");
+        expect(persona)
           .to.have.property("nombreApellido")
           .with.equal("Michelle Ticchetti");
       });
     });
     describe("con datos inválidos", () => {
-      it("impide la creación de un Cuidador", () => {
+      it("impide la creación de una Persona", () => {
         const creador = () => {
-          const cuidadorErroneo = new Cuidador();
+          const personaErroneo = new Persona();
         };
 
         expect(creador).to.throw(Error);
@@ -117,14 +124,15 @@ describe("Cuidador", () => {
 
   describe("#crearTarea()", () => {
     it("crea una tarea", () => {
-      const cuidador = new Cuidador(
+      const persona = new Persona(
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
 
-      cuidador.crearTarea(
+      const tarea = persona.crearTarea(
         "1",
         "Sacar turno con pediatra",
         "Alta",
@@ -132,32 +140,9 @@ describe("Cuidador", () => {
         "123"
       );
 
-      expect(cuidador.tareas.length).to.equal(1);
-    });
-  });
-
-  describe("#cerrarTarea()", () => {
-    it("debe tener un metodo para cerrar la tarea", () => {
-      // Arrange
-      const cuidador = new Cuidador(
-        "2039",
-        "Michelle Ticchetti",
-        "mticchetti@gmail.com",
-        "Amiga"
-      );
-      const tarea = cuidador.crearTarea(
-        "1",
-        "Sacar turno con pediatra",
-        "Alta",
-        "26 de septiembre de 2022",
-        "1"
-      );
-
-      // Act
-      cuidador.cerrarTarea(tarea.id);
-
-      // Assert
-      assert.equal(tarea.realizada, true);
+      expect(tarea)
+        .to.have.property("responsable")
+        .with.equal("Michelle Ticchetti");
     });
   });
 });
