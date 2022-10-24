@@ -2,6 +2,7 @@ import assert, { AssertionError } from "assert";
 import chai from "chai";
 
 import { Persona } from "../models/persona.js";
+import Usuarios, { USUARIOS } from "../models/usuario.js";
 import { PulpoBb } from "../models/pulpobb.js";
 import { Tarea } from "../models/tarea.js";
 
@@ -15,7 +16,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -32,7 +34,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -49,7 +52,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -66,7 +70,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -82,7 +87,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
       expect(persona.pulpitos).to.be.an("array");
     });
@@ -95,7 +101,8 @@ describe("Persona", () => {
           "2039",
           "Michelle Ticchetti",
           "mticchetti@gmail.com",
-          "Amiga"
+          "Amiga",
+          USUARIOS.ADMINISTRADOR
         );
 
         expect(persona).to.have.property("id").with.equal("2039");
@@ -121,7 +128,8 @@ describe("Persona", () => {
         "2039",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
-        "Amiga"
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
       );
 
       const tarea = persona.crearTarea(

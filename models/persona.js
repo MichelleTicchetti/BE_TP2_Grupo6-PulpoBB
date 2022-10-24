@@ -1,8 +1,8 @@
 import { PulpoBbFactory } from "../factories/pulpobb_factory.js";
 import { USUARIOS } from "./usuario.js";
 import { TareaFactory } from "../factories/tarea_factory.js";
-import { AsociarTarea } from "../commands/AsociarTarea.js";
-import { AsociarPersonaPulpo } from "../commands/AsociarPersonaPulpo.js";
+import { AsociarTarea } from "../commands/asociarTarea.js";
+import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
 import { CerrarTarea } from "../commands/cerrarTarea.js";
 
 export class Persona {
@@ -57,31 +57,43 @@ export class Persona {
 
   //MÉTODOS DE TAREAS
 
-  crearTarea(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId) {
+  //persona.crearTarea(...)
+  crearTarea(
+    idTarea,
+    detalle,
+    prioridad,
+    fechaCaducidad,
+    pulpitoId,
+    idAsignado
+  ) {
     const tareaCreada = new TareaFactory().crear(
       idTarea,
       detalle,
       prioridad,
       fechaCaducidad,
-      pulpitoId
+      pulpitoId,
+      this
     );
     const miPulpito = this.buscarPulpito(pulpitoId);
 
-    //asocio la tarea al pulpo y asigno la tarea a un responsable
-    const asignacionTarea = new AsociarTarea(tareaCreada, miPulpito, this);
+    const asignacionTarea = new AsociarTarea(
+      tareaCreada,
+      miPulpito,
+      idAsignado
+    );
     asignacionTarea.run();
 
     return tareaCreada;
   }
 
-  reasignarTarea(pulpitoId, idTarea, idNuevoResponsable) {
+  reasignarTarea(pulpitoId, idTarea, idNuevoAsignado) {
     const miPulpito = this.buscarPulpito(pulpitoId);
     const tarea = miPulpito.buscarTarea(idTarea);
-    const nuevoResponsable = miPulpito.buscarCuidador(idNuevoResponsable);
+    const nuevoAsignado = miPulpito.buscarCuidador(idNuevoAsignado);
     const asignacionTarea = new AsociarTarea(
       tarea,
       miPulpito,
-      nuevoResponsable
+      nuevoAsignado.id
     );
     asignacionTarea.run();
   }

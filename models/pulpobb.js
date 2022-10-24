@@ -1,4 +1,5 @@
 import { Gasto } from "./gasto.js";
+import { USUARIOS } from "./usuario.js";
 export class PulpoBb {
   constructor(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
     if (
@@ -17,18 +18,31 @@ export class PulpoBb {
     this.peso = peso;
     this.carnetObraSocial = carnetObraSocial;
     this.estatura = estatura;
-    this.cuidadores = [];
-    this.administradores = [];
+    this.personas = [];
     this.gastos = [];
     this.tareas = [];
   }
 
+  damePersonas() {
+    return this.personas;
+  }
+
   dameCuidadores() {
-    return this.cuidadores;
+    return this.personas.filter((persona) => {
+      persona.rol == USUARIOS.CUIDADOR;
+    });
   }
 
   dameAdministradores() {
-    return this.administradores;
+    return this.personas.filter((persona) => {
+      persona.rol == USUARIOS.ADMINISTRADOR;
+    });
+  }
+
+  damePersonaPorId(idPersona) {
+    return this.personas.filter((persona) => {
+      persona.id == idPersona;
+    });
   }
 
   dameTareas() {
@@ -49,19 +63,25 @@ export class PulpoBb {
     return tareasPendientes;
   }
 
-  dameTareasPorIdCuidador(idCuidador) {
-    const cuidador = this.buscarCuidador(idCuidador);
-    return cuidador.dameTareas();
+  dameTareasPorIdPersona(idPersona) {
+    const tareasPersona = this.tareas.filter(
+      (tarea) => tarea.responsable.id == idPersona
+    );
+    return tareasPersona;
   }
 
-  dameTareasPorIdCuidadorPendientes(idCuidador) {
-    const cuidador = this.buscarCuidador(idCuidador);
-    return cuidador.dameTareasSinFinalizar();
+  dameTareasPorIdPersonaPendientes(idPersona) {
+    const tareasPendientes = this.tareas.filter(
+      (tarea) => tarea.responsable.id == idPersona && !tarea.realizada
+    );
+    return tareasPendientes;
   }
 
-  dameTareasPorIdCuidadorFinalizadas(idCuidador) {
-    const cuidador = this.buscarCuidador(idCuidador);
-    return cuidador.dameTareasFinalizadas();
+  dameTareasPorIdPersonaFinalizadas(idPersona) {
+    const tareasPendientes = this.tareas.filter(
+      (tarea) => tarea.responsable.id == idPersona && tarea.realizada
+    );
+    return tareasFinalizadas;
   }
 
   guardarTarea(tarea) {
