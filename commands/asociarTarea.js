@@ -1,13 +1,12 @@
 export class AsociarTarea {
-  constructor(tarea, pulpoBb, asignadoId) {
-    this.tarea = tarea;
+  constructor(tareaCreada, pulpoBb, personaAsignada) {
+    this.tareaCreada = tareaCreada;
     this.pulpoBb = pulpoBb;
-    this.asignadoId = asignadoId;
+    this.personaAsignada = personaAsignada;
   }
 
   run() {
-    const persona = this.pulpoBb.damePersonaPorId(asignadoId);
-    this.pulpoBb.tareas.push(this.tarea);
-    this.tarea.personaAsociada = persona;
+    this.tareaCreada.asignarPersona(this.personaAsignada);
+    this.pulpoBb.tareas.push(this.tareaCreada);
   }
 }

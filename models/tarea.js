@@ -1,14 +1,21 @@
 import { CerrarTarea } from "../commands/cerrarTarea.js";
 
 export class Tarea {
-  constructor(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador) {
+  constructor(
+    idTarea,
+    detalle,
+    prioridad,
+    fechaCaducidad,
+    pulpitoId,
+    nombreCreador
+  ) {
     if (
       !idTarea ||
       !detalle ||
       !prioridad ||
       !fechaCaducidad ||
       !pulpitoId ||
-      !creador
+      !nombreCreador
     ) {
       throw new Error();
     }
@@ -22,7 +29,11 @@ export class Tarea {
     this.fechaCaducidad = new Date(fechaCaducidad);
     this.realizada = false;
     this.personaAsignada = null;
-    this.creador = creador;
+    this.nombreCreador = nombreCreador;
     this.pulpitoId = pulpitoId;
+  }
+
+  asignarPersona(persona) {
+    this.personaAsignada = persona;
   }
 }

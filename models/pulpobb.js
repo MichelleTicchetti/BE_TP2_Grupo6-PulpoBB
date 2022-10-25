@@ -28,21 +28,25 @@ export class PulpoBb {
   }
 
   dameCuidadores() {
-    return this.personas.filter((persona) => {
-      persona.rol == USUARIOS.CUIDADOR;
-    });
+    const cuidadores = this.personas.filter(
+      (persona) => persona.rol === USUARIOS.CUIDADOR
+    );
+    return cuidadores;
   }
 
   dameAdministradores() {
-    return this.personas.filter((persona) => {
-      persona.rol == USUARIOS.ADMINISTRADOR;
-    });
+    const admins = this.personas.filter(
+      (persona) => persona.rol === USUARIOS.ADMINISTRADOR
+    );
+    console.log("Admins: " + admins);
+    return admins;
   }
 
   damePersonaPorId(idPersona) {
-    return this.personas.filter((persona) => {
-      persona.id == idPersona;
-    });
+    const personaBuscada = this.personas.find(
+      (persona) => persona.id === idPersona
+    );
+    return personaBuscada;
   }
 
   dameTareas() {
@@ -50,17 +54,25 @@ export class PulpoBb {
   }
 
   dameTareasFinalizadas() {
-    const tareasFinalizadas = this.tareas.filter(
-      (tarea) => tarea.realizada == true
-    );
-    return tareasFinalizadas;
+    if (this.tareas.length > 0) {
+      const tareasFinalizadas = this.tareas.filter(
+        (tarea) => tarea.realizada === true
+      );
+      return tareasFinalizadas;
+    } else {
+      throw new Error("No tiene tareas");
+    }
   }
 
   dameTareasSinFinalizar() {
-    const tareasPendientes = this.tareas.filter(
-      (tarea) => tarea.realizada == false
-    );
-    return tareasPendientes;
+    if (this.tareas.length > 0) {
+      const tareasPendientes = this.tareas.filter(
+        (tarea) => tarea.realizada == false
+      );
+      return tareasPendientes;
+    } else {
+      throw new Error("No tiene tareas");
+    }
   }
 
   dameTareasPorIdPersona(idPersona) {
@@ -113,12 +125,5 @@ export class PulpoBb {
   buscarTarea(tareaId) {
     const tareaBuscada = this.tareas.find((tarea) => tarea.id === tareaId);
     return tareaBuscada;
-  }
-
-  buscarCuidador(cuidadorId) {
-    const cuidadorBuscado = this.cuidadores.find(
-      (cuidador) => cuidador.id === cuidadorId
-    );
-    return cuidadorBuscado;
   }
 }
