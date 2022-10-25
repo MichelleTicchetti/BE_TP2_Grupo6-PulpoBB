@@ -1,7 +1,7 @@
-import assert, { AssertionError } from "assert";
 import chai from "chai";
 import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
-import { PersonaFactory } from "../factories/persona_factory.js";
+import { Persona } from "../models/persona.js";
+import { USUARIOS } from "../models/usuario.js";
 
 const expect = chai.expect;
 
@@ -9,34 +9,33 @@ describe("Asociar", () => {
   describe("#run()", () => {
     it("asocia un administrador a un pulpo bb", () => {
       //Arrange
-      const administrador = new PersonaFactory().crear(
+      const administrador = new Persona(
         "1",
-        "Juan Perez",
-        "jperez@gmail.com",
-        "Padre",
+        "Michelle Ticchetti",
+        "mticchetti@gmail.com",
+        "Amiga",
         USUARIOS.ADMINISTRADOR
       );
 
-      const pulpoBb = new PulpoBbFactory().crear(
-        id,
-        fechaNac,
-        nombre,
-        peso,
-        carnetObraSocial,
-        estatura
+      //Act
+
+      expect(administrador.damePulpitos().length).to.equal(0);
+
+      const pulpoBb = administrador.crearPulpoBb(
+        "1",
+        "14-dic-1984",
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
 
-      const asociar = new Asociar(administrador, pulpoBb);
-      expect(administrador.pulpitos.length.to.equal(0));
-      expect(pulpoBb.administradores.length.to.equal(0));
-
-      //Act
-      administrador.asociar(pulpoBb);
-      asociar.run();
-
       //Assert
-      expect(administrador.pulpitos.length.to.equal(1));
-      expect(pulpoBb.administradores.length.to.equal(1));
+      expect(pulpoBb.dameAdministradores().length).to.equal(1);
+      expect(pulpoBb.damePersonas().length).to.equal(1);
+      expect(pulpoBb.dameAdministradores().length).to.equal(1);
+
+      expect(administrador.damePulpitos().length).to.equal(1);
     });
   });
 });

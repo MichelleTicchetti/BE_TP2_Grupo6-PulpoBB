@@ -8,13 +8,6 @@ export class AsociarPersonaPulpo {
 
   run() {
     this.persona.pulpitos.push(this.pulpoBb);
-
-    if (this.persona.rol == USUARIOS.ADMINISTRADOR) {
-      this.pulpoBb.administradores.push(this.persona);
-    } else if (this.pulpoBb.rol == USUARIOS.CUIDADOR) {
-      this.pulpoBb.cuidadores.push(this.persona);
-    } else {
-      console.log("Entro aca");
-    }
+    this.pulpoBb.personas.push(this.persona);
   }
 }

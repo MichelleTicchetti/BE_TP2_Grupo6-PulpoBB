@@ -2,7 +2,7 @@ import assert, { AssertionError } from "assert";
 import chai from "chai";
 
 import { Persona } from "../models/persona.js";
-import Usuarios, { USUARIOS } from "../models/usuario.js";
+import { USUARIOS } from "../models/usuario.js";
 import { PulpoBb } from "../models/pulpobb.js";
 import { Tarea } from "../models/tarea.js";
 
@@ -124,25 +124,69 @@ describe("Persona", () => {
 
   describe("#crearTarea()", () => {
     it("crea una tarea", () => {
-      const persona = new Persona(
-        "2039",
+      const administrador = new Persona(
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
         USUARIOS.ADMINISTRADOR
       );
 
-      const tarea = persona.crearTarea(
+      const pulpo = administrador.crearPulpoBb(
+        "1",
+        "14-dic-1984",
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
+      );
+
+      const tarea = administrador.crearTarea(
         "1",
         "Sacar turno con pediatra",
         "Alta",
-        "26 de septiembre de 2022",
-        "123"
+        "Tue Oct 18 202",
+        "1",
+        "1"
       );
 
-      expect(tarea)
-        .to.have.property("responsable")
-        .with.equal("Michelle Ticchetti");
+      expect(pulpo.tareas.length).to.equal(1);
+    });
+  });
+
+  describe("#cerrarTarea()", () => {
+    it("cierra una tarea", () => {
+      const administrador = new Persona(
+        "1",
+        "Michelle Ticchetti",
+        "mticchetti@gmail.com",
+        "Amiga",
+        USUARIOS.ADMINISTRADOR
+      );
+
+      const pulpo = administrador.crearPulpoBb(
+        "1",
+        "14-dic-1984",
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
+      );
+
+      const tarea = administrador.crearTarea(
+        "1",
+        "Llevar al pediatra",
+        "Prioridad Alta",
+        "26 de septiembre de 2022",
+        "1",
+        "Maria Fernandez"
+      );
+
+      expect(pulpo.dameTareasSinFinalizar().length).to.equal(1);
+      expect(pulpo.dameTareasFinalizadas().length).to.equal(0);
+      administrador.cerrarTarea(pulpo.id, tarea.id);
+      expect(pulpo.dameTareasSinFinalizar().length).to.equal(0);
+      expect(pulpo.dameTareasFinalizadas().length).to.equal(1);
     });
   });
 });

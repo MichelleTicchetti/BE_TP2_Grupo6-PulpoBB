@@ -14,7 +14,8 @@ describe("Tarea", () => {
         "Llevar al pediatra",
         "Prioridad Alta",
         "26 de septiembre de 2022",
-        "1"
+        "1",
+        "Maria Fernandez"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -22,15 +23,18 @@ describe("Tarea", () => {
       // --
 
       // Assert
-      assert.equal(atributosDeLaTarea[0], "id");
+      assert.equal(atributosDeLaTarea[0], "idTarea");
     });
 
     it("debe tener un atributo detalle", () => {
       // Arrange
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1",
+        "Maria Fernandez"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -44,9 +48,12 @@ describe("Tarea", () => {
     it("debe tener un atributo prioridad", () => {
       // Arrange
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1",
+        "Maria Fernandez"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -60,9 +67,12 @@ describe("Tarea", () => {
     it("debe tener un atributo fecha de creación", () => {
       // Arrange
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1",
+        "Maria Fernandez"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -76,9 +86,12 @@ describe("Tarea", () => {
     it("debe tener un atributo fecha de caducidad", () => {
       // Arrange
       const tarea = new Tarea(
+        "1",
         "Llevar al pediatra",
         "Prioridad Alta",
-        "26 de septiembre de 2022"
+        "26 de septiembre de 2022",
+        "1",
+        "Maria Fernandez"
       );
       const atributosDeLaTarea = Object.keys(tarea);
 
@@ -98,7 +111,8 @@ describe("Tarea", () => {
           "Llevar al pediatra",
           "Prioridad Alta",
           "26 de septiembre de 2022",
-          "1"
+          "1",
+          "Maria Fernandez"
         );
 
         expect(tarea)
@@ -118,20 +132,6 @@ describe("Tarea", () => {
 
         expect(tarea).to.throw(Error);
       });
-    });
-  });
-
-  describe("#cerrarTarea()", () => {
-    it("cierra una tarea", () => {
-      const tarea = new Tarea(
-        "1",
-        "Llevar al pediatra",
-        "Prioridad Alta",
-        "26 de septiembre de 2022",
-        "1"
-      );
-      tarea.cerrarTarea(tarea.id);
-      expect(tarea.realizada).to.equal(true);
     });
   });
 });

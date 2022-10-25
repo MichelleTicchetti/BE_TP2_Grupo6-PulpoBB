@@ -1,6 +1,7 @@
 import { PulpoBbFactory } from "../factories/pulpobb_factory.js";
 import { USUARIOS } from "./usuario.js";
 import { TareaFactory } from "../factories/tarea_factory.js";
+import { PersonaFactory } from "../factories/persona_factory.js";
 import { AsociarTarea } from "../commands/asociarTarea.js";
 import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
 import { CerrarTarea } from "../commands/cerrarTarea.js";
@@ -28,25 +29,31 @@ export class Persona {
         carnetObraSocial,
         estatura
       );
+
+      this.asociarPersonaConPulpoBb(this, pulpoBb);
       return pulpoBb;
     } else {
       throw new Error("No tiene permisos para esto");
     }
   }
 
-  crearCuidador(id, nombreApellido, email, vinculo) {
+  crearCuidador(id, nombreApellido, email, vinculo, rol, pulpitoId) {
     const cuidador = new PersonaFactory().crear(
       id,
       nombreApellido,
       email,
       vinculo,
-      USUARIOS.CUIDADOR
+      rol
     );
+    const pulpoBb = this.buscarPulpito(pulpitoId);
+    this.asociarPersonaConPulpoBb(cuidador, pulpoBb);
+
+    return cuidador;
   }
 
   // ASOCIAR persona con Pulpo usando el command
-  asociarConPulpoBb(pulpoBb) {
-    const asignacionPulpo = new AsociarPersonaPulpo(this, pulpoBb);
+  asociarPersonaConPulpoBb(persona, pulpo) {
+    const asignacionPulpo = new AsociarPersonaPulpo(persona, pulpo);
     asignacionPulpo.run();
   }
 
@@ -75,11 +82,12 @@ export class Persona {
       this
     );
     const miPulpito = this.buscarPulpito(pulpitoId);
+    const personaAsignada = miPulpito.damePersonaPorId(idAsignado);
 
     const asignacionTarea = new AsociarTarea(
       tareaCreada,
       miPulpito,
-      idAsignado
+      personaAsignada
     );
     asignacionTarea.run();
 
@@ -107,6 +115,10 @@ export class Persona {
 
   dameTareasPulpo(pulpito) {
     pulpito.dameTareas();
+  }
+
+  damePulpitos() {
+    return this.pulpitos;
   }
 
   //MÉTODOS DE GASTOS
