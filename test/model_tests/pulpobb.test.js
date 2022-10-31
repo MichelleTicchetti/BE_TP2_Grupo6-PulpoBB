@@ -1,5 +1,5 @@
 import assert, { AssertionError, notEqual } from "assert";
-import { PulpoBb } from "../models/pulpobb.js";
+import { PulpoBb } from "../../models/pulpobb.js";
 import chai from "chai";
 
 var expect = chai.expect;
@@ -96,7 +96,7 @@ describe("PulpoBb", () => {
       //Assert
       //assert.notEqual(atributoDelPulpo, null); este valida que no sea NULL
       //expect(atributoDelPulpo).equal('1.77'); este valida el valor del atributo
-      assert.equal(atributoDelPulpo[5],"estatura")
+      assert.equal(atributoDelPulpo[5], "estatura");
     });
   });
 

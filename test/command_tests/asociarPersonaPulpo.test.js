@@ -1,7 +1,6 @@
 import chai from "chai";
-import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
-import { Persona } from "../models/persona.js";
-import { USUARIOS } from "../models/usuario.js";
+import { Persona } from "../../models/persona.js";
+import { USUARIOS } from "../../models/usuario.js";
 
 const expect = chai.expect;
 
