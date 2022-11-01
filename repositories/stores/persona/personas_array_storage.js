@@ -1,5 +1,3 @@
-import { Persona } from "../../models/persona.js";
-
 export class PersonasArrayStorage {
   constructor() {
     this.personas = [];

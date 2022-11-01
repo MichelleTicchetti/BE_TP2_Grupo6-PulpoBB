@@ -1,4 +1,4 @@
-import { PersonasStorageFactory } from "./stores/factory.js";
+import { PersonasStorageFactory } from "./stores/persona/factory.js";
 
 export class PersonaRepository {
   // constructor(tipo = "db") {
