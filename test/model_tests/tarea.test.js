@@ -1,7 +1,7 @@
 import assert, { AssertionError } from "assert";
 import chai from "chai";
 
-import { Tarea } from "../models/tarea.js";
+import { Tarea } from "../../models/tarea.js";
 
 var expect = chai.expect;
 
