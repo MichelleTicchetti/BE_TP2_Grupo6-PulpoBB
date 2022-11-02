@@ -1,5 +1,4 @@
 export class Gasto {
-  /*blablalbabla*/
   constructor(monto, detalle) {
     this.monto = monto;
     this.detalle = detalle;
@@ -10,5 +9,5 @@ export class Gasto {
   saldarGasto() {
     this.gastoSaldado = true;
     this.monto = 0;
-  }/*gasto*/
+  }
 }
