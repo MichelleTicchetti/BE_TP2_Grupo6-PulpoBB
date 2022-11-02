@@ -1,18 +1,18 @@
-import { GastosStorageFactory } from "./stores/gasto/factory.js";
+import { TareaStorageFactory } from "./stores/tarea/factory.js";
 
-export class GastoRepository {
+export class TareaRepository {
   // constructor(tipo = "db") {
   //   // Almacen
-  //   this.storage = new GastosStorageFactory(tipo).storage();
+  //   this.storage = new TareaStorageFactory(tipo).storage();
   // }
 
   constructor(tipo = "array") {
     // Almacen
-    this.storage = new GastosStorageFactory(tipo).storage();
+    this.storage = new TareaStorageFactory(tipo).storage();
   }
 
-  guardar(gasto) {
-    this.storage.guardar(gasto);
+  guardar(tarea) {
+    this.storage.guardar(tarea);
   }
 
   buscarTodos() {

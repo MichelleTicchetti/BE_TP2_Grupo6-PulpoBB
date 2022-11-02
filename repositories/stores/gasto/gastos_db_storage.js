@@ -1,12 +1,12 @@
 import { MongoClient } from "mongodb";
 
-export class PersonasDBStorage {
+export class GastosDBStorage {
   constructor() {
-    this.personas = [];
+    this.gastos = [];
     this.url =
       "mongodb+srv://TP2_PulpoBB:TP2_PulpoBB@cluster0.xaaicfa.mongodb.net/?retryWrites=true&w=majority";
     this.dbName = "PulpoBB_app";
-    this.collectionName = "Personas";
+    this.collectionName = "Gastos";
     this.client = new MongoClient(this.url);
     this.connect();
     this.db = this.client.db(this.dbName);
@@ -17,8 +17,8 @@ export class PersonasDBStorage {
     await this.client.connect();
   }
 
-  async guardar(persona) {
-    await this.collection.insertOne(persona);
+  async guardar(gasto) {
+    await this.collection.insertOne(gasto);
   }
 
   async buscarTodos() {
@@ -26,7 +26,7 @@ export class PersonasDBStorage {
   }
 
   async buscarUno(identificador) {
-    return this.collection.find({ nombreApellido: identificador }).toArray();
+    return this.collection.find({ detalle: identificador }).toArray();
   }
 
   eliminar(identificador) {
