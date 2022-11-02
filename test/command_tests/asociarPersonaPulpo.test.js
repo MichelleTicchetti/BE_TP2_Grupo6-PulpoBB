@@ -32,7 +32,6 @@ describe("Asociar", () => {
       //Assert
       expect(pulpoBb.dameAdministradores().length).to.equal(1);
       expect(pulpoBb.damePersonas().length).to.equal(1);
-      expect(pulpoBb.dameAdministradores().length).to.equal(1);
 
       expect(administrador.damePulpitos().length).to.equal(1);
     });

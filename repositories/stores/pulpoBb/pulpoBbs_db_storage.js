@@ -4,9 +4,9 @@
 //   constructor() {
 //     this.personas = [];
 //     // this.url =
-//     //   "mongodb+srv://juanpablo:juanpablo@cluster0.doavcex.mongodb.net/?retryWrites=true&w=majority";
-//     // this.dbName = "Carreras";
-//     this.collectionName = "personas";
+//     //   "mongodb+srv://TP2_PulpoBB:TP2_PulpoBB@cluster0.xaaicfa.mongodb.net/?retryWrites=true&w=majority";
+//     // this.dbName = "PulpoBB_app";
+//     this.collectionName = "PulpoBBs";
 //     this.client = new MongoClient(this.url);
 //     this.connect();
 //     this.db = this.client.db(this.dbName);
