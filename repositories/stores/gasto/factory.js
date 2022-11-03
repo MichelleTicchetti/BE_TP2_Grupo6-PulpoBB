@@ -1,5 +1,5 @@
 import { GastosArrayStorage } from "./gastos_array_storage.js";
-// import { GastosDBStorage } from "./gastos_db_storage.js";
+import { GastosDBStorage } from "./gastos_db_storage.js";
 
 export class GastosStorageFactory {
   constructor(tipo) {

@@ -1,5 +1,5 @@
 import { PulpoBbsArrayStorage } from "./pulpoBbs_array_storage.js";
-// import { PulpoBbsDBStorage } from "./pulpobbs_db_storage.js";
+import { PulpoBbsDBStorage } from "./pulpobbs_db_storage.js";
 
 export class PulpoBbStorageFactory {
   constructor(tipo) {

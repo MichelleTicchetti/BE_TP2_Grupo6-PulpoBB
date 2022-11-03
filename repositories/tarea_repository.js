@@ -1,15 +1,15 @@
 import { TareaStorageFactory } from "./stores/tarea/factory.js";
 
 export class TareaRepository {
-  // constructor(tipo = "db") {
-  //   // Almacen
-  //   this.storage = new TareaStorageFactory(tipo).storage();
-  // }
-
-  constructor(tipo = "array") {
+  constructor(tipo = "db") {
     // Almacen
     this.storage = new TareaStorageFactory(tipo).storage();
   }
+
+  // constructor(tipo = "array") {
+  //   // Almacen
+  //   this.storage = new TareaStorageFactory(tipo).storage();
+  // }
 
   guardar(tarea) {
     this.storage.guardar(tarea);
