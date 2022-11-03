@@ -1,15 +1,15 @@
 import { GastosStorageFactory } from "./stores/gasto/factory.js";
 
 export class GastoRepository {
-  // constructor(tipo = "db") {
-  //   // Almacen
-  //   this.storage = new GastosStorageFactory(tipo).storage();
-  // }
-
-  constructor(tipo = "array") {
+  constructor(tipo = "db") {
     // Almacen
     this.storage = new GastosStorageFactory(tipo).storage();
   }
+
+  // constructor(tipo = "array") {
+  //   // Almacen
+  //   this.storage = new GastosStorageFactory(tipo).storage();
+  // }
 
   guardar(gasto) {
     this.storage.guardar(gasto);

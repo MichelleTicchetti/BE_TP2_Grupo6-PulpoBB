@@ -1,5 +1,5 @@
 import { TareasArrayStorage } from "./tareas_array_storage.js";
-// import { TareasDBStorage } from "./tareas_db_storage.js";
+import { TareasDBStorage } from "./tareas_db_storage.js";
 
 export class TareasStorageFactory {
   constructor(tipo) {

@@ -11,7 +11,7 @@ describe("Persona", () => {
     it("debe tener un atributo ID", () => {
       // Arrange
       const persona = new Persona(
-        "2039",
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
@@ -29,7 +29,7 @@ describe("Persona", () => {
     it("debe tener un atributo nombreApellido", () => {
       // Arrange
       const persona = new Persona(
-        "2039",
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
@@ -47,7 +47,7 @@ describe("Persona", () => {
     it("debe tener un atributo email", () => {
       // Arrange
       const persona = new Persona(
-        "2039",
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
@@ -65,7 +65,7 @@ describe("Persona", () => {
     it("debe tener un atributo vinculo", () => {
       // Arrange
       const persona = new Persona(
-        "2039",
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
@@ -82,7 +82,7 @@ describe("Persona", () => {
 
     it("tiene un listado de pulpitos", () => {
       const persona = new Persona(
-        "2039",
+        "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
@@ -96,14 +96,14 @@ describe("Persona", () => {
     describe("con datos válidos", () => {
       it("crea Persona", () => {
         const persona = new Persona(
-          "2039",
+          "1",
           "Michelle Ticchetti",
           "mticchetti@gmail.com",
           "Amiga",
           USUARIOS.ADMINISTRADOR
         );
 
-        expect(persona).to.have.property("id").with.equal("2039");
+        expect(persona).to.have.property("id").with.equal("1");
         expect(persona)
           .to.have.property("nombreApellido")
           .with.equal("Michelle Ticchetti");
@@ -173,11 +173,11 @@ describe("Persona", () => {
 
       const tarea = administrador.crearTarea(
         "1",
-        "Llevar al pediatra",
-        "Prioridad Alta",
-        "26 de septiembre de 2022",
+        "Sacar turno con pediatra",
+        "Alta",
+        "Tue Oct 18 202",
         "1",
-        "Maria Fernandez"
+        "1"
       );
 
       expect(pulpo.dameTareasSinFinalizar().length).to.equal(1);

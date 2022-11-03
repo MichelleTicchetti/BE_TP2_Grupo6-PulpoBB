@@ -9,12 +9,12 @@ describe("PulpoBb", () => {
     it("tiene atributo id", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -24,12 +24,12 @@ describe("PulpoBb", () => {
     it("tiene atributo Fecha", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -39,12 +39,12 @@ describe("PulpoBb", () => {
     it("tiene atributo nombre", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -54,12 +54,12 @@ describe("PulpoBb", () => {
     it("tiene atributo peso", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -69,12 +69,12 @@ describe("PulpoBb", () => {
     it("tiene atributo carnetObraSocial", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -84,12 +84,12 @@ describe("PulpoBb", () => {
     it("tiene atributo estatura", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
       // Act
@@ -104,12 +104,12 @@ describe("PulpoBb", () => {
     it("crear Gasto", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       pulpo.crearGasto(55, "una compra cualquiera");
       pulpo.crearGasto(33, "otra compra");
@@ -121,12 +121,12 @@ describe("PulpoBb", () => {
     it("mostrarGastototal", () => {
       //Arange
       const pulpo = new PulpoBb(
-        "123",
+        "1",
         "14-dic-1984",
-        "joaco",
-        "15",
-        "34567",
-        "1.77"
+        "Joaquin",
+        "3kg",
+        "123456789",
+        "50cm"
       );
       pulpo.crearGasto(55, "una compra cualquiera");
       pulpo.crearGasto(100, "otro gasto");

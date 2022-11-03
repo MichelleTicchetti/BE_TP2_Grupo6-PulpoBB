@@ -1,5 +1,5 @@
 import { PersonasArrayStorage } from "./personas_array_storage.js";
-// import { PersonasDBStorage } from "./personas_db_storage.js";
+import { PersonasDBStorage } from "./personas_db_storage.js";
 
 export class PersonasStorageFactory {
   constructor(tipo) {
