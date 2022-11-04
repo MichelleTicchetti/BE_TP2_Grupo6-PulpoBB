@@ -8,7 +8,7 @@ const expect = chai.expect;
 
 describe("Persona Repository", () => {
   describe("#guardar()", () => {
-    it("crea una persona en el repo", () => {
+    it("crea una persona en el repo", async () => {
       // Arrange
       const persona = new PersonaFactory().crear(
         "1",
@@ -21,7 +21,7 @@ describe("Persona Repository", () => {
       const repo = new PersonaRepository();
       repo.guardar(persona);
 
-      expect(repo.buscarTodos()).to.include(persona);
+      expect(await repo.buscarTodos()).to.include(persona);
     });
   });
 });
