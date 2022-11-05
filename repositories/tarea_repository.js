@@ -1,14 +1,14 @@
-import { TareaStorageFactory } from "./stores/tarea/factory.js";
+import { TareasStorageFactory } from "./stores/tarea/factory.js";
 
 export class TareaRepository {
   constructor(tipo = "db") {
     // Almacen
-    this.storage = new TareaStorageFactory(tipo).storage();
+    this.storage = new TareasStorageFactory(tipo).storage();
   }
 
   // constructor(tipo = "array") {
   //   // Almacen
-  //   this.storage = new TareaStorageFactory(tipo).storage();
+  //   this.storage = new TareasStorageFactory(tipo).storage();
   // }
 
   guardar(tarea) {
