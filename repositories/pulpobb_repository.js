@@ -1,14 +1,14 @@
-import { PulpoBbStorageFactory } from "./stores/pulpoBb/factory.js";
+import { PulpoBbsStorageFactory } from "./stores/pulpoBb/factory.js";
 
 export class PulpoBbRepository {
   constructor(tipo = "db") {
     // Almacen
-    this.storage = new PulpoBbStorageFactory(tipo).storage();
+    this.storage = new PulpoBbsStorageFactory(tipo).storage();
   }
 
   // constructor(tipo = "array") {
   //   // Almacen
-  //   this.storage = new PulpoBbStorageFactory(tipo).storage();
+  //   this.storage = new PulpoBbsStorageFactory(tipo).storage();
   // }
 
   guardar(pulpoBb) {
