@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe("PulpoBb Repository", () => {
   describe("#guardar()", () => {
-    it("crea un pulpo en el repo", () => {
+    it("crea un pulpo en el repo", async () => {
       // Arrange
       const pulpoBb = new PulpoBbFactory().crear(
         "123",
@@ -21,7 +21,7 @@ describe("PulpoBb Repository", () => {
       const repo = new PulpoBbRepository();
       repo.guardar(pulpoBb);
 
-      expect(repo.buscarTodos()).to.include(pulpoBb);
+      expect(await repo.buscarTodos()).to.include(pulpoBb);
     });
   });
 });
