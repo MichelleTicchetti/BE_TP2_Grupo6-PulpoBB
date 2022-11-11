@@ -27,6 +27,3 @@ export class PersonaRepository {
     this.storage.eliminar(identificador);
   }
 }
-
-// const personaRepo = new PersonaRepository()
-// personaRepo.guardar(persona)
