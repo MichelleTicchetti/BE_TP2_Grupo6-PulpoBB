@@ -6,22 +6,22 @@ import { USUARIOS } from "../../models/usuario.js";
 
 const expect = chai.expect;
 
+//crear una bd para los tests para que no popule la bd real
+
 describe("Persona Repository", () => {
-  describe("#guardar()", () => {
-    it("crea una persona en el repo", async () => {
-      // Arrange
-      const persona = new PersonaFactory().crear(
-        "1",
-        "Juan Perez",
-        "jperez@gmail.com",
-        "Padre",
-        USUARIOS.ADMINISTRADOR
-      );
-
-      const repo = new PersonaRepository();
-      repo.guardar(persona);
-
-      expect(await repo.buscarTodos()).to.include(persona);
-    });
-  });
+  // describe("#guardar()", () => {
+  //   it("crea una persona en el repo", async () => {
+  //     // Arrange
+  //     const persona = new PersonaFactory().crear(
+  //       "1",
+  //       "Juan Perez",
+  //       "jperez@gmail.com",
+  //       "Padre",
+  //       USUARIOS.ADMINISTRADOR
+  //     );
+  //     const repo = new PersonaRepository();
+  //     repo.guardar(persona);
+  //     expect(await repo.buscarTodos()).to.include(persona);
+  //   });
+  // });
 });
