@@ -14,6 +14,7 @@ const { logger } = morgan;
 const personasRouter = await (await import("./routes/personas.js")).default;
 const tareasRouter = await (await import("./routes/tareas.js")).default;
 const pulposRouter = await (await import("./routes/pulpos.js")).default;
+const gastosRouter = await (await import("./routes/gastos.js")).default;
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/personas", personasRouter);
 app.use("/tareas", tareasRouter);
 app.use("/pulpos", pulposRouter);
+app.use("/gastos", gastosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
