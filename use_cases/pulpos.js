@@ -16,7 +16,7 @@ export class PulpoBbsUseCase {
   }
 
   async eliminar(id) {
-    const responseRepo = new PersonaRepoPulpoBbRepositorysitory().eliminar(id);
+    const responseRepo = new PulpoBbRepository().eliminar(id);
     await responseRepo.eliminar(id);
   }
 }

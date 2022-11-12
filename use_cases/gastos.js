@@ -1,5 +1,5 @@
-import { GastoFactory } from "../factories/gasto_factory";
-import { GastoRepository } from "../repositories/persona_repository.js";
+import { GastoFactory } from "../factories/gasto_factory.js";
+import { GastoRepository } from "../repositories/gasto_repository.js";
 
 export class GastosUseCase {
   async crear(monto, detalle) {
