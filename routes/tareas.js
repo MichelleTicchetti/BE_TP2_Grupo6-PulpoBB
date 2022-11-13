@@ -3,7 +3,7 @@ import { TareaRepository } from "../repositories/tarea_repository.js";
 import {
   crearTareasController,
   eliminarTareasController,
-  asignarTareasController,
+  asignarPersonaTareaController,
   buscarTareasController,
   buscarTareasIdentificadorController,
 } from "../controllers/tareas_controller.js";
@@ -101,7 +101,7 @@ router.put(
       res.status(401).send();
     }
   },
-  asignarTareasController
+  asignarPersonaTareaController
 );
 
 export default router;

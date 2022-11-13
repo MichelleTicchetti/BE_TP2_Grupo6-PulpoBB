@@ -26,4 +26,8 @@ export class PersonasUseCase {
   buscar(identificador) {
     return new PersonaRepository().buscarUno(identificador);
   }
+
+  async asignarTarea(idPersona, tarea) {
+    await new PersonaRepository().asignarTarea(idPersona, tarea);
+  }
 }

@@ -1,5 +1,4 @@
-import { Persona } from "../models/persona.js";
-import { USUARIOS } from "../models/usuario.js";
+import { Gasto } from "../models/gasto.js";
 
 export class GastoFactory {
   constructor() {}

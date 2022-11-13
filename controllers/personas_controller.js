@@ -1,3 +1,4 @@
+import { TareaRepository } from "../repositories/tarea_repository.js";
 import { PersonasUseCase } from "../use_cases/personas.js";
 
 export const buscarPersonasController = async (req, res, next) => {

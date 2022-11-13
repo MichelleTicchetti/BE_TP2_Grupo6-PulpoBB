@@ -1,5 +1,7 @@
 import { TareasUseCase } from "../use_cases/tareas.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
+import { PersonasUseCase } from "../use_cases/personas.js";
+import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export const buscarTareasController = async (req, res, next) => {
   console.log("ejecución caso de uso: listar tareas");
@@ -48,7 +50,7 @@ export const crearTareasController = async (req, res, next) => {
 export const eliminarTareasController = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar tarea");
 
-  const { id } = req.body;
+  const id = req.body;
 
   try {
     const responseObject = await new TareasUseCase().eliminar(id);
@@ -58,16 +60,25 @@ export const eliminarTareasController = async (req, res, next) => {
   }
 };
 
-export const asignarTareasController = async (req, res, next) => {
-  console.log("ejecución caso de uso: asignar tarea");
+export const asignarPersonaTareaController = async (req, res, next) => {
+  console.log("ejecución caso de uso: asignar tarea a persona");
 
   const { idTarea, idPersona } = req.body;
 
   try {
     const persona = await new PersonaRepository().buscarUno(idPersona);
+    const tarea = await new TareaRepository().buscarUno(idTarea);
 
-    const responseObject = await new TareasUseCase().asignar(idTarea, persona);
-    res.status(201).json(responseObject);
+    const responseTarea = await new TareasUseCase().asignarPersona(
+      idTarea,
+      persona
+    );
+    const responsePersona = await new PersonasUseCase().asignarTarea(
+      idPersona,
+      tarea
+    );
+    res.status(201).json(responseTarea);
+    res.status(201).json(responsePersona);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }

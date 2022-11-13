@@ -21,8 +21,8 @@ export class TareasUseCase {
     await responseRepo.eliminar(id);
   }
 
-  async asignar(idTarea, persona) {
-    await new TareaRepository().asignar(idTarea, persona);
+  async asignarPersona(idTarea, persona) {
+    await new TareaRepository().asignarPersona(idTarea, persona);
   }
 
   listar() {

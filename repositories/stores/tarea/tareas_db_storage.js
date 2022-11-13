@@ -33,7 +33,7 @@ export class TareasDBStorage {
     this.collection.deleteOne(identificador);
   }
 
-  asignar(idTarea, persona) {
+  asignarPersona(idTarea, persona) {
     this.collection.updateOne(
       { idTarea: idTarea },
       { $set: { personaAsignada: persona } }
