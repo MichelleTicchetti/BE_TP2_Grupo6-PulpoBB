@@ -32,4 +32,12 @@ export class TareasUseCase {
   buscar(identificador) {
     return new TareaRepository().buscarUno(identificador);
   }
+
+  async listarPorEstado(estado) {
+    return await new TareaRepository().listarPorEstado(estado);
+  }
+
+  async listarPorPrioridad(prioridad) {
+    return await new TareaRepository().listarPorPrioridad(prioridad);
+  }
 }

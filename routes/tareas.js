@@ -6,6 +6,8 @@ import {
   asignarPersonaTareaController,
   buscarTareasController,
   buscarTareasIdentificadorController,
+  buscarTareasEstadoController,
+  buscarTareasPrioridadController,
 } from "../controllers/tareas_controller.js";
 const router = express.Router();
 
@@ -40,9 +42,9 @@ router.get(
   buscarTareasController
 );
 
-//GET /tareas/:identificador
+//GET /tareas/id/:identificador
 router.get(
-  "/:identificador",
+  "/id/:identificador",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -54,6 +56,38 @@ router.get(
     }
   },
   buscarTareasIdentificadorController
+);
+
+//GET /tareas/estado/:estado
+router.get(
+  "/estado/:estado",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarTareasEstadoController
+);
+
+//GET /tareas/prioridad/:prioridad
+router.get(
+  "/prioridad/:prioridad",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarTareasPrioridadController
 );
 
 // POST caso de uso: crear tarea

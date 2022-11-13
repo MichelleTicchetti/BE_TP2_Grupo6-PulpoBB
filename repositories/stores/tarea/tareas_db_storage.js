@@ -29,6 +29,10 @@ export class TareasDBStorage {
     return await this.collection.find({ idTarea: identificador }).toArray();
   }
 
+  listarPorEstado(estado) {
+    return this.collection.find({ estado: estado }).toArray();
+  }
+
   eliminar(identificador) {
     this.collection.deleteOne(identificador);
   }

@@ -23,6 +23,10 @@ export class TareaRepository {
     return this.storage.buscarUno(identificador);
   }
 
+  listarPorEstado(estado) {
+    return this.storage.listarPorEstado(estado);
+  }
+
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }

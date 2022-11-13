@@ -4,6 +4,7 @@ import {
   eliminarPersonasController,
   buscarPersonasIdentificadorController,
   buscarPersonasController,
+  buscarPersonasRolController,
 } from "../controllers/personas_controller.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
 const router = express.Router();
@@ -41,7 +42,7 @@ router.get(
 
 //GET /personas/:identificador
 router.get(
-  "/identificador",
+  "/nombre/:identificador",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -53,6 +54,22 @@ router.get(
     }
   },
   buscarPersonasIdentificadorController
+);
+
+//GET /personas/:rol
+router.get(
+  "/rol/:rol",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarPersonasRolController
 );
 
 // POST caso de uso: agregar una persona

@@ -25,10 +25,12 @@ export class PersonasDBStorage {
     return await this.collection.find({}).toArray();
   }
 
-  async buscarUno(identificador) {
-    const persona = await this.collection.find({ id: identificador }).toArray();
-    console.log(persona);
-    return persona;
+  buscarPorRol(rolBuscado) {
+    return this.collection.find({ rol: rolBuscado }).toArray();
+  }
+
+  buscarUno(identificador) {
+    return this.collection.find({ id: identificador }).toArray();
   }
 
   eliminar(identificador) {
