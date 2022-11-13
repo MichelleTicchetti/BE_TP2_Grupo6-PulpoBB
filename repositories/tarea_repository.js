@@ -23,11 +23,19 @@ export class TareaRepository {
     return this.storage.buscarUno(identificador);
   }
 
+  listarPorEstado(estado) {
+    return this.storage.listarPorEstado(estado);
+  }
+
+  listarPorPrioridad(prioridad) {
+    return this.storage.listarPorPrioridad(prioridad);
+  }
+
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }
 
-  asignar(idTarea, persona) {
-    this.storage.asignar(idTarea, persona);
+  asignarPersona(idTarea, persona) {
+    this.storage.asignarPersona(idTarea, persona);
   }
 }

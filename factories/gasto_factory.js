@@ -1,14 +1,13 @@
-import { Persona } from "../models/persona.js";
-import { USUARIOS } from "../models/usuario.js";
+import { Gasto } from "../models/gasto.js";
 
 export class GastoFactory {
   constructor() {}
 
-  crear(monto, detalle) {
-    if (!monto || !detalle) {
+  crear(id, monto, detalle) {
+    if (!id || !monto || !detalle) {
       throw new Error();
     } else {
-      return new Gasto(monto, detalle);
+      return new Gasto(id, monto, detalle);
     }
   }
 }

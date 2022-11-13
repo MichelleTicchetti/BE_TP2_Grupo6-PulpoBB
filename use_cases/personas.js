@@ -23,7 +23,15 @@ export class PersonasUseCase {
     return new PersonaRepository().buscarTodos();
   }
 
-  buscar(identificador) {
-    return new PersonaRepository().buscarUno(identificador);
+  async listarPorRol(rol) {
+    return await new PersonaRepository().buscarPorRol(rol);
+  }
+
+  async buscar(identificador) {
+    return await new PersonaRepository().buscarUno(identificador);
+  }
+
+  async asignarTarea(idPersona, tarea) {
+    await new PersonaRepository().asignarTarea(idPersona, tarea);
   }
 }

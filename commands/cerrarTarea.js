@@ -4,8 +4,8 @@ export class CerrarTarea {
   }
 
   run() {
-    if (this.tarea.realizada === false) {
-      this.tarea.realizada = true;
+    if (this.tarea.estado === "Pendiente") {
+      this.tarea.estado = "Finalizada";
       this.tarea.fechaCierre = Date();
     }
     return this.tarea;

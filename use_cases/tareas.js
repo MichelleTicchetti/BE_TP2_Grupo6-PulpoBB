@@ -21,8 +21,8 @@ export class TareasUseCase {
     await responseRepo.eliminar(id);
   }
 
-  async asignar(idTarea, persona) {
-    await new TareaRepository().asignar(idTarea, persona);
+  async asignarPersona(idTarea, persona) {
+    await new TareaRepository().asignarPersona(idTarea, persona);
   }
 
   listar() {
@@ -31,5 +31,13 @@ export class TareasUseCase {
 
   buscar(identificador) {
     return new TareaRepository().buscarUno(identificador);
+  }
+
+  async listarPorEstado(estado) {
+    return await new TareaRepository().listarPorEstado(estado);
+  }
+
+  async listarPorPrioridad(prioridad) {
+    return await new TareaRepository().listarPorPrioridad(prioridad);
   }
 }

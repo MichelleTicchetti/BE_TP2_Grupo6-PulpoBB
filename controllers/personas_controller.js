@@ -11,10 +11,23 @@ export const buscarPersonasController = async (req, res, next) => {
   }
 };
 
-export const buscarPersonasIdentificadorController = async (req, res, next) => {
-  console.log("ejecución caso de uso: buscar persona por identificador");
+export const buscarPersonasRolController = async (req, res, next) => {
+  console.log("ejecución caso de uso: listar personas por rol");
 
-  const { identificador } = req.body;
+  const { rol } = req.params;
+
+  try {
+    const responseRepo = await new PersonasUseCase().listarPorRol(rol);
+    res.status(200).json(responseRepo);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+};
+
+export const buscarPersonaIDController = async (req, res, next) => {
+  console.log("ejecución caso de uso: buscar persona por id");
+
+  const { identificador } = req.params;
 
   try {
     const responseObject = await new PersonasUseCase().buscar(identificador);

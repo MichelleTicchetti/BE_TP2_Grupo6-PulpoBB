@@ -19,11 +19,19 @@ export class PersonaRepository {
     return this.storage.buscarTodos();
   }
 
+  buscarPorRol(rol) {
+    return this.storage.buscarPorRol(rol);
+  }
+
   buscarUno(identificador) {
     return this.storage.buscarUno(identificador);
   }
 
   eliminar(identificador) {
     this.storage.eliminar(identificador);
+  }
+
+  asignarTarea(idPersona, tarea) {
+    this.storage.asignarTarea(idPersona, tarea);
   }
 }

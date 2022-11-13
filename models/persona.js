@@ -62,9 +62,6 @@ export class Persona {
     return pulpito.dameCuidadores();
   }
 
-  //MÉTODOS DE TAREAS
-
-  //persona.crearTarea(...)
   crearTarea(
     idTarea,
     detalle,
@@ -121,7 +118,6 @@ export class Persona {
     return this.pulpitos;
   }
 
-  //MÉTODOS DE GASTOS
   cierreDeGastos() {
     this.bb.cierreDeGastos;
   }

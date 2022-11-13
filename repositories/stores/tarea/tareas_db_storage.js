@@ -29,11 +29,19 @@ export class TareasDBStorage {
     return await this.collection.find({ idTarea: identificador }).toArray();
   }
 
+  listarPorEstado(estado) {
+    return this.collection.find({ estado: estado }).toArray();
+  }
+
+  listarPorPrioridad(prioridad) {
+    return this.collection.find({ prioridad: prioridad }).toArray();
+  }
+
   eliminar(identificador) {
     this.collection.deleteOne(identificador);
   }
 
-  asignar(idTarea, persona) {
+  asignarPersona(idTarea, persona) {
     this.collection.updateOne(
       { idTarea: idTarea },
       { $set: { personaAsignada: persona } }
