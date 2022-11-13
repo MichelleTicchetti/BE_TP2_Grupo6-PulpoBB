@@ -33,11 +33,10 @@ export class TareasDBStorage {
     this.collection.deleteOne(identificador);
   }
 
-  async asignar(idTarea, nombrePersona) {
-    console.log("nombre persona " + nombrePersona);
-    return await this.collection.updateOne(
-      { idTarea },
-      { $set: { personaAsignada: "ejemplo" } }
+  asignar(idTarea, persona) {
+    this.collection.updateOne(
+      { idTarea: idTarea },
+      { $set: { personaAsignada: persona } }
     );
   }
 }

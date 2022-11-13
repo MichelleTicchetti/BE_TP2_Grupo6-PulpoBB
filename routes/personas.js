@@ -2,24 +2,58 @@ import express from "express";
 import {
   crearPersonasController,
   eliminarPersonasController,
+  buscarPersonasIdentificadorController,
+  buscarPersonasController,
 } from "../controllers/personas_controller.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
 const router = express.Router();
 
+// //GET /personas/
+// router.get("/", async function (req, res, next) {
+//   const responseRepo = await new PersonaRepository().buscarTodos();
+//   res.json(responseRepo);
+// });
+
+// // GET /personas/:id
+// router.get("/:id", async function (req, res, next) {
+//   const { id } = req.params;
+
+//   const responseRepo = await new PersonaRepository().buscarUno(id);
+
+//   res.json(responseRepo);
+// });
+
 //GET /personas/
-router.get("/", async function (req, res, next) {
-  const responseRepo = await new PersonaRepository().buscarTodos();
-  res.json(responseRepo);
-});
+router.get(
+  "/",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-// GET /personas/:id
-router.get("/:id", async function (req, res, next) {
-  const { id } = req.params;
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarPersonasController
+);
 
-  const responseRepo = await new PersonaRepository().buscarUno(id);
+//GET /personas/:identificador
+router.get(
+  "/identificador",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-  res.json(responseRepo);
-});
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarPersonasIdentificadorController
+);
 
 // POST caso de uso: agregar una persona
 router.post(

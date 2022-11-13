@@ -4,32 +4,57 @@ import {
   crearTareasController,
   eliminarTareasController,
   asignarTareasController,
+  buscarTareasController,
+  buscarTareasIdentificadorController,
 } from "../controllers/tareas_controller.js";
 const router = express.Router();
 
+// //GET /tareas/
+// router.get("/", async function (req, res, next) {
+//   const responseRepo = await new TareaRepository().buscarTodos();
+//   res.json(responseRepo);
+// });
+
+// // GET /tareas/:detalle
+// router.get("/:detalle", async function (req, res, next) {
+//   const { detalle } = req.params;
+
+//   const responseRepo = await new TareaRepository().buscarUno(detalle);
+
+//   res.json(responseRepo);
+// });
+
 //GET /tareas/
-router.get("/", async function (req, res, next) {
-  const responseRepo = await new TareaRepository().buscarTodos();
-  res.json(responseRepo);
-});
+router.get(
+  "/",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-// GET /tareas/:detalle
-router.get("/:detalle", async function (req, res, next) {
-  const { detalle } = req.params;
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarTareasController
+);
 
-  const responseRepo = await new TareaRepository().buscarUno(detalle);
+//GET /tareas/:identificador
+router.get(
+  "/:identificador",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-  res.json(responseRepo);
-});
-
-// GET /tareas/:prioridad
-router.get("/:prioridad", async function (req, res, next) {
-  const { detalle } = req.params;
-
-  const responseRepo = await new TareaRepository().buscarUno(prioridad);
-
-  res.json(responseRepo);
-});
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarTareasIdentificadorController
+);
 
 // POST caso de uso: crear tarea
 router.post(

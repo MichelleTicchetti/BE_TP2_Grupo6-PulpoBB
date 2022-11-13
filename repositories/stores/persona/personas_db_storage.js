@@ -26,9 +26,7 @@ export class PersonasDBStorage {
   }
 
   async buscarUno(identificador) {
-    const persona = await this.collection
-      .find({ nombreApellido: identificador })
-      .toArray();
+    const persona = await this.collection.find({ id: identificador }).toArray();
     console.log(persona);
     return persona;
   }
