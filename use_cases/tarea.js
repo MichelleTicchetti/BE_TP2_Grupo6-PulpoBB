@@ -19,4 +19,8 @@ export class TareasUseCase {
     const responseRepo = new TareaRepository().eliminar(id);
     await responseRepo.eliminar(id);
   }
+
+  async asignar(idTarea, nombrePersona) {
+    await new TareaRepository().asignar(idTarea, nombrePersona);
+  }
 }

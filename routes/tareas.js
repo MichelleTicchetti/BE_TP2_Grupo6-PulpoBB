@@ -1,9 +1,9 @@
 import express from "express";
 import { TareaRepository } from "../repositories/tarea_repository.js";
-import { PersonaRepository } from "../repositories/persona_repository.js";
 import {
   crearTareasController,
   eliminarTareasController,
+  asignarTareasController,
 } from "../controllers/tareas_controller.js";
 const router = express.Router();
 
@@ -63,17 +63,20 @@ router.delete(
   eliminarTareasController
 );
 
-// // POST caso de uso: asignar tarea???
-// router.post("/", async function (req, res, next) {
-//   //el identificador de la tarea y el id de persona lo tomo del req del body
-//   const { idPersona, identificador } = req.body;
+// PUT caso de uso: asignar tarea
+router.put(
+  "/",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-//   //primero necesito una persona
-//   const persona = await new PersonaRepository().buscarUno(idPersona);
-
-//   //le digo que me cree la tarea para la persona del id, con este identificador de la tarea
-//   const responseRepo = await new TareaUseCase(persona).assign(identificador);
-//   res.json(responseRepo);
-// });
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  asignarTareasController
+);
 
 export default router;
