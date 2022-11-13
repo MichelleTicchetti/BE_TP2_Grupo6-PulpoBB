@@ -24,8 +24,8 @@ export const buscarPersonasRolController = async (req, res, next) => {
   }
 };
 
-export const buscarPersonasIdentificadorController = async (req, res, next) => {
-  console.log("ejecución caso de uso: buscar persona por nombre");
+export const buscarPersonaIDController = async (req, res, next) => {
+  console.log("ejecución caso de uso: buscar persona por id");
 
   const { identificador } = req.params;
 

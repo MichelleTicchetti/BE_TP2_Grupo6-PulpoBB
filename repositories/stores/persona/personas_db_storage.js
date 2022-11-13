@@ -29,8 +29,8 @@ export class PersonasDBStorage {
     return this.collection.find({ rol: rolBuscado }).toArray();
   }
 
-  buscarUno(identificador) {
-    return this.collection.find({ id: identificador }).toArray();
+  buscarUno(identificadorBuscado) {
+    return this.collection.find({ id: identificadorBuscado }).toArray();
   }
 
   eliminar(identificador) {

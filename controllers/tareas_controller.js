@@ -13,7 +13,7 @@ export const buscarTareasController = async (req, res, next) => {
   }
 };
 
-export const buscarTareasIdentificadorController = async (req, res, next) => {
+export const buscarTareaIdController = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar tarea por id");
 
   const { identificador } = req.params;

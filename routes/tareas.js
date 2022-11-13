@@ -5,7 +5,7 @@ import {
   eliminarTareasController,
   asignarPersonaTareaController,
   buscarTareasController,
-  buscarTareasIdentificadorController,
+  buscarTareaIdController,
   buscarTareasEstadoController,
   buscarTareasPrioridadController,
 } from "../controllers/tareas_controller.js";
@@ -55,7 +55,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarTareasIdentificadorController
+  buscarTareaIdController
 );
 
 //GET /tareas/estado/:estado

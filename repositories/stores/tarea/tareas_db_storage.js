@@ -33,6 +33,10 @@ export class TareasDBStorage {
     return this.collection.find({ estado: estado }).toArray();
   }
 
+  listarPorPrioridad(prioridad) {
+    return this.collection.find({ prioridad: prioridad }).toArray();
+  }
+
   eliminar(identificador) {
     this.collection.deleteOne(identificador);
   }

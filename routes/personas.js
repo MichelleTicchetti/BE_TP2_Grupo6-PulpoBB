@@ -2,7 +2,7 @@ import express from "express";
 import {
   crearPersonasController,
   eliminarPersonasController,
-  buscarPersonasIdentificadorController,
+  buscarPersonaIDController,
   buscarPersonasController,
   buscarPersonasRolController,
 } from "../controllers/personas_controller.js";
@@ -42,7 +42,7 @@ router.get(
 
 //GET /personas/:identificador
 router.get(
-  "/nombre/:identificador",
+  "/id/:identificador",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -53,7 +53,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPersonasIdentificadorController
+  buscarPersonaIDController
 );
 
 //GET /personas/:rol

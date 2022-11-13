@@ -2,6 +2,7 @@ import express from "express";
 import {
   crearGastosController,
   eliminarGastosController,
+  buscarGastoIDController,
 } from "../controllers/gastos_controller.js";
 import { GastoRepository } from "../repositories/gasto_repository.js";
 const router = express.Router();
@@ -13,13 +14,20 @@ router.get("/", async function (req, res, next) {
 });
 
 // GET /gastos/:id
-router.get("/:id", async function (req, res, next) {
-  const { id } = req.params;
+router.get(
+  "/id/:identificador",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
 
-  const responseRepo = await new GastoRepository().buscarUno(id);
-
-  res.json(responseRepo);
-});
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarGastoIDController
+);
 
 // POST caso de uso: agregar un gasto
 router.post(
