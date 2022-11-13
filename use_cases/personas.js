@@ -18,4 +18,12 @@ export class PersonasUseCase {
     const responseRepo = new PersonaRepository().eliminar(id);
     await responseRepo.eliminar(id);
   }
+
+  listar() {
+    return new PersonaRepository().buscarTodos();
+  }
+
+  buscar(identificador) {
+    return new PersonaRepository().buscarUno(identificador);
+  }
 }

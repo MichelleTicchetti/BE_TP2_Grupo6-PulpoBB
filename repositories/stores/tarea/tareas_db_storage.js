@@ -26,10 +26,17 @@ export class TareasDBStorage {
   }
 
   async buscarUno(identificador) {
-    return this.collection.find({ nombre: identificador }).toArray();
+    return await this.collection.find({ idTarea: identificador }).toArray();
   }
 
   eliminar(identificador) {
     this.collection.deleteOne(identificador);
+  }
+
+  asignar(idTarea, persona) {
+    this.collection.updateOne(
+      { idTarea: idTarea },
+      { $set: { personaAsignada: persona } }
+    );
   }
 }

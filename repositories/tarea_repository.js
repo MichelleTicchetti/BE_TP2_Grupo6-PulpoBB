@@ -26,4 +26,8 @@ export class TareaRepository {
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }
+
+  asignar(idTarea, persona) {
+    this.storage.asignar(idTarea, persona);
+  }
 }
