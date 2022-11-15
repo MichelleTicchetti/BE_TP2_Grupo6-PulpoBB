@@ -78,7 +78,7 @@ export const crearTareasController = async (req, res, next) => {
 export const eliminarTareasController = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar tarea");
 
-  const id = req.body;
+  const { id } = req.body;
 
   try {
     const responseObject = await new TareasUseCase().eliminar(id);

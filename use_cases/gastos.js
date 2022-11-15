@@ -13,7 +13,7 @@ export class GastosUseCase {
   }
 
   async eliminar(id) {
-    const responseRepo = new GastoRepository().eliminar(id);
+    const responseRepo = new GastoRepository();
     await responseRepo.eliminar(id);
   }
 }

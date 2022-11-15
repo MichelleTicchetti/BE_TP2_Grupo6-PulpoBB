@@ -17,7 +17,7 @@ export class TareasUseCase {
   }
 
   async eliminar(id) {
-    const responseRepo = new TareaRepository().eliminar(id);
+    const responseRepo = new TareaRepository();
     await responseRepo.eliminar(id);
   }
 

@@ -33,8 +33,8 @@ export class PersonasDBStorage {
     return this.collection.find({ id: identificadorBuscado }).toArray();
   }
 
-  eliminar(identificador) {
-    this.collection.deleteOne(identificador);
+  eliminar(identificadorBuscado) {
+    this.collection.deleteOne(identificadorBuscado);
   }
 
   asignarTarea(idPersona, tarea) {

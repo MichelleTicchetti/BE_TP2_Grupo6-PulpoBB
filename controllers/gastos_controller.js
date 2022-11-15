@@ -29,7 +29,7 @@ export const crearGastosController = async (req, res, next) => {
 export const eliminarGastosController = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar gasto");
 
-  const id = req.body;
+  const { id } = req.body;
 
   try {
     const responseObject = await new GastosUseCase().eliminar(id);
