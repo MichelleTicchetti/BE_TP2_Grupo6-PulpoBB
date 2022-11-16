@@ -26,4 +26,12 @@ export class PulpoBbRepository {
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }
+
+  eliminarTodos() {
+    this.storage.eliminarTodos();
+  }
+
+  asignarTarea(pulpitoId, idTarea) {
+    this.storage.asignarTarea(pulpitoId, idTarea);
+  }
 }

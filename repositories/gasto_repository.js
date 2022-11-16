@@ -26,4 +26,8 @@ export class GastoRepository {
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }
+
+  eliminarTodos() {
+    this.storage.eliminarTodos();
+  }
 }

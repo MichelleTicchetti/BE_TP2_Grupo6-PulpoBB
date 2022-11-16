@@ -4,6 +4,7 @@ import {
   eliminarGastosController,
   buscarGastoIDController,
   buscarGastosController,
+  eliminarTodosGastosController,
 } from "../controllers/gastos_controller.js";
 import { GastoRepository } from "../repositories/gasto_repository.js";
 const router = express.Router();
@@ -70,6 +71,21 @@ router.delete(
     }
   },
   eliminarGastosController
+);
+
+router.delete(
+  "/delete/all",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  eliminarTodosGastosController
 );
 
 export default router;

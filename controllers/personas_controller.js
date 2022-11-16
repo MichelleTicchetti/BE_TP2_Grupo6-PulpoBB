@@ -68,3 +68,14 @@ export const eliminarPersonasController = async (req, res, next) => {
     res.status(500).json({ message: e.message });
   }
 };
+
+export const eliminarTodosPersonasController = async (req, res, next) => {
+  console.log("ejecución caso de uso: borrar todas las personas");
+
+  try {
+    const responseObject = await new PersonasUseCase().eliminarTodos();
+    res.status(201).json(responseObject);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+};

@@ -32,4 +32,8 @@ export class GastosDBStorage {
   eliminar(identificador) {
     this.collection.deleteOne({ id: identificador });
   }
+
+  eliminarTodos() {
+    this.collection.deleteMany({});
+  }
 }

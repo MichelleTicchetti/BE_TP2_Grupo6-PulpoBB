@@ -19,6 +19,11 @@ export class PersonasUseCase {
     await responseRepo.eliminar(id);
   }
 
+  async eliminarTodos() {
+    const responseRepo = new PersonaRepository();
+    await responseRepo.eliminarTodos();
+  }
+
   listar() {
     return new PersonaRepository().buscarTodos();
   }

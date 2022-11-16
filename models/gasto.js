@@ -9,9 +9,4 @@ export class Gasto {
     this.gastoSaldado = false;
     this.fechaCreacion = Date();
   }
-
-  saldarGasto() {
-    this.gastoSaldado = true;
-    this.monto = 0;
-  }
 }

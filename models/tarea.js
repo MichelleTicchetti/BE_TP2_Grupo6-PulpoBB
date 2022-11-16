@@ -22,8 +22,4 @@ export class Tarea {
     this.nombreCreador = nombreCreador;
     this.pulpitoId = pulpitoId;
   }
-
-  asignarPersona(persona) {
-    this.personaAsignada = persona;
-  }
 }
