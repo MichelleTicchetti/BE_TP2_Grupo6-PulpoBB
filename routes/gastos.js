@@ -15,7 +15,7 @@ router.get("/", async function (req, res, next) {
 
 // GET /gastos/:id
 router.get(
-  "/id/:identificador",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -31,7 +31,7 @@ router.get(
 
 // POST caso de uso: agregar un gasto
 router.post(
-  "/",
+  "/crear/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -47,7 +47,7 @@ router.post(
 
 //DELETE caso de uso: eliminar un gasto por id
 router.delete(
-  "/",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

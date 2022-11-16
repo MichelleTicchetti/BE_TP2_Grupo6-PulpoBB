@@ -16,10 +16,11 @@ export const buscarTareasController = async (req, res, next) => {
 export const buscarTareaIdController = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar tarea por id");
 
-  const { identificador } = req.params;
+  const { id } = req.params;
 
   try {
-    const responseObject = await new TareasUseCase().buscar(identificador);
+    const responseObject = await new TareasUseCase().buscar(id);
+    console.log(responseObject);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

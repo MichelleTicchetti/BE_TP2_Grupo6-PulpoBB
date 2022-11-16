@@ -23,8 +23,8 @@ export class PulpoBbsUseCase {
     await responseRepo.guardar(pulpito);
   }
 
-  async eliminar(id) {
+  async eliminar(nombre) {
     const responseRepo = new PulpoBbRepository();
-    await responseRepo.eliminar(id);
+    await responseRepo.eliminar(nombre);
   }
 }

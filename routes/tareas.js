@@ -18,10 +18,10 @@ const router = express.Router();
 // });
 
 // // GET /tareas/:detalle
-// router.get("/:detalle", async function (req, res, next) {
-//   const { detalle } = req.params;
+// router.get("/id/:identificador", async function (req, res, next) {
+//   const { identificador } = req.params;
 
-//   const responseRepo = await new TareaRepository().buscarUno(detalle);
+//   const responseRepo = await new TareaRepository().buscarUno(identificador);
 
 //   res.json(responseRepo);
 // });
@@ -42,9 +42,9 @@ router.get(
   buscarTareasController
 );
 
-//GET /tareas/id/:identificador
+//GET
 router.get(
-  "/id/:identificador",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -92,7 +92,7 @@ router.get(
 
 // POST caso de uso: crear tarea
 router.post(
-  "/",
+  "/crear/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -108,7 +108,7 @@ router.post(
 
 //DELETE caso de uso: eliminar una tarea por id
 router.delete(
-  "/",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

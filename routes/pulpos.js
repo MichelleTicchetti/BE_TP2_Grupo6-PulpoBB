@@ -25,7 +25,7 @@ router.get(
 
 // GET /pulpos/nombre/:nombre
 router.get(
-  "/nombre/:nombre",
+  "/:nombre",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -41,7 +41,7 @@ router.get(
 
 // POST caso de uso: agregar un pulpoBb
 router.post(
-  "/",
+  "/crear/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -57,7 +57,7 @@ router.post(
 
 //DELETE caso de uso: eliminar un pulpoBB por id
 router.delete(
-  "/",
+  "/:nombre",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

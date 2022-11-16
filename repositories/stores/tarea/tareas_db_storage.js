@@ -25,8 +25,8 @@ export class TareasDBStorage {
     return await this.collection.find({}).toArray();
   }
 
-  async buscarUno(identificador) {
-    return await this.collection.find({ idTarea: identificador }).toArray();
+  buscarUno(identificador) {
+    return this.collection.find({ idTarea: identificador }).toArray();
   }
 
   listarPorEstado(estado) {
@@ -38,7 +38,7 @@ export class TareasDBStorage {
   }
 
   eliminar(identificador) {
-    this.collection.deleteOne(identificador);
+    this.collection.deleteOne({ idTarea: identificador });
   }
 
   asignarPersona(idTarea, persona) {

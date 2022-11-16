@@ -91,17 +91,18 @@ export class Persona {
     return tareaCreada;
   }
 
-  reasignarTarea(pulpitoId, idTarea, idNuevoAsignado) {
-    const miPulpito = this.buscarPulpito(pulpitoId);
-    const tarea = miPulpito.buscarTarea(idTarea);
-    const nuevoAsignado = miPulpito.buscarCuidador(idNuevoAsignado);
-    const asignacionTarea = new AsociarTarea(
-      tarea,
-      miPulpito,
-      nuevoAsignado.id
-    );
-    asignacionTarea.run();
-  }
+  // caso de uso
+  // reasignarTarea(pulpitoId, idTarea, idNuevoAsignado) {
+  //   const miPulpito = this.buscarPulpito(pulpitoId);
+  //   const tarea = miPulpito.buscarTarea(idTarea);
+  //   const nuevoAsignado = miPulpito.buscarCuidador(idNuevoAsignado);
+  //   const asignacionTarea = new AsociarTarea(
+  //     tarea,
+  //     miPulpito,
+  //     nuevoAsignado.id
+  //   );
+  //   asignacionTarea.run();
+  // }
 
   cerrarTarea(pulpitoId, idTareaCerrar) {
     const miPulpito = this.buscarPulpito(pulpitoId);

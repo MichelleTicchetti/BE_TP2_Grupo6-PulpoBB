@@ -29,8 +29,8 @@ export class TareasUseCase {
     return new TareaRepository().buscarTodos();
   }
 
-  buscar(identificador) {
-    return new TareaRepository().buscarUno(identificador);
+  async buscar(identificador) {
+    return await new TareaRepository().buscarUno(identificador);
   }
 
   async listarPorEstado(estado) {

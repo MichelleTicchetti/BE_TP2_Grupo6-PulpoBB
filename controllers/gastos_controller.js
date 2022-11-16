@@ -3,10 +3,10 @@ import { GastosUseCase } from "../use_cases/gastos.js";
 export const buscarGastoIDController = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar gasto por id ");
 
-  const { identificador } = req.param;
+  const { id } = req.param;
 
   try {
-    const responseObject = await new GastosUseCase().buscar(identificador);
+    const responseObject = await new GastosUseCase().buscar(id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
