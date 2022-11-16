@@ -3,15 +3,26 @@ import {
   crearGastosController,
   eliminarGastosController,
   buscarGastoIDController,
+  buscarGastosController,
 } from "../controllers/gastos_controller.js";
 import { GastoRepository } from "../repositories/gasto_repository.js";
 const router = express.Router();
 
 //GET /gastos/
-router.get("/", async function (req, res, next) {
-  const responseRepo = await new GastoRepository().buscarTodos();
-  res.json(responseRepo);
-});
+router.get(
+  "/",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  buscarGastosController
+);
 
 // GET /gastos/:id
 router.get(
@@ -31,7 +42,7 @@ router.get(
 
 // POST caso de uso: agregar un gasto
 router.post(
-  "/crear/:id",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

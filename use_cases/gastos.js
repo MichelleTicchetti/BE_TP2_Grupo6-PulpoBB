@@ -16,4 +16,8 @@ export class GastosUseCase {
     const responseRepo = new GastoRepository();
     await responseRepo.eliminar(id);
   }
+
+  listar() {
+    return new GastoRepository().buscarTodos();
+  }
 }

@@ -27,10 +27,6 @@ export class TareaRepository {
     return this.storage.listarPorEstado(estado);
   }
 
-  listarPorPrioridad(prioridad) {
-    return this.storage.listarPorPrioridad(prioridad);
-  }
-
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }

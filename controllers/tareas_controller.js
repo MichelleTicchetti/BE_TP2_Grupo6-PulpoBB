@@ -40,32 +40,15 @@ export const buscarTareasEstadoController = async (req, res, next) => {
   }
 };
 
-export const buscarTareasPrioridadController = async (req, res, next) => {
-  console.log("ejecución caso de uso: buscar tarea por prioridad");
-
-  const { prioridad } = req.params;
-
-  try {
-    const responseObject = await new TareasUseCase().listarPorPrioridad(
-      prioridad
-    );
-    res.status(201).json(responseObject);
-  } catch (e) {
-    res.status(500).json({ message: e.message });
-  }
-};
-
 export const crearTareasController = async (req, res, next) => {
   console.log("ejecución caso de uso: crear tarea");
 
-  const { idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador } =
-    req.body;
+  const { idTarea, detalle, fechaCaducidad, pulpitoId, creador } = req.body;
 
   try {
     const responseObject = await new TareasUseCase().crear(
       idTarea,
       detalle,
-      prioridad,
       fechaCaducidad,
       pulpitoId,
       creador

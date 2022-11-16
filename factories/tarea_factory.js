@@ -3,18 +3,11 @@ import { Tarea } from "../models/tarea.js";
 export class TareaFactory {
   constructor() {}
 
-  crear(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador) {
-    if (!idTarea || !detalle || !prioridad || !pulpitoId) {
+  crear(idTarea, detalle, fechaCaducidad, pulpitoId, creador) {
+    if (!idTarea || !detalle || !pulpitoId) {
       throw new Error();
     }
 
-    return new Tarea(
-      idTarea,
-      detalle,
-      prioridad,
-      fechaCaducidad,
-      pulpitoId,
-      creador
-    );
+    return new Tarea(idTarea, detalle, fechaCaducidad, pulpitoId, creador);
   }
 }

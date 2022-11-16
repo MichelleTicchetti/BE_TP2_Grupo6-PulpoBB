@@ -41,7 +41,7 @@ router.get(
 
 // POST caso de uso: agregar un pulpoBb
 router.post(
-  "/crear/:id",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

@@ -36,8 +36,4 @@ export class TareasUseCase {
   async listarPorEstado(estado) {
     return await new TareaRepository().listarPorEstado(estado);
   }
-
-  async listarPorPrioridad(prioridad) {
-    return await new TareaRepository().listarPorPrioridad(prioridad);
-  }
 }
