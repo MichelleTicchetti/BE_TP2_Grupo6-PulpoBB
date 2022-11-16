@@ -8,7 +8,18 @@ import {
 } from "../controllers/pulposBB_controller.js";
 const router = express.Router();
 
-//GET /pulpos/
+/**
+ * @openapi
+ * /pulpos:
+ *   get:
+ *     description: Devuelve todos los pulpos
+ *     responses:
+ *       200:
+ *         description: OK
+ *       404:
+ *         description: Not Found
+ *
+ */
 router.get(
   "/",
   (req, res, next) => {
@@ -24,7 +35,25 @@ router.get(
   buscarPulposController
 );
 
-// GET /pulpos/nombre/:nombre
+/**
+ * @openapi
+ * /pulpos/:nombre:
+ *   get:
+ *     description: Busca un pulpo por nombre
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               id:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: OK
+ *       204:
+ *         description: No Content
+ */
 router.get(
   "/:nombre",
   (req, res, next) => {
@@ -40,9 +69,37 @@ router.get(
   buscarPulpoIdController
 );
 
-// POST caso de uso: agregar un pulpoBb
+/**
+ * @openapi
+ * /pulpos:
+ *   post:
+ *     description: Crea un pulpo
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               id:
+ *                 type: integer
+ *               fechaNac:
+ *                 type: string
+ *               nombre:
+ *                  type: string
+ *               peso:
+ *                  type: string
+ *               carnetObraSocial:
+ *                  type: string
+ *               estatura:
+ *                  type: integer
+ *     responses:
+ *       200:
+ *         description: OK
+ *       422:
+ *         description: Unprocessable Entity
+ */
 router.post(
-  "/:id",
+  "/",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -56,7 +113,25 @@ router.post(
   crearPulpoBbsController
 );
 
-//DELETE caso de uso: eliminar un pulpoBB por id
+/**
+ * @openapi
+ * /pulpos/:nombre:
+ *   delete:
+ *     description: Elimina un pulpo por nombre
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombre:
+ *                 type: string
+ *     responses:
+ *       204:
+ *         description: OK
+ *       404:
+ *         description: Not Found
+ */
 router.delete(
   "/:nombre",
   (req, res, next) => {
@@ -72,8 +147,19 @@ router.delete(
   eliminarPulpoBbsController
 );
 
+/**
+ * @openapi
+ * /pulpos/all:
+ *   delete:
+ *     description: Elimina todos los pulpos
+ *     responses:
+ *       204:
+ *         description: OK
+ *       404:
+ *         description: Not Found
+ */
 router.delete(
-  "/delete/all",
+  "/all",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
