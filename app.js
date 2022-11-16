@@ -29,8 +29,22 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "public")));
 
-// app.use("/", indexRouter);
-// app.use("/users", usersRouter);
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "PulpoBB",
+      version: "1.0.0",
+    },
+  },
+  apis: ["./routes/*"], // files containing annotations as above
+};
+
+const openapiSpecification = swaggerJsdoc(options);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 //2.la ruta personas, va a estar asociada a personasRouter --> que es la asociacion de un callback a la raiz de las personas
 app.use("/personas", personasRouter);
