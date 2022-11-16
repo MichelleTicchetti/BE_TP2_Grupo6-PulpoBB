@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { PersonaRepository } from "../../persona_repository.js";
 import { TareaRepository } from "../../tarea_repository.js";
 
 export class PulpoBbsDBStorage {
@@ -43,6 +44,15 @@ export class PulpoBbsDBStorage {
     this.collection.updateOne(
       { id: pulpitoId },
       { $set: { tareas: [tareaAsignar] } }
+    );
+  }
+
+  async asociarPersona(idPulpo, idPersona) {
+    const personaAsociar = await new PersonaRepository().buscarUno(idPersona);
+    console.log(personaAsociar);
+    this.collection.updateOne(
+      { id: idPulpo },
+      { $set: { personas: [personaAsociar] } }
     );
   }
 }

@@ -21,7 +21,6 @@ export const buscarTareaIdController = async (req, res, next) => {
 
   try {
     const responseObject = await new TareasUseCase().buscar(id);
-    console.log(responseObject);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

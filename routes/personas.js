@@ -7,7 +7,6 @@ import {
   buscarPersonasRolController,
   eliminarTodosPersonasController,
 } from "../controllers/personas_controller.js";
-import { PersonaRepository } from "../repositories/persona_repository.js";
 const router = express.Router();
 
 //GET /personas/
