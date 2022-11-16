@@ -1,4 +1,5 @@
 import { PersonasUseCase } from "../use_cases/personas.js";
+import { PulpoBbsUseCase } from "../use_cases/pulpos.js";
 
 export const buscarPersonasController = async (req, res, next) => {
   console.log("ejecución caso de uso: listar personas");
@@ -40,7 +41,7 @@ export const buscarPersonaIDController = async (req, res, next) => {
 export const crearPersonasController = async (req, res, next) => {
   console.log("ejecución caso de uso: crear persona");
 
-  const { id, nombreApellido, email, vinculo, rol } = req.body;
+  const { id, nombreApellido, email, vinculo, rol, idPulpo } = req.body;
 
   try {
     const responseObject = await new PersonasUseCase().crear(
@@ -48,8 +49,10 @@ export const crearPersonasController = async (req, res, next) => {
       nombreApellido,
       email,
       vinculo,
-      rol
+      rol,
+      idPulpo
     );
+    await new PulpoBbsUseCase().asociarPersona(idPulpo, id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

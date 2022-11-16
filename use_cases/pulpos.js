@@ -36,4 +36,8 @@ export class PulpoBbsUseCase {
   async asignarTarea(pulpitoId, idTarea) {
     await new PulpoBbRepository().asignarTarea(pulpitoId, idTarea);
   }
+
+  async asociarPersona(idPulpo, idPersona) {
+    await new PulpoBbRepository().asociarPersona(idPulpo, idPersona);
+  }
 }

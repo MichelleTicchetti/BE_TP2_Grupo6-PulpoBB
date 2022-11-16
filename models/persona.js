@@ -7,8 +7,8 @@ import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
 import { CerrarTarea } from "../commands/cerrarTarea.js";
 
 export class Persona {
-  constructor(id, nombreApellido, email, vinculo, rol) {
-    if (!id || !nombreApellido || !email || !vinculo || !rol) {
+  constructor(id, nombreApellido, email, vinculo, rol, idPulpo) {
+    if (!id || !nombreApellido || !email || !vinculo || !rol || !idPulpo) {
       throw new Error();
     }
     this.id = id;
@@ -18,12 +18,6 @@ export class Persona {
     this.pulpitos = [];
     this.tareas = [];
     this.rol = rol;
+    this.idPulpo = idPulpo;
   }
-
-  // cerrarTarea(pulpitoId, idTareaCerrar) {
-  //   const miPulpito = this.buscarPulpito(pulpitoId);
-  //   const miTarea = miPulpito.buscarTarea(idTareaCerrar);
-  //   const finalizacionTarea = new CerrarTarea(miTarea);
-  //   finalizacionTarea.run();
-  // }
 }

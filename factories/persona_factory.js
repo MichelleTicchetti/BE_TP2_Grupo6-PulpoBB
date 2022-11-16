@@ -4,13 +4,13 @@ import { USUARIOS } from "../models/usuario.js";
 export class PersonaFactory {
   constructor() {}
 
-  crear(id, nombreApellido, email, vinculo, rol) {
-    if (!id || !nombreApellido || !email || !vinculo || !rol) {
+  crear(id, nombreApellido, email, vinculo, rol, idPulpo) {
+    if (!id || !nombreApellido || !email || !vinculo || !rol || !idPulpo) {
       throw new Error();
     }
 
     if (rol == USUARIOS.ADMINISTRADOR || rol == USUARIOS.CUIDADOR) {
-      return new Persona(id, nombreApellido, email, vinculo, rol);
+      return new Persona(id, nombreApellido, email, vinculo, rol, idPulpo);
     } else {
       throw new Error("Rol inexistente");
     }
