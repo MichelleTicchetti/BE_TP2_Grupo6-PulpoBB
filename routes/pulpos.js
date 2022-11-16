@@ -4,6 +4,7 @@ import {
   buscarPulpoIdController,
   crearPulpoBbsController,
   eliminarPulpoBbsController,
+  eliminarTodosPulposController,
 } from "../controllers/pulposBB_controller.js";
 const router = express.Router();
 
@@ -69,6 +70,21 @@ router.delete(
     }
   },
   eliminarPulpoBbsController
+);
+
+router.delete(
+  "/delete/all",
+  (req, res, next) => {
+    console.log("verificar auth");
+    let valid = true;
+
+    if (valid) {
+      next();
+    } else {
+      res.status(401).send();
+    }
+  },
+  eliminarTodosPulposController
 );
 
 export default router;

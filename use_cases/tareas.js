@@ -1,5 +1,5 @@
 import { TareaFactory } from "../factories/tarea_factory.js";
-import { PersonaRepository } from "../repositories/persona_repository.js";
+import { PulpoBbRepository } from "../repositories/pulpobb_repository.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export class TareasUseCase {
@@ -12,6 +12,7 @@ export class TareasUseCase {
       pulpitoId,
       creador
     );
+
     const responseRepo = new TareaRepository();
     await responseRepo.guardar(tarea);
   }
@@ -19,6 +20,11 @@ export class TareasUseCase {
   async eliminar(id) {
     const responseRepo = new TareaRepository();
     await responseRepo.eliminar(id);
+  }
+
+  async eliminarTodos() {
+    const responseRepo = new TareaRepository();
+    await responseRepo.eliminarTodos();
   }
 
   async asignarPersona(idTarea, persona) {
@@ -35,5 +41,9 @@ export class TareasUseCase {
 
   async listarPorEstado(estado) {
     return await new TareaRepository().listarPorEstado(estado);
+  }
+
+  async finalizarTarea(idTarea) {
+    return await new TareaRepository().finalizarTarea(idTarea);
   }
 }

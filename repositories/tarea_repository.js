@@ -31,7 +31,19 @@ export class TareaRepository {
     this.storage.eliminar(identificador);
   }
 
+  eliminarTodos() {
+    this.storage.eliminarTodos();
+  }
+
   asignarPersona(idTarea, persona) {
     this.storage.asignarPersona(idTarea, persona);
+  }
+
+  asignarPulpo(idTarea, pulpo) {
+    this.storage.asignarPulpo(idTarea, pulpo);
+  }
+
+  finalizarTarea(idTarea) {
+    this.storage.finalizarTarea(idTarea);
   }
 }

@@ -27,4 +27,13 @@ export class PulpoBbsUseCase {
     const responseRepo = new PulpoBbRepository();
     await responseRepo.eliminar(nombre);
   }
+
+  async eliminarTodos() {
+    const responseRepo = new PulpoBbRepository();
+    await responseRepo.eliminarTodos();
+  }
+
+  async asignarTarea(pulpitoId, idTarea) {
+    await new PulpoBbRepository().asignarTarea(pulpitoId, idTarea);
+  }
 }

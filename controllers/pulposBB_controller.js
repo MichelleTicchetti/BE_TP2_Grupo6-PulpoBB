@@ -56,3 +56,14 @@ export const eliminarPulpoBbsController = async (req, res, next) => {
     res.status(500).json({ message: e.message });
   }
 };
+
+export const eliminarTodosPulposController = async (req, res, next) => {
+  console.log("ejecución caso de uso: borrar todos los pulpos");
+
+  try {
+    const responseObject = await new PulpoBbsUseCase().eliminarTodos();
+    res.status(201).json(responseObject);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+};

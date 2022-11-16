@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { TareaRepository } from "../../tarea_repository.js";
 
 export class PulpoBbsDBStorage {
   constructor() {
@@ -31,5 +32,17 @@ export class PulpoBbsDBStorage {
 
   eliminar(identificador) {
     this.collection.deleteOne({ nombre: identificador });
+  }
+
+  eliminarTodos() {
+    this.collection.deleteMany({});
+  }
+
+  asignarTarea(pulpitoId, idTarea) {
+    const tareaAsignar = new TareaRepository().buscarUno(idTarea);
+    this.collection.updateOne(
+      { id: pulpitoId },
+      { $set: { tareas: [tareaAsignar] } }
+    );
   }
 }

@@ -41,10 +41,21 @@ export class TareasDBStorage {
     this.collection.deleteOne({ idTarea: identificador });
   }
 
+  eliminarTodos() {
+    this.collection.deleteMany({});
+  }
+
   asignarPersona(idTarea, persona) {
     this.collection.updateOne(
       { idTarea: idTarea },
       { $set: { personaAsignada: persona } }
+    );
+  }
+
+  finalizarTarea(id) {
+    this.collection.updateOne(
+      { idTarea: id },
+      { $set: { estado: "Finalizada" } }
     );
   }
 }
