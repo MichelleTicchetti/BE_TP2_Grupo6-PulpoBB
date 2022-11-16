@@ -42,7 +42,7 @@ router.get(
 
 //GET /personas/:identificador
 router.get(
-  "/id/:identificador",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -74,7 +74,7 @@ router.get(
 
 // POST caso de uso: agregar una persona
 router.post(
-  "/",
+  "/crear/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -90,7 +90,7 @@ router.post(
 
 //DELETE caso de uso: eliminar una persona por id
 router.delete(
-  "/",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

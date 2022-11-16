@@ -29,12 +29,12 @@ export class PersonasDBStorage {
     return this.collection.find({ rol: rolBuscado }).toArray();
   }
 
-  buscarUno(identificadorBuscado) {
-    return this.collection.find({ id: identificadorBuscado }).toArray();
+  buscarUno(identificador) {
+    return this.collection.find({ id: identificador }).toArray();
   }
 
   eliminar(identificador) {
-    this.collection.deleteOne(identificador);
+    this.collection.deleteOne({ id: identificador });
   }
 
   asignarTarea(idPersona, tarea) {

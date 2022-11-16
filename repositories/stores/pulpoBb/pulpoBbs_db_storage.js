@@ -30,6 +30,6 @@ export class PulpoBbsDBStorage {
   }
 
   eliminar(identificador) {
-    this.collection.deleteOne(identificador);
+    this.collection.deleteOne({ nombre: identificador });
   }
 }

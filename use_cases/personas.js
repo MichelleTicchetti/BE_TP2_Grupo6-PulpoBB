@@ -15,7 +15,7 @@ export class PersonasUseCase {
   }
 
   async eliminar(id) {
-    const responseRepo = new PersonaRepository().eliminar(id);
+    const responseRepo = new PersonaRepository();
     await responseRepo.eliminar(id);
   }
 

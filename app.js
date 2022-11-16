@@ -10,6 +10,7 @@ const { logger } = morgan;
 
 // const indexRouter = await (import('./routes/index.js'))
 // const usersRouter = await (import('./routes/users.js'))
+
 //1. un objeto, que es un callback, lo asociamos a una ruta
 const personasRouter = await (await import("./routes/personas.js")).default;
 const tareasRouter = await (await import("./routes/tareas.js")).default;
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // app.use("/", indexRouter);
 // app.use("/users", usersRouter);
+
 //2.la ruta personas, va a estar asociada a personasRouter --> que es la asociacion de un callback a la raiz de las personas
 app.use("/personas", personasRouter);
 app.use("/tareas", tareasRouter);
