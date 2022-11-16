@@ -7,24 +7,8 @@ import {
   buscarTareasController,
   buscarTareaIdController,
   buscarTareasEstadoController,
-  buscarTareasPrioridadController,
 } from "../controllers/tareas_controller.js";
 const router = express.Router();
-
-// //GET /tareas/
-// router.get("/", async function (req, res, next) {
-//   const responseRepo = await new TareaRepository().buscarTodos();
-//   res.json(responseRepo);
-// });
-
-// // GET /tareas/:detalle
-// router.get("/id/:identificador", async function (req, res, next) {
-//   const { identificador } = req.params;
-
-//   const responseRepo = await new TareaRepository().buscarUno(identificador);
-
-//   res.json(responseRepo);
-// });
 
 //GET /tareas/
 router.get(
@@ -74,25 +58,9 @@ router.get(
   buscarTareasEstadoController
 );
 
-//GET /tareas/prioridad/:prioridad
-router.get(
-  "/prioridad/:prioridad",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
-  buscarTareasPrioridadController
-);
-
 // POST caso de uso: crear tarea
 router.post(
-  "/crear/:id",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -124,7 +92,7 @@ router.delete(
 
 // PUT caso de uso: asignar tarea
 router.put(
-  "/",
+  "/:idTarea/:idPersona",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

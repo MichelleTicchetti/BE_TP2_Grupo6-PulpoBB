@@ -26,7 +26,7 @@ export class GastosDBStorage {
   }
 
   async buscarUno(identificador) {
-    return this.collection.find({ id: identificador }).toArray();
+    return this.collection.find({ id: parseInt(identificador) }).toArray();
   }
 
   eliminar(identificador) {

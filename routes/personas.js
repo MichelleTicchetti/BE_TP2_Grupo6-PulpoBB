@@ -74,7 +74,7 @@ router.get(
 
 // POST caso de uso: agregar una persona
 router.post(
-  "/crear/:id",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
