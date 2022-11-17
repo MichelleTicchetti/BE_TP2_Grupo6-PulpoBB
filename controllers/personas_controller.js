@@ -52,7 +52,7 @@ export const crearPersonasController = async (req, res, next) => {
       rol,
       idPulpo
     );
-    await new PulpoBbsUseCase().asociarPersona(idPulpo, id);
+    // await new PulpoBbsUseCase().asociarPersona(idPulpo, id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
