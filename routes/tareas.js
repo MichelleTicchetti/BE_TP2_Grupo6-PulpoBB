@@ -187,7 +187,7 @@ router.delete(
 
 /**
  * @openapi
- * /tareas/all:
+ * /tareas:
  *   delete:
  *     description: Elimina todas las tareas
  *     responses:
@@ -197,7 +197,7 @@ router.delete(
  *         description: Not Found
  */
 router.delete(
-  "/all",
+  "/",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

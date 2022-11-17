@@ -1,4 +1,5 @@
 import { PulpoBbFactory } from "../factories/pulpobb_factory.js";
+import { PersonaRepository } from "../repositories/persona_repository.js";
 import { PulpoBbRepository } from "../repositories/pulpobb_repository.js";
 
 export class PulpoBbsUseCase {
@@ -38,6 +39,8 @@ export class PulpoBbsUseCase {
   }
 
   async asociarPersona(idPulpo, idPersona) {
-    await new PulpoBbRepository().asociarPersona(idPulpo, idPersona);
+    const persona = await new PersonaRepository().buscarUno(idPersona);
+    const pulpo = await new PulpoBbRepository().buscarUno(idPulpo);
+    await new PulpoBbRepository().asociarPersona(pulpo, persona);
   }
 }

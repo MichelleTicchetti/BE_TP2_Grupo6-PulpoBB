@@ -149,7 +149,7 @@ router.delete(
 
 /**
  * @openapi
- * /pulpos/all:
+ * /pulpos:
  *   delete:
  *     description: Elimina todos los pulpos
  *     responses:
@@ -159,7 +159,7 @@ router.delete(
  *         description: Not Found
  */
 router.delete(
-  "/all",
+  "/",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
