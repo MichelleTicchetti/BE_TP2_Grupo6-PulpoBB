@@ -154,7 +154,7 @@ router.delete(
  *         description: Not Found
  */
 router.delete(
-  "/all",
+  "/",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
