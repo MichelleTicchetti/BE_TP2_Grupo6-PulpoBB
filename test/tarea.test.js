@@ -102,7 +102,6 @@ describe("Tarea", () => {
       assert.equal(atributosDeLaTarea[5], "fechaCaducidad");
     });
   });
-
   describe("#constructor()", () => {
     describe("con datos válidos", () => {
       it("crea tarea", () => {

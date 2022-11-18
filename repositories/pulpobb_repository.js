@@ -6,11 +6,6 @@ export class PulpoBbRepository {
     this.storage = new PulpoBbsStorageFactory(tipo).storage();
   }
 
-  // constructor(tipo = "array") {
-  //   // Almacen
-  //   this.storage = new PulpoBbsStorageFactory(tipo).storage();
-  // }
-
   guardar(pulpoBb) {
     this.storage.guardar(pulpoBb);
   }
