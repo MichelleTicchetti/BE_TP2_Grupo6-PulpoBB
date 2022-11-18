@@ -1,5 +1,3 @@
-import { Gasto } from "./gasto.js";
-import { USUARIOS } from "./usuario.js";
 export class PulpoBb {
   constructor(id, fechaNac, nombre, peso, carnetObraSocial, estatura) {
     if (

@@ -22,4 +22,13 @@ export class Tarea {
     this.nombreCreador = nombreCreador;
     this.pulpitoId = pulpitoId;
   }
+
+  asignarPersona(personaAsignada) {
+    this.personaAsignada = personaAsignada;
+  }
+
+  finalizar() {
+    this.estado = "Finalizada";
+    this.fechaCierre = Date();
+  }
 }

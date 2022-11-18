@@ -6,7 +6,7 @@ export class PersonaFactory {
 
   crear(id, nombreApellido, email, vinculo, rol, idPulpo) {
     if (!id || !nombreApellido || !email || !vinculo || !rol || !idPulpo) {
-      throw new Error();
+      throw new Error("Faltan atributos");
     }
 
     if (rol == USUARIOS.ADMINISTRADOR || rol == USUARIOS.CUIDADOR) {

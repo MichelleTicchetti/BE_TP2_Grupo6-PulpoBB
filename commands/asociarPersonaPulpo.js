@@ -1,13 +1,11 @@
-import { USUARIOS } from "../models/usuario.js";
-
 export class AsociarPersonaPulpo {
-  constructor(persona, pulpoBb) {
+  constructor(persona, pulpo) {
     this.persona = persona;
-    this.pulpoBb = pulpoBb;
+    this.pulpo = pulpo;
   }
 
   run() {
-    this.persona.pulpitos.push(this.pulpoBb);
-    this.pulpoBb.personas.push(this.persona);
+    this.persona.pulpitos.push(this.pulpo);
+    this.pulpo.personas.push(this.persona);
   }
 }

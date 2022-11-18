@@ -4,9 +4,11 @@ export class CerrarTarea {
   }
 
   run() {
+    //regla de negocio
     if (this.tarea.estado === "Pendiente") {
-      this.tarea.estado = "Finalizada";
-      this.tarea.fechaCierre = Date();
+      this.tarea.finalizar();
+    } else {
+      throw new Error("La tarea ya se encuentra finalizada");
     }
     return this.tarea;
   }

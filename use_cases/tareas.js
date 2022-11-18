@@ -1,5 +1,4 @@
 import { TareaFactory } from "../factories/tarea_factory.js";
-import { PulpoBbRepository } from "../repositories/pulpobb_repository.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export class TareasUseCase {

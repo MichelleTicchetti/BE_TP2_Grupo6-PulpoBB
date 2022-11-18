@@ -1,12 +1,16 @@
 export class AsociarTarea {
-  constructor(tareaCreada, pulpoBb, personaAsignada) {
-    this.tareaCreada = tareaCreada;
-    this.pulpoBb = pulpoBb;
-    this.personaAsignada = personaAsignada;
+  constructor(tarea, persona) {
+    this.tarea = tarea;
+    this.persona = persona;
   }
 
   run() {
-    this.tareaCreada.asignarPersona(this.personaAsignada);
-    this.pulpoBb.tareas.push(this.tareaCreada);
+    //regla de negocio
+    if (this.tarea.estado === "Pendiente") {
+      this.tarea.asignarPersona(persona);
+    } else {
+      throw new Error("La tarea ya se encuentra finalizada");
+    }
+    return this.tarea;
   }
 }

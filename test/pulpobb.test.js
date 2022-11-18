@@ -1,5 +1,5 @@
 import assert, { AssertionError, notEqual } from "assert";
-import { PulpoBb } from "../../models/pulpobb.js";
+import { PulpoBb } from "../models/pulpobb.js";
 import chai from "chai";
 
 var expect = chai.expect;
@@ -92,46 +92,34 @@ describe("PulpoBb", () => {
         "50cm"
       );
       const atributoDelPulpo = Object.keys(pulpo);
-      // Act
-      //Assert
-      //assert.notEqual(atributoDelPulpo, null); este valida que no sea NULL
-      //expect(atributoDelPulpo).equal('1.77'); este valida el valor del atributo
+
       assert.equal(atributoDelPulpo[5], "estatura");
     });
   });
+  describe("#constructor()", () => {
+    describe("con datos válidos", () => {
+      it("crea Pulpo", () => {
+        const pulpo = new PulpoBb(
+          "1",
+          "14-dic-1984",
+          "Joaquin",
+          "3kg",
+          "123456789",
+          "50cm"
+        );
 
-  describe("#crearGasto()", () => {
-    it("crear Gasto", () => {
-      //Arange
-      const pulpo = new PulpoBb(
-        "1",
-        "14-dic-1984",
-        "Joaquin",
-        "3kg",
-        "123456789",
-        "50cm"
-      );
-      pulpo.crearGasto(55, "una compra cualquiera");
-      pulpo.crearGasto(33, "otra compra");
-      // Act
-      expect(pulpo.gastos.length).to.equal(2);
+        expect(pulpo).to.have.property("id").with.equal("1");
+        expect(pulpo).to.have.property("nombre").with.equal("Joaquin");
+      });
     });
-  });
-  describe("#mostrarGastototal()", () => {
-    it("mostrarGastototal", () => {
-      //Arange
-      const pulpo = new PulpoBb(
-        "1",
-        "14-dic-1984",
-        "Joaquin",
-        "3kg",
-        "123456789",
-        "50cm"
-      );
-      pulpo.crearGasto(55, "una compra cualquiera");
-      pulpo.crearGasto(100, "otro gasto");
-      // Act
-      expect(pulpo.mostrarGastototal()).to.equal(155);
+    describe("con datos inválidos", () => {
+      it("impide la creación de una Persona", () => {
+        const creador = () => {
+          const pulpoErroneo = new PulpoBb();
+        };
+
+        expect(creador).to.throw(Error);
+      });
     });
   });
 });

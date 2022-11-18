@@ -137,7 +137,7 @@ router.get(
  *         description: Unprocessable Entity
  */
 router.post(
-  "/:id",
+  "/",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
