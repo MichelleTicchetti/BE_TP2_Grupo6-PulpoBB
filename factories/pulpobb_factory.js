@@ -12,7 +12,7 @@ export class PulpoBbFactory {
       !carnetObraSocial ||
       !estatura
     ) {
-      throw new Error();
+      throw new Error("Faltan atributos");
     } else {
       return new PulpoBb(
         id,

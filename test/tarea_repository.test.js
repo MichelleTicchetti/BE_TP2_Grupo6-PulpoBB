@@ -19,8 +19,8 @@ describe("Persona Repository", () => {
         1,
         "Juan Lopez"
       );
-      const arrayTest = new TareaRepository("array");
-      arrayTest.guardar(tarea);
+      const repo = new TareaRepository("array");
+      repo.guardar(tarea);
       expect(await arrayTest.buscarTodos()).to.include(tarea);
     });
   });

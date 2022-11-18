@@ -19,8 +19,8 @@ describe("PulpoBb Repository", () => {
         "34567",
         "1.77"
       );
-      const arrayTest = new PulpoBbRepository("array");
-      arrayTest.guardar(pulpoBb);
+      const repo = new PulpoBbRepository("array");
+      repo.guardar(pulpoBb);
       expect(await arrayTest.buscarTodos()).to.include(pulpoBb);
     });
   });

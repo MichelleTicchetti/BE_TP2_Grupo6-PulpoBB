@@ -44,6 +44,11 @@ export class TareasUseCase {
   }
 
   async finalizarTarea(idTarea) {
-    return await new TareaRepository().finalizarTarea(idTarea);
+    const tarea = this.buscar(idTarea);
+    if (tarea.estado === "Pendiente") {
+      return await new TareaRepository().finalizarTarea(idTarea);
+    } else {
+      throw new Error("La tarea ya se encuentra finalizada");
+    }
   }
 }

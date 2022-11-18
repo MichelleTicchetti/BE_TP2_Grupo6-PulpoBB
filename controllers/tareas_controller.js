@@ -92,6 +92,7 @@ export const asignarPersonaTareaController = async (req, res, next) => {
 
   try {
     const persona = await new PersonaRepository().buscarUno(idPersona);
+
     const tarea = await new TareaRepository().buscarUno(idTarea);
 
     const responseTarea = await new TareasUseCase().asignarPersona(
@@ -99,7 +100,10 @@ export const asignarPersonaTareaController = async (req, res, next) => {
       persona
     );
 
-    await new PersonasUseCase().asignarTarea(idPersona, tarea);
+    const responsePersona = await new PersonasUseCase().asignarTarea(
+      idPersona,
+      tarea
+    );
 
     res.status(201).json(responseTarea);
   } catch (e) {

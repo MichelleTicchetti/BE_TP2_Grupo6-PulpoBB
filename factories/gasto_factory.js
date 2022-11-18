@@ -5,7 +5,7 @@ export class GastoFactory {
 
   crear(id, monto, detalle) {
     if (!id || !monto || !detalle) {
-      throw new Error();
+      throw new Error("Faltan atributos");
     } else {
       return new Gasto(id, monto, detalle);
     }

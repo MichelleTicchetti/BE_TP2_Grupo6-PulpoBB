@@ -19,8 +19,8 @@ describe("Persona Repository", () => {
         "Padre",
         USUARIOS.ADMINISTRADOR
       );
-      const arrayTest = new PersonaRepository("array");
-      arrayTest.guardar(persona);
+      const repo = new PersonaRepository("array");
+      repo.guardar(persona);
       expect(await arrayTest.buscarTodos()).to.include(persona);
     });
   });
