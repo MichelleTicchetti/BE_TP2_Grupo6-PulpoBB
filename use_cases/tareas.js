@@ -1,5 +1,4 @@
 import { TareaFactory } from "../factories/tarea_factory.js";
-import { PulpoBbRepository } from "../repositories/pulpobb_repository.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export class TareasUseCase {
@@ -44,11 +43,6 @@ export class TareasUseCase {
   }
 
   async finalizarTarea(idTarea) {
-    const tarea = this.buscar(idTarea);
-    if (tarea.estado === "Pendiente") {
-      return await new TareaRepository().finalizarTarea(idTarea);
-    } else {
-      throw new Error("La tarea ya se encuentra finalizada");
-    }
+    return await new TareaRepository().finalizarTarea(idTarea);
   }
 }

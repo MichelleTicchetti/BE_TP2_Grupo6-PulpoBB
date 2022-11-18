@@ -40,8 +40,4 @@ export class PersonasDBStorage {
   eliminarTodos() {
     this.collection.deleteMany({});
   }
-
-  asignarTarea(idPersona, tarea) {
-    this.collection.updateOne({ id: idPersona }, { $set: { tareas: [tarea] } });
-  }
 }

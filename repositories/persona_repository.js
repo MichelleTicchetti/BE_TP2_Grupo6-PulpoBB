@@ -34,8 +34,4 @@ export class PersonaRepository {
   eliminarTodos() {
     this.storage.eliminarTodos();
   }
-
-  asignarTarea(idPersona, tarea) {
-    this.storage.asignarTarea(idPersona, tarea);
-  }
 }

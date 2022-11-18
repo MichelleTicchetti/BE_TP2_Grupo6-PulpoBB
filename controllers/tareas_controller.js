@@ -1,7 +1,7 @@
 import { TareasUseCase } from "../use_cases/tareas.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
-import { PersonasUseCase } from "../use_cases/personas.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
+import { PersonasUseCase } from "../use_cases/personas.js";
 import { PulpoBbsUseCase } from "../use_cases/pulpos.js";
 
 export const buscarTareasController = async (req, res, next) => {
@@ -54,7 +54,11 @@ export const crearTareasController = async (req, res, next) => {
       creador
     );
 
-    await new PulpoBbsUseCase().asignarTarea(pulpitoId, idTarea);
+    const asignacion = await new PulpoBbsUseCase().asignarTarea(
+      pulpitoId,
+      idTarea
+    );
+
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -93,18 +97,10 @@ export const asignarPersonaTareaController = async (req, res, next) => {
   try {
     const persona = await new PersonaRepository().buscarUno(idPersona);
 
-    const tarea = await new TareaRepository().buscarUno(idTarea);
-
     const responseTarea = await new TareasUseCase().asignarPersona(
       idTarea,
       persona
     );
-
-    const responsePersona = await new PersonasUseCase().asignarTarea(
-      idPersona,
-      tarea
-    );
-
     res.status(201).json(responseTarea);
   } catch (e) {
     res.status(500).json({ message: e.message });
