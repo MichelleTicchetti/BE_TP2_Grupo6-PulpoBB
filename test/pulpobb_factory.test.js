@@ -1,6 +1,6 @@
 import assert, { AssertionError } from "assert";
 import chai from "chai";
-import { PulpoBbFactory } from "../../factories/pulpobb_factory.js";
+import { PulpoBbFactory } from "../factories/pulpobb_factory.js";
 
 const expect = chai.expect;
 

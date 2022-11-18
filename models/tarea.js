@@ -26,4 +26,9 @@ export class Tarea {
   asignarPersona(personaAsignada) {
     this.personaAsignada = personaAsignada;
   }
+
+  finalizar() {
+    this.estado = "Finalizada";
+    this.fechaCierre = Date();
+  }
 }

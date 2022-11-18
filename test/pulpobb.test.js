@@ -1,5 +1,5 @@
 import assert, { AssertionError, notEqual } from "assert";
-import { PulpoBb } from "../../models/pulpobb.js";
+import { PulpoBb } from "../models/pulpobb.js";
 import chai from "chai";
 
 var expect = chai.expect;

@@ -1,8 +1,8 @@
 import assert, { AssertionError } from "assert";
 import chai from "chai";
 
-import { Persona } from "../../models/persona.js";
-import { USUARIOS } from "../../models/usuario.js";
+import { Persona } from "../models/persona.js";
+import { USUARIOS } from "../models/usuario.js";
 
 var expect = chai.expect;
 

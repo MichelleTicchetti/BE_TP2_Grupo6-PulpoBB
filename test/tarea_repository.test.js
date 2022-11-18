@@ -1,8 +1,7 @@
 import assert, { AssertionError } from "assert";
 import chai from "chai";
-import { TareaFactory } from "../../factories/tarea_factory.js";
-import { TareaRepository } from "../../repositories/tarea_repository.js";
-import { USUARIOS } from "../../models/usuario.js";
+import { TareaFactory } from "../factories/tarea_factory.js";
+import { TareaRepository } from "../repositories/tarea_repository.js";
 
 const expect = chai.expect;
 

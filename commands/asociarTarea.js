@@ -5,10 +5,12 @@ export class AsociarTarea {
   }
 
   run() {
-    try {
-      return this.tarea;
-    } catch (e) {
-      console.error(e);
+    //regla de negocio
+    if (this.tarea.estado === "Pendiente") {
+      this.tarea.asignarPersona(persona);
+    } else {
+      throw new Error("La tarea ya se encuentra finalizada");
     }
+    return this.tarea;
   }
 }
