@@ -1,6 +1,6 @@
 import { PersonaRepository } from "../repositories/persona_repository.js";
 
-export const AutenticacionAdministrador = async (req, res, next) => {
+export const AutenticacionTarea = async (req, res, next) => {
   console.log("Autenticación de administrador");
   const { creador } = req.body;
   const creadorTarea = await new PersonaRepository().buscarPorNombre(creador);

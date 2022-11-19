@@ -110,12 +110,27 @@ export const asignarPersonaTareaController = async (req, res, next) => {
 export const finalizarTareaController = async (req, res, next) => {
   console.log("ejecución caso de uso: finalizar una tarea");
 
-  const { id } = req.body;
+  const { idTarea } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().finalizarTarea(id);
+    const responseObject = await new TareasUseCase().finalizarTarea(idTarea);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
+  }
+};
+
+export const verificarTareaPendiente = async (req, res, next) => {
+  console.log("verificar si tarea se encuentra pendiente");
+
+  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+
+  console.log(tarea);
+  if (tarea[0].estado === "Pendiente") {
+    console.log("Tarea se encuentra en estado pendiente");
+    next();
+  } else {
+    console.log("Tarea ya se encuentra en estado finalizado");
+    res.status(204).send();
   }
 };
