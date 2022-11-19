@@ -1,4 +1,4 @@
-import { PulpoBb } from "../models/pulpobb.js";
+import { PulpoBb } from "../models/pulpobb.js ";
 
 export class PulpoBbFactory {
   constructor() {}
