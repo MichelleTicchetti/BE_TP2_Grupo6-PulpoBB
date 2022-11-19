@@ -7,9 +7,9 @@ export class CerrarTarea {
     //regla de negocio
     if (this.tarea.estado === "Pendiente") {
       this.tarea.finalizar();
-      return this.tarea;
     } else {
       throw new Error("La tarea ya se encuentra finalizada");
     }
+    return this.tarea;
   }
 }

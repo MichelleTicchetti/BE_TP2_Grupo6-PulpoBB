@@ -3,6 +3,7 @@ import { AsociarTarea } from "../commands/asociarTarea.js";
 import { Tarea } from "../models/tarea.js";
 import { Persona } from "../models/persona.js";
 import { USUARIOS } from "../models/usuario.js";
+import { PulpoBb } from "../models/pulpobb.js";
 
 const expect = chai.expect;
 
@@ -17,26 +18,24 @@ describe("Asociar Tarea", () => {
         "1",
         "Maria Fernandez"
       );
-
       const persona = new Persona(
         "1",
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
         USUARIOS.CUIDADOR,
-        1
+        "1"
       );
 
       //Act
-
-      expect(tarea.personaAsignada.length).to.equal(0);
-
       const comando = new AsociarTarea(tarea, persona);
 
-      comando.run();
+      const tareaAsociada = comando.run();
 
       //Assert
-      expect(tarea.personaAsignada.length).to.equal(1);
+      expect(tareaAsociada.personaAsignada)
+        .to.have.property("nombreApellido")
+        .with.equal("Michelle Ticchetti");
     });
     it("no asocia una tarea si ya se encuentra finalizada", () => {
       //Arrange

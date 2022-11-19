@@ -24,7 +24,8 @@ describe("Asociar Persona con Pulpo", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
 
       expect(pulpo.personas.length).to.equal(0);
