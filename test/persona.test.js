@@ -15,7 +15,8 @@ describe("Persona", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -33,7 +34,8 @@ describe("Persona", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -51,7 +53,8 @@ describe("Persona", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -69,7 +72,8 @@ describe("Persona", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       const atributosDeLaPersona = Object.keys(persona);
 
@@ -86,7 +90,8 @@ describe("Persona", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       expect(persona.pulpitos).to.be.an("array");
     });
@@ -100,7 +105,8 @@ describe("Persona", () => {
           "Michelle Ticchetti",
           "mticchetti@gmail.com",
           "Amiga",
-          USUARIOS.ADMINISTRADOR
+          USUARIOS.ADMINISTRADOR,
+          "1"
         );
 
         expect(persona).to.have.property("id").with.equal("1");

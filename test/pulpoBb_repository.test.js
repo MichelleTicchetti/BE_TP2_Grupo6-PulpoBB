@@ -21,7 +21,7 @@ describe("PulpoBb Repository", () => {
       );
       const repo = new PulpoBbRepository("array");
       repo.guardar(pulpoBb);
-      expect(await arrayTest.buscarTodos()).to.include(pulpoBb);
+      expect(await repo.buscarTodos()).to.include(pulpoBb);
     });
   });
 });

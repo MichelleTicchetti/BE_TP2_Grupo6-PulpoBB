@@ -2,6 +2,7 @@ import chai from "chai";
 import { AsociarTarea } from "../commands/asociarTarea.js";
 import { Tarea } from "../models/tarea.js";
 import { Persona } from "../models/persona.js";
+import { USUARIOS } from "../models/usuario.js";
 
 const expect = chai.expect;
 
@@ -12,7 +13,6 @@ describe("Asociar Tarea", () => {
       const tarea = new Tarea(
         "1",
         "Llevar al pediatra",
-        "Prioridad Alta",
         "26 de septiembre de 2022",
         "1",
         "Maria Fernandez"
@@ -23,7 +23,8 @@ describe("Asociar Tarea", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.CUIDADOR
+        USUARIOS.CUIDADOR,
+        1
       );
 
       //Act
@@ -42,7 +43,6 @@ describe("Asociar Tarea", () => {
       const tarea = new Tarea(
         "1",
         "Llevar al pediatra",
-        "Prioridad Alta",
         "26 de septiembre de 2022",
         "1",
         "Maria Fernandez"
@@ -53,22 +53,21 @@ describe("Asociar Tarea", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.CUIDADOR
+        USUARIOS.CUIDADOR,
+        1
       );
-
-      expect(tarea.estado).to.equal("Pendiente");
 
       tarea.finalizar();
       //Act
 
-      expect(tarea.estado).to.equal("Finalizada");
+      try {
+        const comando = new AsociarTarea(tarea, persona);
 
-      const comando = new AsociarTarea(tarea, persona);
-
-      const creador = comando.run();
-
-      //Assert
-      expect(creador).to.throw(Error);
+        comando.run();
+      } catch (err) {
+        //Assert
+        expect(err).to.eql(new Error("La tarea ya se encuentra finalizada"));
+      }
     });
   });
 });

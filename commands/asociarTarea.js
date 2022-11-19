@@ -8,9 +8,9 @@ export class AsociarTarea {
     //regla de negocio
     if (this.tarea.estado === "Pendiente") {
       this.tarea.asignarPersona(persona);
+      return this.tarea;
     } else {
       throw new Error("La tarea ya se encuentra finalizada");
     }
-    return this.tarea;
   }
 }

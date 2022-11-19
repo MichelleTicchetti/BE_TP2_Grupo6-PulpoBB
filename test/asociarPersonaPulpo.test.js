@@ -2,6 +2,7 @@ import chai from "chai";
 import { PulpoBb } from "../models/pulpobb.js";
 import { Persona } from "../models/persona.js";
 import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
+import { USUARIOS } from "../models/usuario.js";
 
 const expect = chai.expect;
 

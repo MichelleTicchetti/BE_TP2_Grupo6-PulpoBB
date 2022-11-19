@@ -1,6 +1,7 @@
 import chai from "chai";
 import { CerrarTarea } from "../commands/cerrarTarea.js";
 import { Tarea } from "../models/tarea.js";
+import { USUARIOS } from "../models/usuario.js";
 
 const expect = chai.expect;
 
@@ -11,7 +12,6 @@ describe("Cerrar Tarea", () => {
       const tarea = new Tarea(
         "1",
         "Llevar al pediatra",
-        "Prioridad Alta",
         "26 de septiembre de 2022",
         "1",
         "Maria Fernandez"
@@ -32,24 +32,22 @@ describe("Cerrar Tarea", () => {
       const tarea = new Tarea(
         "1",
         "Llevar al pediatra",
-        "Prioridad Alta",
         "26 de septiembre de 2022",
         "1",
         "Maria Fernandez"
       );
-      expect(tarea.estado).to.equal("Pendiente");
 
       tarea.finalizar();
+
       //Act
+      try {
+        const comando = new CerrarTarea(tarea);
 
-      expect(tarea.estado).to.equal("Finalizada");
-
-      const comando = new CerrarTarea(tarea);
-
-      const creador = comando.run();
-
-      //Assert
-      expect(creador).to.throw(Error);
+        comando.run();
+      } catch (err) {
+        //Assert
+        expect(err).to.eql(new Error("La tarea ya se encuentra finalizada"));
+      }
     });
   });
 });
