@@ -33,6 +33,10 @@ export class PersonasDBStorage {
     return this.collection.find({ id: parseInt(identificador) }).toArray();
   }
 
+  buscarPorNombre(nombre) {
+    return this.collection.find({ nombreApellido: nombre }).toArray();
+  }
+
   eliminar(identificador) {
     this.collection.deleteOne({ id: identificador });
   }

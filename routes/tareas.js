@@ -1,5 +1,4 @@
 import express from "express";
-import { TareaRepository } from "../repositories/tarea_repository.js";
 import {
   crearTareasController,
   eliminarTareasController,
@@ -10,6 +9,7 @@ import {
   finalizarTareaController,
   eliminarTodosTareasController,
 } from "../controllers/tareas_controller.js";
+import { AutenticacionAdministrador } from "../controllers/autenticacion_controller.js";
 const router = express.Router();
 
 /**
@@ -138,16 +138,9 @@ router.get(
  */
 router.post(
   "/",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  //1er callback: verifico que el creador de la tarea sea un administrador? cod 401 es no autorizado
+  AutenticacionAdministrador,
+  //2do callback: crear la tarea
   crearTareasController
 );
 
@@ -234,6 +227,7 @@ router.delete(
  */
 router.put(
   "/:idTarea/:idPersona",
+  //1er callback: verifico que exista la tarea
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -244,6 +238,8 @@ router.put(
       res.status(401).send();
     }
   },
+  //2do callback: verifico que exista la persona
+  //3er callback: asigno la tarea
   asignarPersonaTareaController
 );
 
@@ -268,6 +264,7 @@ router.put(
  */
 router.put(
   "/:id",
+  //1er callback: verifico que la tarea este pendiente
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -278,6 +275,7 @@ router.put(
       res.status(401).send();
     }
   },
+  //2do callback: finalizo la tarea
   finalizarTareaController
 );
 
