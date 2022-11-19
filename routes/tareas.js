@@ -9,6 +9,7 @@ import {
   finalizarTareaController,
   eliminarTodosTareasController,
   verificarTareaPendiente,
+  verificarTareaFinalizada,
 } from "../controllers/tareas_controller.js";
 import { AutenticacionTarea } from "../controllers/autenticacion_controller.js";
 import {
@@ -169,17 +170,12 @@ router.post(
  *         description: Not Found
  */
 router.delete(
-  "/:id",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  "/:idTarea",
+  //1er callback: verifico que exista la tarea
+  verificarExistenciaTarea,
+  //2do callback: verifico que la tarea ya este finalizada
+  verificarTareaFinalizada,
+  //3er callback: elimino la tarea
   eliminarTareasController
 );
 
