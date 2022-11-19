@@ -56,7 +56,7 @@ export const crearTareasController = async (req, res, next) => {
 
     res.status(201).json(responseObject);
   } catch (e) {
-    res.status(500).json({ message: e.message });
+    res.status(422).json({ message: e.message });
   }
 };
 

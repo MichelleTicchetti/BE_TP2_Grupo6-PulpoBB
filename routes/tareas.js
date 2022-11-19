@@ -1,4 +1,5 @@
 import express from "express";
+import { TareaRepository } from "../repositories/tarea_repository.js";
 import {
   crearTareasController,
   eliminarTareasController,
@@ -11,10 +12,11 @@ import {
   verificarTareaPendiente,
   verificarTareaFinalizada,
 } from "../controllers/tareas_controller.js";
-import { AutenticacionTarea } from "../controllers/autenticacion_controller.js";
+import { autenticacionTarea } from "../controllers/autenticacion_controller.js";
 import {
   verificarExistenciaTarea,
   verificarExistenciaPersona,
+  verificarTareaYaExiste,
 } from "../controllers/existencia_controller.js";
 const router = express.Router();
 
@@ -139,13 +141,17 @@ router.get(
  *     responses:
  *       200:
  *         description: OK
+ *       401:
+ *         description: Not Authorized
  *       422:
  *         description: Unprocessable Entity
  */
 router.post(
   "/",
-  //1er callback: verifico que el creador de la tarea sea un administrador? cod 401 es no autorizado
-  AutenticacionTarea,
+  //1er callback: verifico que no exista una tarea con el mismo id
+  verificarTareaYaExiste,
+  //2do callback: verifico que el creador de la tarea sea un administrador
+  autenticacionTarea,
   //2do callback: crear la tarea
   crearTareasController
 );
@@ -161,7 +167,7 @@ router.post(
  *           schema:
  *             type: object
  *             properties:
- *               id:
+ *               idTarea:
  *                 type: integer
  *     responses:
  *       204:
