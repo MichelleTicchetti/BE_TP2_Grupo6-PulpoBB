@@ -14,7 +14,8 @@ describe("Persona Factory", () => {
         "Juan Perez",
         "jperez@gmail.com",
         "Padre",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
 
       expect(persona)

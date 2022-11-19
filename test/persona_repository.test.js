@@ -17,11 +17,12 @@ describe("Persona Repository", () => {
         "Juan Perez",
         "jperez@gmail.com",
         "Padre",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
       const repo = new PersonaRepository("array");
       repo.guardar(persona);
-      expect(await arrayTest.buscarTodos()).to.include(persona);
+      expect(await repo.buscarTodos()).to.include(persona);
     });
   });
 });
