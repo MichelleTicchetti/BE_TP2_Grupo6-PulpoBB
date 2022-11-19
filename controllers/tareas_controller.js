@@ -54,25 +54,20 @@ export const crearTareasController = async (req, res, next) => {
       creador
     );
 
-    const asignacion = await new PulpoBbsUseCase().asignarTarea(
-      pulpitoId,
-      idTarea
-    );
-
     res.status(201).json(responseObject);
   } catch (e) {
-    res.status(500).json({ message: e.message });
+    res.status(422).json({ message: e.message });
   }
 };
 
 export const eliminarTareasController = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar tarea");
 
-  const { id } = req.body;
+  const { idTarea } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().eliminar(id);
-    res.status(201).json(responseObject);
+    const responseObject = await new TareasUseCase().eliminar(idTarea);
+    res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
@@ -83,7 +78,7 @@ export const eliminarTodosTareasController = async (req, res, next) => {
 
   try {
     const responseObject = await new TareasUseCase().eliminarTodos();
-    res.status(201).json(responseObject);
+    res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
@@ -110,12 +105,40 @@ export const asignarPersonaTareaController = async (req, res, next) => {
 export const finalizarTareaController = async (req, res, next) => {
   console.log("ejecución caso de uso: finalizar una tarea");
 
-  const { id } = req.body;
+  const { idTarea } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().finalizarTarea(id);
-    res.status(201).json(responseObject);
+    const responseObject = await new TareasUseCase().finalizarTarea(idTarea);
+    res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
+  }
+};
+
+export const verificarTareaPendiente = async (req, res, next) => {
+  console.log("verificar si tarea se encuentra pendiente");
+
+  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+
+  if (tarea[0].estado === "Pendiente") {
+    console.log("Tarea se encuentra en estado pendiente");
+    next();
+  } else {
+    console.log("Tarea ya se encuentra en estado finalizado");
+    res.status(204).send();
+  }
+};
+
+export const verificarTareaFinalizada = async (req, res, next) => {
+  console.log("verificar si tarea se encuentra finalizada");
+
+  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+
+  if (tarea[0].estado === "Finalizada") {
+    console.log("Tarea se encuentra en estado finalizada");
+    next();
+  } else {
+    console.log("Tarea aún se encuentra pendiente");
+    res.status(204).send();
   }
 };

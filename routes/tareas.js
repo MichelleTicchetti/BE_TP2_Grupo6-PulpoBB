@@ -9,7 +9,15 @@ import {
   buscarTareasEstadoController,
   finalizarTareaController,
   eliminarTodosTareasController,
+  verificarTareaPendiente,
+  verificarTareaFinalizada,
 } from "../controllers/tareas_controller.js";
+import { autenticacionTarea } from "../controllers/autenticacion_controller.js";
+import {
+  verificarExistenciaTarea,
+  verificarExistenciaPersona,
+  verificarTareaYaExiste,
+} from "../controllers/existencia_controller.js";
 const router = express.Router();
 
 /**
@@ -133,21 +141,18 @@ router.get(
  *     responses:
  *       200:
  *         description: OK
+ *       401:
+ *         description: Not Authorized
  *       422:
  *         description: Unprocessable Entity
  */
 router.post(
   "/",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  //1er callback: verifico que no exista una tarea con el mismo id
+  verificarTareaYaExiste,
+  //2do callback: verifico que el creador de la tarea sea un administrador
+  autenticacionTarea,
+  //2do callback: crear la tarea
   crearTareasController
 );
 
@@ -162,7 +167,7 @@ router.post(
  *           schema:
  *             type: object
  *             properties:
- *               id:
+ *               idTarea:
  *                 type: integer
  *     responses:
  *       204:
@@ -171,17 +176,12 @@ router.post(
  *         description: Not Found
  */
 router.delete(
-  "/:id",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  "/:idTarea",
+  //1er callback: verifico que exista la tarea
+  verificarExistenciaTarea,
+  //2do callback: verifico que la tarea ya este finalizada
+  verificarTareaFinalizada,
+  //3er callback: elimino la tarea
   eliminarTareasController
 );
 
@@ -234,16 +234,13 @@ router.delete(
  */
 router.put(
   "/:idTarea/:idPersona",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  //1er callback: verifico que exista la tarea
+  verificarExistenciaTarea,
+  //1er callback: verifico que exista la persona
+  verificarExistenciaPersona,
+  //3er callback: verifico que la tarea se encuentre pendiente
+  verificarTareaPendiente,
+  //4to callback: asigno la tarea
   asignarPersonaTareaController
 );
 
@@ -267,17 +264,12 @@ router.put(
  *         description: Not Found
  */
 router.put(
-  "/:id",
-  (req, res, next) => {
-    console.log("verificar auth");
-    let valid = true;
-
-    if (valid) {
-      next();
-    } else {
-      res.status(401).send();
-    }
-  },
+  "/:idTarea",
+  //1er callback: verifico que la tarea exista
+  verificarExistenciaTarea,
+  //2do callback: verifico la tarea esta pendiente
+  verificarTareaPendiente,
+  //2do callback: finalizo la tarea
   finalizarTareaController
 );
 
