@@ -25,4 +25,8 @@ export class GastosUseCase {
   listar() {
     return new GastoRepository().buscarTodos();
   }
+
+  saldarGasto(idGasto) {
+    return new GastoRepository().saldarGasto(idGasto);
+  }
 }

@@ -15,6 +15,10 @@ export class PersonasArrayStorage {
     return this.personas.find((elemento) => elemento.id == identificador);
   }
 
+  buscarPorNombre(nombre) {
+    return this.personas.find((elemento) => elemento.nombreApellido == nombre);
+  }
+
   eliminar(identificador) {
     this.personas = this.personas.filter(
       (elemento) => elemento.id != identificador

@@ -2,6 +2,7 @@ import chai from "chai";
 import { PulpoBb } from "../models/pulpobb.js";
 import { Persona } from "../models/persona.js";
 import { AsociarPersonaPulpo } from "../commands/asociarPersonaPulpo.js";
+import { USUARIOS } from "../models/usuario.js";
 
 const expect = chai.expect;
 
@@ -23,7 +24,8 @@ describe("Asociar Persona con Pulpo", () => {
         "Michelle Ticchetti",
         "mticchetti@gmail.com",
         "Amiga",
-        USUARIOS.ADMINISTRADOR
+        USUARIOS.ADMINISTRADOR,
+        "1"
       );
 
       expect(pulpo.personas.length).to.equal(0);

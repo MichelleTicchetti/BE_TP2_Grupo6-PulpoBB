@@ -26,7 +26,7 @@ export class TareasDBStorage {
   }
 
   buscarUno(identificador) {
-    return this.collection.find({ idTarea: parseInt(identificador) });
+    return this.collection.find({ idTarea: parseInt(identificador) }).toArray();
   }
 
   listarPorEstado(estado) {

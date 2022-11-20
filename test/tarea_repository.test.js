@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 //crear una bd para los tests para que no popule la bd real
 
-describe("Persona Repository", () => {
+describe("Tarea Repository", () => {
   describe("#guardar()", () => {
     it("crea una tarea en el repo", async () => {
       // Arrange
@@ -21,7 +21,7 @@ describe("Persona Repository", () => {
       );
       const repo = new TareaRepository("array");
       repo.guardar(tarea);
-      expect(await arrayTest.buscarTodos()).to.include(tarea);
+      expect(await repo.buscarTodos()).to.include(tarea);
     });
   });
 });

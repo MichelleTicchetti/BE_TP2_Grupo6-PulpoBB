@@ -27,6 +27,10 @@ export class PersonaRepository {
     return this.storage.buscarUno(identificador);
   }
 
+  buscarPorNombre(nombre) {
+    return this.storage.buscarPorNombre(nombre);
+  }
+
   eliminar(identificador) {
     this.storage.eliminar(identificador);
   }
