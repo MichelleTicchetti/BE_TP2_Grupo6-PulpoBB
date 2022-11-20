@@ -5,8 +5,10 @@ import {
   buscarGastoIDController,
   buscarGastosController,
   eliminarTodosGastosController,
+  saldarGastosController,
 } from "../controllers/gastos_controller.js";
-import { GastoRepository } from "../repositories/gasto_repository.js";
+import { autenticacionGasto } from "../controllers/autenticacion_controller.js";
+import { verificarExistenciaGasto } from "../controllers/existencia_controller.js";
 const router = express.Router();
 
 /**
@@ -166,6 +168,37 @@ router.delete(
     }
   },
   eliminarTodosGastosController
+);
+
+/**
+ * @openapi
+ * /gastos/:id/:
+ *   put:
+ *     description: Saldar un gasto
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               idGasto:
+ *                 type: integer
+ *               idPersona:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: OK
+ *       404:
+ *         description: Not Found
+ */
+router.put(
+  "/:idGasto/:idPersona",
+  //1er callback: verifico que el gasto exista
+  verificarExistenciaGasto,
+  //2do callback: verifico que quien lo salda es administrador
+  autenticacionGasto,
+  //2do callback: saldo el gasto
+  saldarGastosController
 );
 
 export default router;
