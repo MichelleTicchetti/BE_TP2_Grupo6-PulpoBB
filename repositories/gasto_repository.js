@@ -30,4 +30,8 @@ export class GastoRepository {
   eliminarTodos() {
     this.storage.eliminarTodos();
   }
+
+  saldarGasto(idGasto) {
+    this.storage.saldarGasto(idGasto);
+  }
 }

@@ -60,3 +60,16 @@ export const eliminarTodosGastosController = async (req, res, next) => {
     res.status(500).json({ message: e.message });
   }
 };
+
+export const saldarGastosController = async (req, res, next) => {
+  console.log("ejecución caso de uso: saldar gasto");
+
+  const { idGasto } = req.body;
+
+  try {
+    const responseObject = await new GastosUseCase().saldarGasto(idGasto);
+    res.status(201).json(responseObject);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+};
