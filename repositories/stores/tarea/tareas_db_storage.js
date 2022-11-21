@@ -55,7 +55,12 @@ export class TareasDBStorage {
   finalizarTarea(id) {
     this.collection.updateOne(
       { idTarea: id },
-      { $set: { estado: "Finalizada" } }
+      {
+        $set: {
+          estado: "Finalizada",
+          fechaCierre: Date(),
+        },
+      }
     );
   }
 }
