@@ -152,7 +152,7 @@ router.post(
   verificarTareaYaExiste,
   //2do callback: verifico que el creador de la tarea sea un administrador
   autenticacionTarea,
-  //2do callback: crear la tarea
+  //3er callback: crear la tarea
   crearTareasController
 );
 
