@@ -9,7 +9,7 @@ export const autenticacionTarea = async (req, res, next) => {
     if (creadorTarea[0].rol === "Administrador") {
       next();
     } else {
-      console.log("No tiene permisos para esta tarea");
+      console.log("No tiene permisos para esta tarea!");
       res.status(401).send();
     }
   } catch (e) {
@@ -26,7 +26,7 @@ export const autenticacionGasto = async (req, res, next) => {
     if (saldadorGasto[0].rol === "Administrador") {
       next();
     } else {
-      console.log("No tiene permisos para esta tarea");
+      console.log("No tiene permisos para esta tarea!");
       res.status(401).send();
     }
   } catch (e) {
