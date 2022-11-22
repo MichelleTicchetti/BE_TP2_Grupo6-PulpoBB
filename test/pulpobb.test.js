@@ -91,7 +91,7 @@ describe("PulpoBb", () => {
         "123456789",
         "50cm"
       );
-      const atributoDelPulpo = Object.keys(pulpo);
+      const atributoDelPulpo = Object.keys(pulpo);  
 
       assert.equal(atributoDelPulpo[5], "estatura");
     });

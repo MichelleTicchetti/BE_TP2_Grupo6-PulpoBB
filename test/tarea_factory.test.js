@@ -19,3 +19,4 @@ describe("Tarea Factory", () => {
     });
   });
 });
+test/tarea_repository.test.js

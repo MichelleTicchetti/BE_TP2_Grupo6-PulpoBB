@@ -16,7 +16,7 @@ export class Tarea {
     this.detalle = detalle;
     this.fechaCreacion = Date();
     this.fechaCierre = null;
-    this.fechaCaducidad = new Date(fechaCaducidad);
+    this.fechaCaducidad = fechaCaducidad;
     this.estado = "Pendiente";
     this.personaAsignada = null;
     this.nombreCreador = nombreCreador;
