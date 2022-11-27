@@ -6,8 +6,8 @@ export class GastosUseCase {
     return await new GastoRepository().buscarUno(identificador);
   }
 
-  async crear(id, monto, detalle) {
-    const gasto = new GastoFactory().crear(id, monto, detalle);
+  async crear(id, monto, detalle,titulo) {
+    const gasto = new GastoFactory().crear(id, monto, detalle,titulo);
     const responseRepo = new GastoRepository();
     await responseRepo.guardar(gasto);
   }

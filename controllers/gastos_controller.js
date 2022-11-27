@@ -27,10 +27,10 @@ export const buscarGastoIDController = async (req, res, next) => {
 export const crearGastosController = async (req, res, next) => {
   console.log("ejecución caso de uso: crear gasto");
 
-  const { id, monto, detalle } = req.body;
+  const { id, monto, detalle ,titulo} = req.body;
 
   try {
-    const responseObject = await new GastosUseCase().crear(id, monto, detalle);
+    const responseObject = await new GastosUseCase().crear(id, monto, detalle,titulo);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
