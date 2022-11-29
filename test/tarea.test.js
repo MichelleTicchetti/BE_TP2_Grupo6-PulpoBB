@@ -22,7 +22,7 @@ describe("Tarea", () => {
       // --
 
       // Assert
-      assert.equal(atributosDeLaTarea[0], "idTarea");
+      assert.equal(atributosDeLaTarea[0], "id");
     });
 
     it("debe tener un atributo detalle", () => {

@@ -151,7 +151,7 @@ router.post(
   //1er callback: verifico que no exista una tarea con el mismo id
   verificarTareaYaExiste,
   //2do callback: verifico que el creador de la tarea sea un administrador
-  autenticacionTarea,
+ // autenticacionTarea,
   //2do callback: crear la tarea
   crearTareasController
 );
@@ -167,7 +167,7 @@ router.post(
  *           schema:
  *             type: object
  *             properties:
- *               idTarea:
+ *               id:
  *                 type: integer
  *     responses:
  *       204:
@@ -176,7 +176,7 @@ router.post(
  *         description: Not Found
  */
 router.delete(
-  "/:idTarea",
+  "/:id",
   //1er callback: verifico que exista la tarea
   verificarExistenciaTarea,
   //2do callback: verifico que la tarea ya este finalizada
@@ -213,7 +213,7 @@ router.delete(
 
 /**
  * @openapi
- * /tareas/:idTarea/:idPersona:
+ * /tareas/:id/:idPersona:
  *   put:
  *     description: Asigna una tarea a una persona
  *     requestBody:
@@ -222,7 +222,7 @@ router.delete(
  *           schema:
  *             type: object
  *             properties:
- *               idTarea:
+ *               id:
  *                 type: integer
  *               idPersona:
  *                 type: integer
@@ -233,7 +233,7 @@ router.delete(
  *         description: Not Found
  */
 router.put(
-  "/:idTarea/:idPersona",
+  "/:id/:idPersona",
   //1er callback: verifico que exista la tarea
   verificarExistenciaTarea,
   //1er callback: verifico que exista la persona
@@ -246,7 +246,7 @@ router.put(
 
 /**
  * @openapi
- * /tareas/:idTarea/:
+ * /tareas/:id/:
  *   put:
  *     description: Finaliza una tarea
  *     requestBody:
@@ -255,7 +255,7 @@ router.put(
  *           schema:
  *             type: object
  *             properties:
- *               idTarea:
+ *               id:
  *                 type: integer
  *     responses:
  *       200:
@@ -264,7 +264,7 @@ router.put(
  *         description: Not Found
  */
 router.put(
-  "/:idTarea",
+  "/:id",
   //1er callback: verifico que la tarea exista
   verificarExistenciaTarea,
   //2do callback: verifico la tarea esta pendiente

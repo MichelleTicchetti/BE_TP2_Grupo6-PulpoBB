@@ -26,8 +26,8 @@ export class PulpoBbRepository {
     this.storage.eliminarTodos();
   }
 
-  asignarTarea(pulpitoId, idTarea) {
-    this.storage.asignarTarea(pulpitoId, idTarea);
+  asignarTarea(pulpitoId, id) {
+    this.storage.asignarTarea(pulpitoId, id);
   }
 
   asociarPersona(idPulpo, idPersona) {

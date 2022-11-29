@@ -35,15 +35,15 @@ export class TareaRepository {
     this.storage.eliminarTodos();
   }
 
-  asignarPersona(idTarea, persona) {
-    this.storage.asignarPersona(idTarea, persona);
+  asignarPersona(id, persona) {
+    this.storage.asignarPersona(id, persona);
   }
 
-  asignarPulpo(idTarea, pulpo) {
-    this.storage.asignarPulpo(idTarea, pulpo);
+  asignarPulpo(id, pulpo) {
+    this.storage.asignarPulpo(id, pulpo);
   }
 
-  finalizarTarea(idTarea) {
-    this.storage.finalizarTarea(idTarea);
+  finalizarTarea(id) {
+    this.storage.finalizarTarea(id);
   }
 }

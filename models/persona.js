@@ -1,9 +1,9 @@
 export class Persona {
-  constructor(id, nombreApellido, email, vinculo, rol) {
-    if (!id || !nombreApellido || !email || !vinculo || !rol) {
+  constructor( nombreApellido, email, vinculo, rol) {
+    if ( !nombreApellido || !email || !vinculo || !rol) {
       throw new Error();
     }
-    this.id = id;
+  
     this.nombreApellido = nombreApellido;
     this.email = email;
     this.vinculo = vinculo;

@@ -39,8 +39,8 @@ export class PulpoBbsDBStorage {
     this.collection.deleteMany({});
   }
 
-  asignarTarea(pulpitoId, idTarea) {
-    const tareaAsignar = new TareaRepository().buscarUno(idTarea);
+  asignarTarea(pulpitoId, id) {
+    const tareaAsignar = new TareaRepository().buscarUno(id);
     this.collection.updateOne(
       { id: pulpitoId },
       { $set: { tareas: [tareaAsignar] } }

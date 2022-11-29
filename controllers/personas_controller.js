@@ -41,11 +41,10 @@ export const buscarPersonaIDController = async (req, res, next) => {
 export const crearPersonasController = async (req, res, next) => {
   console.log("ejecución caso de uso: crear persona");
 
-  const { id, nombreApellido, email, vinculo, rol, idPulpo } = req.body;
+  const { nombreApellido, email, vinculo, rol, idPulpo } = req.body;
 
   try {
     const responseObject = await new PersonasUseCase().crear(
-      id,
       nombreApellido,
       email,
       vinculo,

@@ -3,11 +3,11 @@ import { Tarea } from "../models/tarea.js";
 export class TareaFactory {
   constructor() {}
 
-  crear(idTarea, detalle, fechaCaducidad, pulpitoId, creador) {
-    if (!idTarea || !detalle || !pulpitoId) {
+  crear(id, detalle, fechaCaducidad) {
+    if (!id || !detalle ) {
       throw new Error("Faltan atributos");
     }
 
-    return new Tarea(idTarea, detalle, fechaCaducidad, pulpitoId, creador);
+    return new Tarea(id, detalle, fechaCaducidad);
   }
 }

@@ -2,14 +2,12 @@ import { TareaFactory } from "../factories/tarea_factory.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export class TareasUseCase {
-  async crear(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador) {
+  async crear(id, detalle, fechaCaducidad) {
     const tarea = new TareaFactory().crear(
-      idTarea,
+      id,
       detalle,
-      prioridad,
-      fechaCaducidad,
-      pulpitoId,
-      creador
+     
+      fechaCaducidad
     );
 
     const responseRepo = new TareaRepository();
@@ -26,8 +24,8 @@ export class TareasUseCase {
     await responseRepo.eliminarTodos();
   }
 
-  async asignarPersona(idTarea, persona) {
-    await new TareaRepository().asignarPersona(idTarea, persona);
+  async asignarPersona(id, persona) {
+    await new TareaRepository().asignarPersona(id, persona);
   }
 
   listar() {
@@ -42,7 +40,7 @@ export class TareasUseCase {
     return await new TareaRepository().listarPorEstado(estado);
   }
 
-  async finalizarTarea(idTarea) {
-    return await new TareaRepository().finalizarTarea(idTarea);
+  async finalizarTarea(id) {
+    return await new TareaRepository().finalizarTarea(id);
   }
 }

@@ -26,7 +26,7 @@ export class TareasDBStorage {
   }
 
   buscarUno(identificador) {
-    return this.collection.find({ idTarea: parseInt(identificador) }).toArray();
+    return this.collection.find({ id: parseInt(identificador) }).toArray();
   }
 
   listarPorEstado(estado) {
@@ -38,23 +38,23 @@ export class TareasDBStorage {
   }
 
   eliminar(identificador) {
-    this.collection.deleteOne({ idTarea: identificador });
+    this.collection.deleteOne({ id: identificador });
   }
 
   eliminarTodos() {
     this.collection.deleteMany({});
   }
 
-  asignarPersona(idTarea, persona) {
+  asignarPersona(id, persona) {
     this.collection.updateOne(
-      { idTarea: idTarea },
+      { id: id },
       { $set: { personaAsignada: persona } }
     );
   }
 
   finalizarTarea(id) {
     this.collection.updateOne(
-      { idTarea: id },
+      { id: id },
       { $set: { estado: "Finalizada" } }
     );
   }
