@@ -1,12 +1,14 @@
 import { MongoClient } from "mongodb";
 import { PersonaRepository } from "../../persona_repository.js";
 import { TareaRepository } from "../../tarea_repository.js";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 export class PulpoBbsDBStorage {
   constructor() {
     this.pulposBB = [];
-    this.url =
-      "mongodb+srv://TP2_PulpoBB:TP2_PulpoBB@cluster0.xaaicfa.mongodb.net/?retryWrites=true&w=majority";
+    this.url = process.env.MONGO_URI;   
     this.dbName = "PulpoBB_app";
     this.collectionName = "PulpoBBs";
     this.client = new MongoClient(this.url);

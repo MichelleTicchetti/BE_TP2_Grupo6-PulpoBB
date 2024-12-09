@@ -1,10 +1,12 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 export class TareasDBStorage {
   constructor() {
     this.tareas = [];
-    this.url =
-      "mongodb+srv://TP2_PulpoBB:TP2_PulpoBB@cluster0.xaaicfa.mongodb.net/?retryWrites=true&w=majority";
+    this.url = process.env.MONGO_URI;
     this.dbName = "PulpoBB_app";
     this.collectionName = "Tareas";
     this.client = new MongoClient(this.url);
