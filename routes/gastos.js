@@ -1,12 +1,5 @@
 import express from "express";
-import {
-  crearGastosController,
-  eliminarGastosController,
-  buscarGastoIDController,
-  buscarGastosController,
-  eliminarTodosGastosController,
-  saldarGastosController,
-} from "../controllers/gastos_controller.js";
+import * as GastosController from "../controllers/gastos_controller.js";
 import { autenticacionGasto } from "../controllers/autenticacion_controller.js";
 import { verificarExistenciaGasto } from "../controllers/existencia_controller.js";
 const router = express.Router();
@@ -35,7 +28,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarGastosController
+  GastosController.listarGastos
 );
 
 /**
@@ -69,7 +62,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarGastoIDController
+  GastosController.buscarGastoPorId
 );
 
 /**
@@ -107,7 +100,7 @@ router.post(
       res.status(401).send();
     }
   },
-  crearGastosController
+  GastosController.crearGasto
 );
 
 /**
@@ -141,7 +134,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarGastosController
+  GastosController.eliminarGasto
 );
 
 /**
@@ -167,7 +160,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarTodosGastosController
+  GastosController.eliminarGastos
 );
 
 /**
@@ -198,7 +191,7 @@ router.put(
   //2do callback: verifico que quien lo salda es administrador
   autenticacionGasto,
   //2do callback: saldo el gasto
-  saldarGastosController
+  GastosController.saldarGasto
 );
 
 export default router;

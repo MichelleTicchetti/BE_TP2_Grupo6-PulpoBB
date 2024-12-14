@@ -1,73 +1,73 @@
-import { GastosUseCase } from "../use_cases/gastos.js";
+import { GastosService } from "../services/gastos.js";
 
-export const buscarGastosController = async (req, res, next) => {
+export const listarGastos = async (req, res, next) => {
   console.log("ejecución caso de uso: listar gastos");
 
   try {
-    const responseRepo = await new GastosUseCase().listar();
+    const responseRepo = await new GastosService().listar();
     res.status(200).json(responseRepo);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const buscarGastoIDController = async (req, res, next) => {
+export const buscarGastoPorId = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar gasto por id ");
 
   const { id } = req.params;
 
   try {
-    const responseObject = await new GastosUseCase().buscar(id);
+    const responseObject = await new GastosService().buscar(id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const crearGastosController = async (req, res, next) => {
+export const crearGasto = async (req, res, next) => {
   console.log("ejecución caso de uso: crear gasto");
 
   const { id, monto, detalle } = req.body;
 
   try {
-    const responseObject = await new GastosUseCase().crear(id, monto, detalle);
+    const responseObject = await new GastosService().crear(id, monto, detalle);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const eliminarGastosController = async (req, res, next) => {
+export const eliminarGasto = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar gasto");
 
   const { id } = req.body;
 
   try {
-    const responseObject = await new GastosUseCase().eliminar(id);
+    const responseObject = await new GastosService().eliminar(id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const eliminarTodosGastosController = async (req, res, next) => {
+export const eliminarGastos = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar todos los gastos");
 
   try {
-    const responseObject = await new GastosUseCase().eliminarTodos();
+    const responseObject = await new GastosService().eliminarTodos();
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const saldarGastosController = async (req, res, next) => {
+export const saldarGasto = async (req, res, next) => {
   console.log("ejecución caso de uso: saldar gasto");
 
   const { idGasto } = req.body;
 
   try {
-    const responseObject = await new GastosUseCase().saldarGasto(idGasto);
+    const responseObject = await new GastosService().saldarGasto(idGasto);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

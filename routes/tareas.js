@@ -1,17 +1,5 @@
 import express from "express";
-import { TareaRepository } from "../repositories/tarea_repository.js";
-import {
-  crearTareasController,
-  eliminarTareasController,
-  asignarPersonaTareaController,
-  buscarTareasController,
-  buscarTareaIdController,
-  buscarTareasEstadoController,
-  finalizarTareaController,
-  eliminarTodosTareasController,
-  verificarTareaPendiente,
-  verificarTareaFinalizada,
-} from "../controllers/tareas_controller.js";
+import * as TareasController from "../controllers/tareas_controller.js"
 import { autenticacionTarea } from "../controllers/autenticacion_controller.js";
 import {
   verificarExistenciaTarea,
@@ -44,7 +32,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarTareasController
+  TareasController.listarTareas
 );
 
 /**
@@ -78,7 +66,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarTareaIdController
+  TareasController.buscarTareaPorId
 );
 
 /**
@@ -112,7 +100,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarTareasEstadoController
+  TareasController.buscarTareasPorEstado
 );
 
 /**
@@ -153,7 +141,7 @@ router.post(
   //2do callback: verifico que el creador de la tarea sea un administrador
   autenticacionTarea,
   //3er callback: crear la tarea
-  crearTareasController
+  TareasController.crearTarea
 );
 
 /**
@@ -180,9 +168,9 @@ router.delete(
   //1er callback: verifico que exista la tarea
   verificarExistenciaTarea,
   //2do callback: verifico que la tarea ya este finalizada
-  verificarTareaFinalizada,
+  TareasController.verificarTareaFinalizada,
   //3er callback: elimino la tarea
-  eliminarTareasController
+  TareasController.eliminarTarea
 );
 
 /**
@@ -208,7 +196,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarTodosTareasController
+  TareasController.eliminarTareas
 );
 
 /**
@@ -239,9 +227,9 @@ router.put(
   //1er callback: verifico que exista la persona
   verificarExistenciaPersona,
   //3er callback: verifico que la tarea se encuentre pendiente
-  verificarTareaPendiente,
+  TareasController.verificarTareaPendiente,
   //4to callback: asigno la tarea
-  asignarPersonaTareaController
+  TareasController.asignarPersonaATarea
 );
 
 /**
@@ -268,9 +256,9 @@ router.put(
   //1er callback: verifico que la tarea exista
   verificarExistenciaTarea,
   //2do callback: verifico la tarea esta pendiente
-  verificarTareaPendiente,
+  TareasController.verificarTareaPendiente,
   //2do callback: finalizo la tarea
-  finalizarTareaController
+  TareasController.finalizarTarea
 );
 
 export default router;

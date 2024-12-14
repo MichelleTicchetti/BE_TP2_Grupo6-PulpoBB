@@ -2,7 +2,7 @@ import { PulpoBbFactory } from "../factories/pulpobb_factory.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
 import { PulpoBbRepository } from "../repositories/pulpobb_repository.js";
 
-export class PulpoBbsUseCase {
+export class PulpoBbsService {
   async buscar(identificador) {
     return await new PulpoBbRepository().buscarUno(identificador);
   }

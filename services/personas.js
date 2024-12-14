@@ -1,7 +1,7 @@
 import { PersonaFactory } from "../factories/persona_factory.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
 
-export class PersonasUseCase {
+export class PersonasService {
   async crear(id, nombreApellido, email, vinculo, rol, idPulpo) {
     const persona = new PersonaFactory().crear(
       id,

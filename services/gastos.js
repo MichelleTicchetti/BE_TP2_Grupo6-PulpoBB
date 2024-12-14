@@ -1,7 +1,7 @@
 import { GastoFactory } from "../factories/gasto_factory.js";
 import { GastoRepository } from "../repositories/gasto_repository.js";
 
-export class GastosUseCase {
+export class GastosService {
   async buscar(identificador) {
     return await new GastoRepository().buscarUno(identificador);
   }

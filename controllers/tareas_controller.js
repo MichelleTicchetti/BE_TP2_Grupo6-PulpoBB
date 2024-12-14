@@ -1,52 +1,50 @@
-import { TareasUseCase } from "../use_cases/tareas.js";
+import { TareasService } from "../services/tareas.js";
 import { PersonaRepository } from "../repositories/persona_repository.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
-import { PersonasUseCase } from "../use_cases/personas.js";
-import { PulpoBbsUseCase } from "../use_cases/pulpos.js";
 
-export const buscarTareasController = async (req, res, next) => {
+export const listarTareas = async (req, res, next) => {
   console.log("ejecución caso de uso: listar tareas");
   try {
-    const responseRepo = await new TareasUseCase().listar();
+    const responseRepo = await new TareasService().listar();
     res.status(200).json(responseRepo);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const buscarTareaIdController = async (req, res, next) => {
+export const buscarTareaPorId = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar tarea por id");
 
   const { id } = req.params;
 
   try {
-    const responseObject = await new TareasUseCase().buscar(id);
+    const responseObject = await new TareasService().buscar(id);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const buscarTareasEstadoController = async (req, res, next) => {
+export const buscarTareasPorEstado = async (req, res, next) => {
   console.log("ejecución caso de uso: buscar tarea por estado");
 
   const { estado } = req.params;
 
   try {
-    const responseObject = await new TareasUseCase().listarPorEstado(estado);
+    const responseObject = await new TareasService().listarPorEstado(estado);
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const crearTareasController = async (req, res, next) => {
+export const crearTarea = async (req, res, next) => {
   console.log("ejecución caso de uso: crear tarea");
 
   const { idTarea, detalle, fechaCaducidad, pulpitoId, creador } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().crear(
+    const responseObject = await new TareasService().crear(
       idTarea,
       detalle,
       fechaCaducidad,
@@ -60,31 +58,31 @@ export const crearTareasController = async (req, res, next) => {
   }
 };
 
-export const eliminarTareasController = async (req, res, next) => {
+export const eliminarTarea = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar tarea");
 
   const { idTarea } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().eliminar(idTarea);
+    const responseObject = await new TareasService().eliminar(idTarea);
     res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const eliminarTodosTareasController = async (req, res, next) => {
+export const eliminarTareas = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar todas las tareas");
 
   try {
-    const responseObject = await new TareasUseCase().eliminarTodos();
+    const responseObject = await new TareasService().eliminarTodos();
     res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
 };
 
-export const asignarPersonaTareaController = async (req, res, next) => {
+export const asignarPersonaATarea = async (req, res, next) => {
   console.log("ejecución caso de uso: asignar tarea a persona");
 
   const { idTarea, idPersona } = req.body;
@@ -92,7 +90,7 @@ export const asignarPersonaTareaController = async (req, res, next) => {
   try {
     const persona = await new PersonaRepository().buscarUno(idPersona);
 
-    const responseTarea = await new TareasUseCase().asignarPersona(
+    const responseTarea = await new TareasService().asignarPersona(
       idTarea,
       persona
     );
@@ -102,13 +100,13 @@ export const asignarPersonaTareaController = async (req, res, next) => {
   }
 };
 
-export const finalizarTareaController = async (req, res, next) => {
+export const finalizarTarea = async (req, res, next) => {
   console.log("ejecución caso de uso: finalizar una tarea");
 
   const { idTarea } = req.body;
 
   try {
-    const responseObject = await new TareasUseCase().finalizarTarea(idTarea);
+    const responseObject = await new TareasService().finalizarTarea(idTarea);
     res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

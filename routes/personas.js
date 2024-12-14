@@ -1,13 +1,5 @@
 import express from "express";
-
-import {
-  crearPersonasController,
-  eliminarPersonasController,
-  buscarPersonaIDController,
-  buscarPersonasController,
-  buscarPersonasRolController,
-  eliminarTodosPersonasController,
-} from "../controllers/personas_controller.js";
+import * as PersonasController from "../controllers/personas_controller.js";
 const router = express.Router();
 
 /**
@@ -34,7 +26,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPersonasController
+  PersonasController.listarPersonas
 );
 
 /**
@@ -68,7 +60,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPersonaIDController
+  PersonasController.buscarPersonaPorId
 );
 
 /**
@@ -102,7 +94,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPersonasRolController
+  PersonasController.buscarPersonasPorRol
 );
 
 /**
@@ -146,7 +138,7 @@ router.post(
       res.status(401).send();
     }
   },
-  crearPersonasController
+  PersonasController.crearPersona
 );
 
 /**
@@ -180,7 +172,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarPersonasController
+  PersonasController.eliminarPersona
 );
 
 /**
@@ -206,7 +198,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarTodosPersonasController
+  PersonasController.eliminarPersonas
 );
 
 export default router;

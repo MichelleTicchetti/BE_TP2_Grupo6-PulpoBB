@@ -1,11 +1,5 @@
 import express from "express";
-import {
-  buscarPulposController,
-  buscarPulpoIdController,
-  crearPulpoBbsController,
-  eliminarPulpoBbsController,
-  eliminarTodosPulposController,
-} from "../controllers/pulposBB_controller.js";
+import * as PulposController from "../controllers/pulposBB_controller.js";
 const router = express.Router();
 
 /**
@@ -32,7 +26,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPulposController
+  PulposController.listarPulpos
 );
 
 /**
@@ -55,7 +49,7 @@ router.get(
  *         description: No Content
  */
 router.get(
-  "/:nombre",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
@@ -66,7 +60,7 @@ router.get(
       res.status(401).send();
     }
   },
-  buscarPulpoIdController
+  PulposController.buscarPulpoPorId
 );
 
 /**
@@ -110,7 +104,7 @@ router.post(
       res.status(401).send();
     }
   },
-  crearPulpoBbsController
+  PulposController.crearPulpoBb
 );
 
 /**
@@ -144,7 +138,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarPulpoBbsController
+  PulposController.eliminarPulpoBb
 );
 
 /**
@@ -170,7 +164,7 @@ router.delete(
       res.status(401).send();
     }
   },
-  eliminarTodosPulposController
+  PulposController.eliminarPulpos
 );
 
 export default router;

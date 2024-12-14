@@ -1,7 +1,7 @@
 import { TareaFactory } from "../factories/tarea_factory.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
-export class TareasUseCase {
+export class TareasService {
   async crear(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador) {
     const tarea = new TareaFactory().crear(
       idTarea,
