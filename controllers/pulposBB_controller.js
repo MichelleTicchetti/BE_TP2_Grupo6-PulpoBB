@@ -17,7 +17,7 @@ export const buscarPulpoPorId = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const responseObject = await new PulpoBbsService().buscar(id);
+    const responseObject = await new PulpoBbsService().buscar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

@@ -30,7 +30,7 @@ export class PulpoBbsDBStorage {
   }
 
   async buscarUno(identificador) {
-    return this.collection.find({ nombre: identificador }).toArray();
+    return this.collection.find({ id: identificador }).toArray();
   }
 
   eliminar(identificador) {
