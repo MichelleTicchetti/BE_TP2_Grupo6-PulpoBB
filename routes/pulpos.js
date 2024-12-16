@@ -127,7 +127,7 @@ router.post(
  *         description: Not Found
  */
 router.delete(
-  "/:nombre",
+  "/:id",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;

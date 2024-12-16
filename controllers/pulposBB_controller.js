@@ -47,10 +47,10 @@ export const crearPulpoBb = async (req, res, next) => {
 export const eliminarPulpoBb = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar pulpo bb");
 
-  const { nombre } = req.body;
+  const { id } = req.params;
 
   try {
-    const responseObject = await new PulpoBbsService().eliminar(nombre);
+    const responseObject = await new PulpoBbsService().eliminar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

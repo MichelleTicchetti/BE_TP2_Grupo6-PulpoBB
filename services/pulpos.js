@@ -24,9 +24,9 @@ export class PulpoBbsService {
     await responseRepo.guardar(pulpito);
   }
 
-  async eliminar(nombre) {
+  async eliminar(id) {
     const responseRepo = new PulpoBbRepository();
-    await responseRepo.eliminar(nombre);
+    await responseRepo.eliminar(id);
   }
 
   async eliminarTodos() {
