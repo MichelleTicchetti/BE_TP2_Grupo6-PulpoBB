@@ -185,7 +185,7 @@ router.delete(
  *         description: Not Found
  */
 router.put(
-  "/:idGasto/:idPersona",
+  "/",
   //1er callback: verifico que el gasto exista
   verificarExistenciaGasto,
   //2do callback: verifico que quien lo salda es administrador

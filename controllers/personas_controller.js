@@ -30,7 +30,7 @@ export const buscarPersonaPorId = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const responseObject = await new PersonasService().buscar(id);
+    const responseObject = await new PersonasService().buscar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -61,10 +61,10 @@ export const crearPersona = async (req, res, next) => {
 export const eliminarPersona = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar persona");
 
-  const { id } = req.body;
+  const { id } = req.params;
 
   try {
-    const responseObject = await new PersonasService().eliminar(id);
+    const responseObject = await new PersonasService().eliminar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

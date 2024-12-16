@@ -19,8 +19,8 @@ export const autenticacionTarea = async (req, res, next) => {
 
 export const autenticacionGasto = async (req, res, next) => {
   console.log("Autenticación de saldar gasto");
-  const { idPersona } = req.body;
-  const saldadorGasto = await new PersonaRepository().buscarUno(idPersona);
+  const { idPersona } = req.query;
+  const saldadorGasto = await new PersonaRepository().buscarUno(parseInt(idPersona));
 
   try {
     if (saldadorGasto[0].rol === "Administrador") {

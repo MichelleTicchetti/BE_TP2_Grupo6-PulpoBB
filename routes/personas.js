@@ -65,7 +65,7 @@ router.get(
 
 /**
  * @openapi
- * /personas/:rol:
+ * /personas/rol/:rol:
  *   get:
  *     description: lista las personas por rol "Administrador" o "Cuidador"
  *     requestBody:
@@ -83,11 +83,10 @@ router.get(
  *         description: No Content
  */
 router.get(
-  "/:rol",
+  "/rol/:rol",
   (req, res, next) => {
     console.log("verificar auth");
     let valid = true;
-
     if (valid) {
       next();
     } else {

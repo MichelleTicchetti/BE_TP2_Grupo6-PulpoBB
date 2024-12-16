@@ -3,7 +3,7 @@ import { GastoRepository } from "../repositories/gasto_repository.js";
 
 export class GastosService {
   async buscar(identificador) {
-    return await new GastoRepository().buscarUno(identificador);
+    return await new GastoRepository().buscarUno(parseInt(identificador));
   }
 
   async crear(id, monto, detalle) {

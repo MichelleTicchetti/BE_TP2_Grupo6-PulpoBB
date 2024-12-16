@@ -39,9 +39,9 @@ export class GastosDBStorage {
     this.collection.deleteMany({});
   }
 
-  saldarGasto(idGasto) {
+  saldarGasto(id) {
     this.collection.updateOne(
-      { id: idGasto },
+      { id: id },
       { $set: { gastoSaldado: true } }
     );
   }

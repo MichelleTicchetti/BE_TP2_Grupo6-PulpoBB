@@ -40,10 +40,10 @@ export const crearGasto = async (req, res, next) => {
 export const eliminarGasto = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar gasto");
 
-  const { id } = req.body;
+  const { id } = req.params;
 
   try {
-    const responseObject = await new GastosService().eliminar(id);
+    const responseObject = await new GastosService().eliminar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -64,10 +64,10 @@ export const eliminarGastos = async (req, res, next) => {
 export const saldarGasto = async (req, res, next) => {
   console.log("ejecución caso de uso: saldar gasto");
 
-  const { idGasto } = req.body;
+  const { idGasto } = req.query;
 
   try {
-    const responseObject = await new GastosService().saldarGasto(idGasto);
+    const responseObject = await new GastosService().saldarGasto(parseInt(idGasto));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });

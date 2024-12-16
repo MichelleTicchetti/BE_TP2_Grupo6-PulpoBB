@@ -45,7 +45,9 @@ export const verificarTareaYaExiste = async (req, res, next) => {
 export const verificarExistenciaGasto = async (req, res, next) => {
   console.log("Existencia de gasto");
 
-  const gasto = await new GastoRepository().buscarUno(req.body.idGasto);
+  const { idGasto } = req.query;
+
+  const gasto = await new GastoRepository().buscarUno(parseInt(idGasto));
 
   if (gasto === undefined || gasto === null || gasto.length == 0) {
     console.log("No se ha encontrado ese gasto");
