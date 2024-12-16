@@ -85,13 +85,13 @@ export const eliminarTareas = async (req, res, next) => {
 export const asignarPersonaATarea = async (req, res, next) => {
   console.log("ejecución caso de uso: asignar tarea a persona");
 
-  const { idTarea, idPersona } = req.body;
+  const { idTarea, idPersona } = req.params;
 
   try {
-    const persona = await new PersonaRepository().buscarUno(idPersona);
+    const persona = await new PersonaRepository().buscarUno(parseInt(idPersona));
 
     const responseTarea = await new TareasService().asignarPersona(
-      idTarea,
+      parseInt(idTarea),
       persona
     );
     res.status(201).json(responseTarea);
@@ -116,7 +116,9 @@ export const finalizarTarea = async (req, res, next) => {
 export const verificarTareaPendiente = async (req, res, next) => {
   console.log("verificar si tarea se encuentra pendiente");
 
-  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+  const { idTarea } = req.params
+
+  const tarea = await new TareaRepository().buscarUno(parseInt(idTarea));
 
   if (tarea[0].estado === "Pendiente") {
     console.log("Tarea se encuentra en estado pendiente");
