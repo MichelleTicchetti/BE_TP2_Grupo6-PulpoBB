@@ -32,7 +32,7 @@ export class PersonasDBStorage {
   }
 
   buscarUno(identificador) {
-    return this.collection.find({ id: parseInt(identificador) }).toArray();
+    return this.collection.find({ id: identificador }).toArray();
   }
 
   buscarPorNombre(nombre) {

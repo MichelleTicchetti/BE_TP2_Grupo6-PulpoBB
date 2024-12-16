@@ -18,7 +18,7 @@ export const buscarTareaPorId = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const responseObject = await new TareasService().buscar(id);
+    const responseObject = await new TareasService().buscar(parseInt(id));
     res.status(201).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -41,7 +41,7 @@ export const buscarTareasPorEstado = async (req, res, next) => {
 export const crearTarea = async (req, res, next) => {
   console.log("ejecución caso de uso: crear tarea");
 
-  const { idTarea, detalle, fechaCaducidad, pulpitoId, creador } = req.body;
+  const { idTarea, detalle, fechaCaducidad, pulpitoId, idCreador } = req.body;
 
   try {
     const responseObject = await new TareasService().crear(
@@ -49,7 +49,7 @@ export const crearTarea = async (req, res, next) => {
       detalle,
       fechaCaducidad,
       pulpitoId,
-      creador
+      idCreador
     );
 
     res.status(201).json(responseObject);
@@ -61,10 +61,10 @@ export const crearTarea = async (req, res, next) => {
 export const eliminarTarea = async (req, res, next) => {
   console.log("ejecución caso de uso: borrar tarea");
 
-  const { idTarea } = req.body;
+  const { id } = req.params;
 
   try {
-    const responseObject = await new TareasService().eliminar(idTarea);
+    const responseObject = await new TareasService().eliminar(parseInt(id));
     res.status(204).json(responseObject);
   } catch (e) {
     res.status(500).json({ message: e.message });
@@ -130,7 +130,8 @@ export const verificarTareaPendiente = async (req, res, next) => {
 export const verificarTareaFinalizada = async (req, res, next) => {
   console.log("verificar si tarea se encuentra finalizada");
 
-  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+  const { id } = req.params
+  const tarea = await new TareaRepository().buscarUno(parseInt(id));
 
   if (tarea[0].estado === "Finalizada") {
     console.log("Tarea se encuentra en estado finalizada");

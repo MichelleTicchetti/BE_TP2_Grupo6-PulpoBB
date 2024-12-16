@@ -2,18 +2,19 @@ import { TareaFactory } from "../factories/tarea_factory.js";
 import { TareaRepository } from "../repositories/tarea_repository.js";
 
 export class TareasService {
-  async crear(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, creador) {
+  async crear(idTarea, detalle, prioridad, fechaCaducidad, pulpitoId, idCreador) {
     const tarea = new TareaFactory().crear(
       idTarea,
       detalle,
       prioridad,
       fechaCaducidad,
       pulpitoId,
-      creador
+      idCreador
     );
 
     const responseRepo = new TareaRepository();
     await responseRepo.guardar(tarea);
+    return tareaCreada;
   }
 
   async eliminar(id) {
@@ -39,6 +40,7 @@ export class TareasService {
   }
 
   async listarPorEstado(estado) {
+    console.log(estado)
     return await new TareaRepository().listarPorEstado(estado);
   }
 

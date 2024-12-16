@@ -2,8 +2,9 @@ import { PersonaRepository } from "../repositories/persona_repository.js";
 
 export const autenticacionTarea = async (req, res, next) => {
   console.log("Autenticación de creador de tarea");
-  const { creador } = req.body;
-  const creadorTarea = await new PersonaRepository().buscarPorNombre(creador);
+  const { idCreador } = req.body
+
+  const creadorTarea = await new PersonaRepository().buscarUno(parseInt(idCreador));
 
   try {
     if (creadorTarea[0].rol === "Administrador") {

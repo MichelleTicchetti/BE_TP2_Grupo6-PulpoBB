@@ -164,7 +164,7 @@ router.post(
  *         description: Not Found
  */
 router.delete(
-  "/:idTarea",
+  "/:id",
   //1er callback: verifico que exista la tarea
   verificarExistenciaTarea,
   //2do callback: verifico que la tarea ya este finalizada

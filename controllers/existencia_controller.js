@@ -5,7 +5,9 @@ import { TareaRepository } from "../repositories/tarea_repository.js";
 export const verificarExistenciaTarea = async (req, res, next) => {
   console.log("Existencia de tarea");
 
-  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+  const { id } = req.params
+
+  const tarea = await new TareaRepository().buscarUno(parseInt(id));
 
   if (tarea === undefined || tarea === null || tarea.length == 0) {
     console.log("No se ha encontrado esa tarea");
@@ -31,7 +33,9 @@ export const verificarExistenciaPersona = async (req, res, next) => {
 export const verificarTareaYaExiste = async (req, res, next) => {
   console.log("Existencia de tarea");
 
-  const tarea = await new TareaRepository().buscarUno(req.body.idTarea);
+  const { idTarea } = req.body; 
+
+  const tarea = await new TareaRepository().buscarUno(parseInt(idTarea));
 
   if (tarea.length > 0) {
     console.log("Ya existe una tarea con ese id");
